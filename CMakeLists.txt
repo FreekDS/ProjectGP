@@ -4,8 +4,11 @@ PROJECT(RoadFighter)
 SET(CMAKE_CXX_STANDARD 14)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 
+INCLUDE_DIRECTORIES(include/)
+
 SET(SRC
 		src/main.cpp
+		src/Random.cpp
 	)
 	
 ADD_EXECUTABLE(RoadFighter ${SRC})
