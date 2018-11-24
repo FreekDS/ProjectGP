@@ -1,7 +1,12 @@
 # Set Source files for GLL (= game logic library)
 SET(SRC_GLL
         src/Random.cpp
-        )
+        src/Entity.cpp
+        src/Vehicle.cpp
+        src/Player.cpp
+        src/RacingCar.cpp
+        src/PassingCar.cpp
+        src/World.cpp)
 
 # Temporary for testing purpose
 ADD_EXECUTABLE(GLL_DEBUG ${SRC_GLL} main.cpp)
