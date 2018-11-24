@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argc, char* argv[]){
 	cout << "Hello world!" << endl;
-	RoadFighter::Random* r = RoadFighter::Random::getInstance().get();
+	shared_ptr<RoadFighter::Random> r = RoadFighter::Random::getInstance();
 	cout << r->randNum(10, 1);
 	return 0;
 }
