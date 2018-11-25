@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory>
-#include "Random.h"
+#include "GLL/Random.h"
 
 using namespace std;
 
