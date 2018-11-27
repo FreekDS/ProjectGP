@@ -10,11 +10,22 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-7
+    - libsfml-dev
+    - libopenal-dev
+    - libjpeg-dev
+    - libudev-dev
+    - libxrandr-dev
+    - libfreetype6-dev
+    - libvorbis-dev
+    - libflac-dev
 
 before_install:
-- mkdir cmake-dist
-- travis_retry wget -qO- https://cmake.org/files/v3.12/cmake-3.12.1-Linux-x86_64.tar.gz | sudo tar --strip-components=1 -C cmake-dist -xz 
-- export PATH=$PWD/cmake-dist/bin:$PATH;
+  - mkdir cmake-dist
+  - travis_retry wget -qO- https://cmake.org/files/v3.12/cmake-3.12.1-Linux-x86_64.tar.gz | sudo tar --strip-components=1 -C cmake-dist -xz
+  - export PATH=$PWD/cmake-dist/bin:$PATH;
+  - sudo apt-get install -y libxml2-dev
+  - sudo apt-get install libsfml-dev
+
 
 install:
 - if [ "$CXX" = "g++" ]; then export CXX="g++-7" CC="gcc-7"; fi
