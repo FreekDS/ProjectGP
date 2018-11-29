@@ -5,7 +5,7 @@
 
 namespace RoadFighter {
 
-    Entity::Entity() = default;
+    Entity::Entity() : m_pos(Position()) {}
 
     Entity::~Entity() = default;
 
@@ -15,17 +15,22 @@ namespace RoadFighter {
     {
         if(this == &other)
             return *this;
-        // copy items
+        m_pos = other.m_pos;
         return *this;
     }
 
-    Entity::Entity(Entity&& other) noexcept
-    {
-
-    }
+    Entity::Entity(Entity&& other) noexcept : m_pos(other.m_pos) {}
 
     Entity& Entity::operator=(Entity&& other) noexcept
     {
+        if(this == &other)
+            return *this;
+        m_pos = other.m_pos;
         return *this;
+    }
+
+    bool Entity::isVisible() const
+    {
+        return m_pos.x < -4.0 || m_pos.x > 4.0 || m_pos.y < -3.0 || m_pos.y > 3.0;
     }
 }
