@@ -6,7 +6,9 @@ SET(SRC_GLL
         src/Player.cpp
         src/RacingCar.cpp
         src/PassingCar.cpp
-        src/World.cpp)
+        src/World.cpp
+        src/Position.cpp
+        )
 
 # Temporary for testing purpose
 ADD_EXECUTABLE(GLL_DEBUG ${SRC_GLL} main.cpp)
