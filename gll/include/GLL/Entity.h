@@ -21,6 +21,13 @@ namespace RoadFighter {
          * @return True if the position is in [-4,4] x [-3,3]
          */
         bool isVisible() const;
+
+        const Position& getPos() const;
+        void setPos(const Position& pos);
+
+        virtual void draw() const = 0;
+        virtual void update() = 0;
+        virtual bool canBeDestroyed() = 0;
     };
 
 }

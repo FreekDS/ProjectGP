@@ -33,4 +33,14 @@ namespace RoadFighter {
     {
         return m_pos.x < -4.0 || m_pos.x > 4.0 || m_pos.y < -3.0 || m_pos.y > 3.0;
     }
+
+    const Position& Entity::getPos() const
+    {
+        return m_pos;
+    }
+
+    void Entity::setPos(const Position& pos)
+    {
+        Entity::m_pos = pos;
+    }
 }
