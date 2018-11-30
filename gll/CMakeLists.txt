@@ -8,6 +8,7 @@ SET(SRC_GLL
         src/PassingCar.cpp
         src/World.cpp
         src/Position.cpp
+        src/Bullet.cpp
         )
 
 # Temporary for testing purpose
