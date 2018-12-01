@@ -38,6 +38,6 @@ namespace RoadFighter {
         virtual ~Position();
     };
 
-}
+} // namespace RoadFighter
 
 #endif //ROADFIGHTER_COORDINATE_H

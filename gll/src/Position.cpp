@@ -37,4 +37,4 @@ namespace RoadFighter {
      */
     Position::~Position() = default;
 
-}
+} // namespace RoadFighter

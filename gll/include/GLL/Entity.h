@@ -30,6 +30,6 @@ namespace RoadFighter {
         virtual bool canBeDestroyed() = 0;
     };
 
-}
+} // namespace RoadFighter
 
 #endif //ROADFIGHTER_ENTITY_H

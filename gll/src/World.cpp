@@ -2,4 +2,4 @@
 
 namespace RoadFighter {
     
-}
+} // namespace RoadFighter

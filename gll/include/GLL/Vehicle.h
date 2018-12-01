@@ -9,6 +9,6 @@ namespace RoadFighter {
 
     };
 
-}
+} // namespace RoadFighter
 
 #endif //ROADFIGHTER_VEHICLE_H

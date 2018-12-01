@@ -17,6 +17,6 @@ namespace RoadFighter {
         void setShootSpeed(double speed);
     };
 
-}
+} // namespace RoadFighter
 
 #endif //ROADFIGHTER_BULLET_H

@@ -1,29 +1,31 @@
-
-#include <GLL/Bullet.h>
-
 #include "GLL/Bullet.h"
 
-RoadFighter::Bullet::Bullet(double m_shootSpeed)
-        :m_shootSpeed(m_shootSpeed) { }
+namespace RoadFighter {
 
-RoadFighter::Bullet::Bullet() : m_shootSpeed(0) { }
+    Bullet::Bullet(double m_shootSpeed)
+            :m_shootSpeed(m_shootSpeed) { }
 
-RoadFighter::Bullet& RoadFighter::Bullet::operator=(const RoadFighter::Bullet& other)
-{
-    if(this == &other)
+    Bullet::Bullet()
+            :m_shootSpeed(0) { }
+
+    Bullet& Bullet::operator=(const RoadFighter::Bullet& other)
+    {
+        if (this==&other)
+            return *this;
+        m_shootSpeed = other.m_shootSpeed;
         return *this;
-    m_shootSpeed = other.m_shootSpeed;
-    return *this;
-}
+    }
 
-double RoadFighter::Bullet::getShootSpeed() const
-{
-    return m_shootSpeed;
-}
+    double Bullet::getShootSpeed() const
+    {
+        return m_shootSpeed;
+    }
 
-void RoadFighter::Bullet::setShootSpeed(double speed)
-{
-    Bullet::m_shootSpeed = speed;
-}
+    void Bullet::setShootSpeed(double speed)
+    {
+        Bullet::m_shootSpeed = speed;
+    }
 
-RoadFighter::Bullet::~Bullet() = default;
+    Bullet::~Bullet() = default;
+
+} // namespace RoadFighter

@@ -43,4 +43,5 @@ namespace RoadFighter {
     {
         Entity::m_pos = pos;
     }
-}
+
+} // namespace RoadFighter
