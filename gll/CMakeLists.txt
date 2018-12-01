@@ -9,6 +9,7 @@ SET(SRC_GLL
         src/World.cpp
         src/Position.cpp
         src/Bullet.cpp
+        src/Transformation.cpp
         )
 
 # Temporary for testing purpose
