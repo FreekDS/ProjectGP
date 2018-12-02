@@ -5,6 +5,8 @@
 
 namespace RoadFighter {
 
+    shared_ptr<Transformation> Transformation::m_instance = nullptr;
+
     Transformation::Transformation()
             :m_windowWidth(0),
              m_windowHeight(0),
