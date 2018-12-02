@@ -5,7 +5,7 @@ SET(SRC_GAME
         src/RacingCar.cpp
         src/PassingCar.cpp
         src/World.cpp
-        )
+        src/Bullet.cpp include/Bullet.h)
 
 # Set the SFML ROOT (used on my Windows environment)
 SET(SFML_ROOT C:/Libs/SFML-BUILD)
