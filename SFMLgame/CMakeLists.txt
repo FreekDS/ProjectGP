@@ -4,7 +4,8 @@ SET(SRC_GAME
         src/Player.cpp
         src/RacingCar.cpp
         src/PassingCar.cpp
-        src/World.cpp)
+        src/World.cpp
+        )
 
 # Set the SFML ROOT (used on my Windows environment)
 SET(SFML_ROOT C:/Libs/SFML-BUILD)
@@ -19,9 +20,10 @@ FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 ADD_EXECUTABLE(RoadFighter ${SRC_GAME})
 
 # Include the include directories in executable 'RoadFighter'
-TARGET_INCLUDE_DIRECTORIES(RoadFighter PUBLIC ${SFML_INCLUDE_DIR} include)
+TARGET_INCLUDE_DIRECTORIES(RoadFighter PUBLIC ${SFML_INCLUDE_DIR} include/)
 
 # Link with GLL and SFML library
 TARGET_LINK_LIBRARIES(RoadFighter LINK_PUBLIC GLL ${SFML_LIBRARIES})
 
-FILE(COPY ./res/ DESTINATION "${CMAKE_BINARY_DIR}/SFMLgame/res")
+# Copy resource files to binary dir
+FILE(COPY ./res/ DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/res")
