@@ -1,7 +1,4 @@
-
-#include <Player.h>
-#include <GLL/Transformation.h>
-
+#include "GLL/Transformation.h"
 #include "Player.h"
 
 namespace RoadFighterSFML {
@@ -20,6 +17,8 @@ namespace RoadFighterSFML {
         m_texture.loadFromFile(path+file_name);
         sf::Sprite sprite(m_texture);
         m_sprite = sprite;
+        m_sprite.setOrigin(m_sprite.getLocalBounds().width/2, m_sprite.getLocalBounds().height/2);
+        m_sprite.scale(60,60);
         updateSpriteLocation();
     }
 
