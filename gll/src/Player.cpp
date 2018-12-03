@@ -2,4 +2,8 @@
 
 namespace RoadFighter {
 
+    void Player::accelerate()
+    {
+
+    }
 } // namespace RoadFighter
