@@ -3,10 +3,10 @@
 
 namespace RoadFighter {
 
-/**
- * This structure represents a position in 2 dimensional space
- * A position has an x value and a y value
- */
+    /**
+     * This structure represents a position in 2 dimensional space
+     * A position has an x value and a y value
+     */
     struct Position {
         double x;
         double y;
