@@ -39,7 +39,6 @@ namespace RoadFighterSFML {
          */
         ~Player() override;
 
-        bool canBeDestroyed() override;
 
         /**
          * Updates the screen coordinates of the sprite based on the coordinates in the Game Logic

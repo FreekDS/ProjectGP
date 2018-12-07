@@ -8,6 +8,8 @@ namespace RoadFighter {
     class Player : public Vehicle {
     public:
         void accelerate() override;
+
+        bool canBeDestroyed() override;
     };
 
 } // namespace RoadFighter

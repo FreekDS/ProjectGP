@@ -39,10 +39,6 @@ namespace RoadFighterSFML {
 
     }
 
-    bool Player::canBeDestroyed()
-    {
-        return false;
-    }
 
     Player::~Player() = default;
 

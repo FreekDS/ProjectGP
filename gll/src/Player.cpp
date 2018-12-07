@@ -6,4 +6,10 @@ namespace RoadFighter {
     {
 
     }
+
+    bool Player::canBeDestroyed()
+    {
+        return false;
+    }
+
 } // namespace RoadFighter
