@@ -25,6 +25,9 @@ namespace RoadFighter {
         void setRangeX(double from, double to);
         void setRangeY(double from, double to);
         Position getScreenCoordinate(double cartesianX, double cartesianY);
+
+        pair<double, double> getXRange() const;
+        pair<double, double> getYRange() const;
     };
 
 } // namespace RoadFighter

@@ -52,6 +52,16 @@ namespace RoadFighter {
         return screenPos;
     }
 
+    pair<double, double> Transformation::getXRange() const
+    {
+        return m_rangeX;
+    }
+
+    pair<double, double> Transformation::getYRange() const
+    {
+        return m_rangeY;
+    }
+
     Transformation::~Transformation() = default;
 
 } // namespace RoadFighter
