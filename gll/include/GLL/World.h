@@ -75,6 +75,7 @@ namespace RoadFighter {
          * @return True if entity1 and entity2 collide
          */
         bool checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2);
+
     };
 
 } // namespace RoadFighter

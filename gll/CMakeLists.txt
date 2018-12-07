@@ -10,7 +10,9 @@ SET(SRC_GLL
         src/Position.cpp
         src/Bullet.cpp
         src/Transformation.cpp
-        src/EntityFactory.cpp include/GLL/EntityFactory.h)
+        src/EntityFactory.cpp
+        src/Game.cpp
+        )
 
 # Temporary for testing purpose
 ADD_EXECUTABLE(GLL_DEBUG ${SRC_GLL} main.cpp)
