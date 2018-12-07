@@ -1,5 +1,5 @@
 #include <GLL/World.h>
-
+#include <GLL/Player.h>
 
 namespace RoadFighter {
 
@@ -59,6 +59,7 @@ namespace RoadFighter {
         if(this == &other)
             return *this;
         m_childEntities = other.m_childEntities;
+        m_factory = other.m_factory;
         return *this;
     }
 
@@ -70,6 +71,26 @@ namespace RoadFighter {
     /**
      * Default constructor of World
      */
-    World::World() = default;
+    World::World() : m_factory(make_shared<EntityFactory>())
+    {
+    }
+
+    /**
+    * Getter for the EntityFactory of the world
+    * @return Reference to the EntityFactory
+    */
+    const shared_ptr<EntityFactory>& World::getFactory() const
+    {
+        return m_factory;
+    }
+
+    /**
+     * Setter for the Entity factory of the world
+     * @param factory EntityFactory of the world
+     */
+    void World::setFactory(const shared_ptr<EntityFactory>& factory)
+    {
+        World::m_factory = factory;
+    }
 
 } // namespace RoadFighter

@@ -2,6 +2,7 @@
 #define ROADFIGHTER_WORLD_H
 
 #include "Entity.h"
+#include "EntityFactory.h"
 #include <vector>
 #include <memory>
 
@@ -16,11 +17,24 @@ namespace RoadFighter {
     class World : public Entity {
     private:
         vector<shared_ptr<Entity>> m_childEntities;
+        shared_ptr<EntityFactory> m_factory;
     public:
         /**
          * Default constructor of World
          */
         World();
+
+        /**
+         * Setter for the Entity factory of the world
+         * @param factory EntityFactory of the world
+         */
+        void setFactory(const shared_ptr<EntityFactory>& factory);
+
+        /**
+         * Getter for the EntityFactory of the world
+         * @return Reference to the EntityFactory
+         */
+        const shared_ptr<EntityFactory>& getFactory() const;
 
         /**
          * Default destructor of World
