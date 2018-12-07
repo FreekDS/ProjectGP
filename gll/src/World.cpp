@@ -71,7 +71,7 @@ namespace RoadFighter {
     /**
      * Default constructor of World
      */
-    World::World() : m_factory(make_shared<EntityFactory>())
+    World::World() : m_factory(nullptr)
     {
     }
 

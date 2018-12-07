@@ -9,7 +9,7 @@ using namespace std;
 namespace RoadFighter {
 
     class Game {
-    private:
+    protected:
         shared_ptr<World> m_world;
     public:
         explicit Game(const shared_ptr<World>& world);
