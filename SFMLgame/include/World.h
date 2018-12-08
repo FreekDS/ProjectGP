@@ -12,6 +12,7 @@ namespace RoadFighterSFML {
     class World : public RoadFighter::World {
     private:
         sf::Sprite m_sprite;
+        sf::Sprite m_sprite2;
         sf::Texture m_texture;
         window_ptr m_window;
         keymap m_keymap;
@@ -26,6 +27,8 @@ namespace RoadFighterSFML {
         void readInput();
 
         void initializeKeymap();
+
+        void backgroundLoopUpdate(sf::Sprite& toMove, sf::Sprite& other);
     };
 
 }

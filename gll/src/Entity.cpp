@@ -52,7 +52,7 @@ namespace RoadFighter {
         Entity::m_pos = pos;
     }
 
-    const Position& Entity::getUpperRightCorner() const
+    const Position& Entity::getUpperLeftCorner() const
     {
         return m_cornerUL;
     }

@@ -40,8 +40,7 @@ namespace RoadFighterSFML {
             handleSFMLEvents();
 
             // Clear the window
-            sf::Color color(110, 208, 226);
-            m_window->clear(color);
+            m_window->clear(sf::Color::Black);
 
             // Update the world
             m_world->update();

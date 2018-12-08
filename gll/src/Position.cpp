@@ -32,6 +32,12 @@ namespace RoadFighter {
         return *this;
     }
 
+    std::ostream& operator<<(std::ostream& os, const Position& position)
+    {
+        os << "x: " << position.x << " y: " << position.y;
+        return os;
+    }
+
     /**
      * Default destructor of Position
      */

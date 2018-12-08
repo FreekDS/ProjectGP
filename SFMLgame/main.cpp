@@ -5,7 +5,7 @@
 int main(int argc, char* argv[])
 {
     try {
-        RoadFighterSFML::Game game("Road Fighter", false);
+        RoadFighterSFML::Game game("Road Fighter", true);
         game.runGame();
     }
     catch (exception& e) {

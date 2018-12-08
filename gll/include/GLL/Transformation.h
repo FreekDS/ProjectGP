@@ -12,7 +12,9 @@ namespace RoadFighter {
     class Transformation {
     private:
         static shared_ptr<Transformation> m_instance;
+
         Transformation();
+
         unsigned int m_windowWidth;
         unsigned int m_windowHeight;
 
@@ -21,13 +23,21 @@ namespace RoadFighter {
         range m_rangeY;
     public:
         virtual ~Transformation();
+
         static shared_ptr<Transformation> getInstance();
+
         void setScreenSize(unsigned int width, unsigned int height);
+
         void setRangeX(double from, double to);
+
         void setRangeY(double from, double to);
+
         Position getScreenCoordinate(double cartesianX, double cartesianY);
 
+        Position getScreenCoordinate(const Position& cartesianPos);
+
         range getXRange() const;
+
         range getYRange() const;
     };
 

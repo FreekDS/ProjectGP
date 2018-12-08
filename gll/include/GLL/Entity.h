@@ -31,7 +31,7 @@ namespace RoadFighter {
         virtual bool isPlayer() const;
 
         const Position& getPos() const;
-        const Position& getUpperRightCorner() const;
+        const Position& getUpperLeftCorner() const;
         const Position& getBottomRightCorner() const;
 
         void setPos(const Position& pos);

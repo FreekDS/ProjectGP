@@ -1,6 +1,8 @@
 #ifndef ROADFIGHTER_COORDINATE_H
 #define ROADFIGHTER_COORDINATE_H
 
+#include <ostream>
+
 namespace RoadFighter {
 
     /**
@@ -36,6 +38,8 @@ namespace RoadFighter {
          * Default destructor of Position
          */
         virtual ~Position();
+
+        friend std::ostream& operator<<(std::ostream& os, const Position& position);
     };
 
 } // namespace RoadFighter

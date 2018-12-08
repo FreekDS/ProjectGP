@@ -1,7 +1,4 @@
-
 #include <GLL/Transformation.h>
-
-#include "GLL/Transformation.h"
 
 namespace RoadFighter {
 
@@ -28,7 +25,7 @@ namespace RoadFighter {
 
     void Transformation::setRangeX(double from, double to)
     {
-        if(from > to)
+        if (from>to)
             swap(from, to);
         m_rangeX.first = from;
         m_rangeX.second = to;
@@ -36,7 +33,7 @@ namespace RoadFighter {
 
     void Transformation::setRangeY(double from, double to)
     {
-        if(from > to)
+        if (from>to)
             swap(from, to);
         m_rangeY.first = from;
         m_rangeY.second = to;
@@ -60,6 +57,16 @@ namespace RoadFighter {
     range Transformation::getYRange() const
     {
         return m_rangeY;
+    }
+
+    Position Transformation::getScreenCoordinate(const Position& cartesianPos)
+    {
+        Position screenPos;
+        double lengthX = m_rangeX.second-m_rangeX.first;
+        double lengthY = m_rangeY.second-m_rangeY.first;
+        screenPos.x = (cartesianPos.x+lengthX/2)*1/lengthX*m_windowWidth;
+        screenPos.y = (cartesianPos.y-lengthY/2)*-1/lengthY*m_windowHeight;
+        return screenPos;
     }
 
     Transformation::~Transformation() = default;

@@ -73,6 +73,8 @@ namespace RoadFighter {
      */
     World::World() : m_factory(nullptr)
     {
+        setUpperLeftCorner({-4,3});
+        setBottomRightCorner({3,-4});
     }
 
     /**
