@@ -93,5 +93,10 @@ namespace RoadFighter {
         World::m_factory = factory;
     }
 
+    bool World::canBeDestroyed() const
+    {
+        return false;
+    }
+
 
 } // namespace RoadFighter

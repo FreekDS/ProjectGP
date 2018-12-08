@@ -1,5 +1,6 @@
 #include <Game.h>
 #include <Player.h>
+#include <World.h>
 #include <GLL/Transformation.h>
 
 namespace RoadFighterSFML {
@@ -21,12 +22,18 @@ namespace RoadFighterSFML {
         // Initialize the Transformation class with the window size
         auto trans = RoadFighter::Transformation::getInstance();
         trans->setScreenSize(m_window->getSize().x, m_window->getSize().y);
+
+        // Initialize the world of the Game
+        m_world = make_shared<World>("background.png", m_window);
     }
 
     void Game::runGame()
     {
         // create a player for testing purpose
-        Player player("player_car.png", m_window);
+        // Player player("player_car.png", m_window);
+        auto player = make_shared<Player>("player_car.png", m_window);
+        m_world->add(player);
+
 
         while (m_window->isOpen()) {
             // Handle events
@@ -36,9 +43,11 @@ namespace RoadFighterSFML {
             sf::Color color(110, 208, 226);
             m_window->clear(color);
 
+            // Update the world
+            m_world->update();
+
             // Draw to window
-            // todo
-            player.draw();
+            m_world->draw();
 
             // Display the window
             m_window->display();

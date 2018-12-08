@@ -7,9 +7,14 @@ namespace RoadFighter {
 
     }
 
-    bool Player::canBeDestroyed()
+    bool Player::canBeDestroyed() const
     {
         return false;
+    }
+
+    bool Player::isPlayer() const
+    {
+        return true;
     }
 
 } // namespace RoadFighter

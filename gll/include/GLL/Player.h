@@ -9,7 +9,9 @@ namespace RoadFighter {
     public:
         void accelerate() override;
 
-        bool canBeDestroyed() override;
+        bool canBeDestroyed() const override;
+
+        bool isPlayer() const override;
     };
 
 } // namespace RoadFighter

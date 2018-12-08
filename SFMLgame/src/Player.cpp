@@ -1,22 +1,22 @@
-#include "GLL/Transformation.h"
-#include "Player.h"
+#include <GLL/Transformation.h>
+#include <Player.h>
 
 namespace RoadFighterSFML {
 
-    Player::Player(const sf::Sprite& sprite, shared_ptr<sf::RenderWindow>& window)
+    Player::Player(const sf::Sprite& sprite, window_ptr& window)
             :m_texture(*sprite.getTexture()), m_sprite(sprite), m_window(window)
     {
         m_sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height/2);
         updateSpriteLocation();
     }
 
-    Player::Player(const std::string& file_name, shared_ptr<sf::RenderWindow>& window)
+    Player::Player(const std::string& file_name, window_ptr& window)
             :m_window(window)
     {
-        std::string path = "./res/sprites/entity/";
+        string path = "./res/sprites/entity/";
         m_texture.loadFromFile(path + file_name);
         sf::Sprite sprite(m_texture);
-        m_sprite = sprite;
+        m_sprite = move(sprite);
         m_sprite.setOrigin(m_sprite.getLocalBounds().width/2, m_sprite.getLocalBounds().height/2);
         m_sprite.scale(5,5);
         updateSpriteLocation();

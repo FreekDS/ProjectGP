@@ -15,7 +15,7 @@ namespace RoadFighter {
      * Based on Composite design pattern
      */
     class World : public Entity {
-    private:
+    protected:
         vector<shared_ptr<Entity>> m_childEntities;
         shared_ptr<EntityFactory> m_factory;
     public:
@@ -76,6 +76,7 @@ namespace RoadFighter {
          */
         bool checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2);
 
+        bool canBeDestroyed() const override;
     };
 
 } // namespace RoadFighter

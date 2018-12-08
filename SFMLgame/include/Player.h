@@ -2,10 +2,12 @@
 #define ROADFIGHTER_SFML_PLAYER_H
 
 #include <memory>
-#include "GLL/Player.h"
-#include "SFML/Graphics.hpp"
+#include <GLL/Player.h>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
+
+using window_ptr = shared_ptr<sf::RenderWindow>;
 
 namespace RoadFighterSFML {
 
@@ -16,7 +18,7 @@ namespace RoadFighterSFML {
     private:
         sf::Texture m_texture;
         sf::Sprite m_sprite;
-        shared_ptr<sf::RenderWindow> m_window;
+        window_ptr m_window;
     public:
         /**
          * Constructor for SFML Player
@@ -24,7 +26,7 @@ namespace RoadFighterSFML {
          * @param sprite Sprite of the player
          * @param window RenderWindow to be drawn on
          */
-        Player(const sf::Sprite& sprite, shared_ptr<sf::RenderWindow>& window);
+        Player(const sf::Sprite& sprite, window_ptr& window);
 
         /**
          * Constructor for SFML Player
