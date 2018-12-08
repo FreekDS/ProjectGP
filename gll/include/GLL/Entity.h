@@ -8,6 +8,8 @@ namespace RoadFighter {
     class Entity {
     private:
         Position m_pos;
+        Position m_cornerUL;
+        Position m_cornerBR;
     public:
         Entity();
         Entity(const Entity& other);
@@ -22,12 +24,22 @@ namespace RoadFighter {
          */
         bool isVisible() const;
 
-        const Position& getPos() const;
-        void setPos(const Position& pos);
-
         virtual void draw() const = 0;
         virtual void update() = 0;
-        virtual bool canBeDestroyed() = 0;
+        virtual bool canBeDestroyed() const = 0;
+
+        virtual bool isPlayer() const;
+
+        const Position& getPos() const;
+        const Position& getUpperRightCorner() const;
+        const Position& getBottomRightCorner() const;
+
+        void setPos(const Position& pos);
+        void setUpperLeftCorner(const Position& cornerUpLeft);
+        void setBottomRightCorner(const Position& cornerBottomRight);
+
+        double getWidth() const;
+        double getHeight() const;
     };
 
 } // namespace RoadFighter
