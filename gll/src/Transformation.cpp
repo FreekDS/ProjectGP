@@ -52,12 +52,12 @@ namespace RoadFighter {
         return screenPos;
     }
 
-    pair<double, double> Transformation::getXRange() const
+    range Transformation::getXRange() const
     {
         return m_rangeX;
     }
 
-    pair<double, double> Transformation::getYRange() const
+    range Transformation::getYRange() const
     {
         return m_rangeY;
     }

@@ -5,6 +5,7 @@
 #include <GLL/Position.h>
 
 using namespace std;
+using range = pair<double, double>;
 
 namespace RoadFighter {
 
@@ -16,8 +17,8 @@ namespace RoadFighter {
         unsigned int m_windowHeight;
 
         // Variables which represent the coordinate system of the game
-        pair<double, double> m_rangeX;
-        pair<double, double> m_rangeY;
+        range m_rangeX;
+        range m_rangeY;
     public:
         virtual ~Transformation();
         static shared_ptr<Transformation> getInstance();
@@ -26,8 +27,8 @@ namespace RoadFighter {
         void setRangeY(double from, double to);
         Position getScreenCoordinate(double cartesianX, double cartesianY);
 
-        pair<double, double> getXRange() const;
-        pair<double, double> getYRange() const;
+        range getXRange() const;
+        range getYRange() const;
     };
 
 } // namespace RoadFighter
