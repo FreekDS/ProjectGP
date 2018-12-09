@@ -87,4 +87,26 @@ namespace RoadFighter {
         return false;
     }
 
+    void Entity::setPos(double x, double y)
+    {
+        double dx = x - m_pos.x;
+        double dy = y - m_pos.y;
+        m_pos.x = x;
+        m_pos.y = y;
+        m_cornerBR.x += dx;
+        m_cornerBR.y += dy;
+        m_cornerUL.x += dx;
+        m_cornerUL.y += dy;
+    }
+
+    void Entity::updatePos(double x, double y)
+    {
+        m_pos.x += x;
+        m_pos.y += y;
+        m_cornerUL.x += x;
+        m_cornerUL.y += y;
+        m_cornerBR.x += x;
+        m_cornerBR.y += y;
+    }
+
 } // namespace RoadFighter

@@ -35,11 +35,14 @@ namespace RoadFighter {
         const Position& getBottomRightCorner() const;
 
         void setPos(const Position& pos);
+        void setPos(double x, double y);
         void setUpperLeftCorner(const Position& cornerUpLeft);
         void setBottomRightCorner(const Position& cornerBottomRight);
 
         double getWidth() const;
         double getHeight() const;
+
+        void updatePos(double x, double y);
     };
 
 } // namespace RoadFighter

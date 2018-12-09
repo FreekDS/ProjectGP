@@ -100,5 +100,14 @@ namespace RoadFighter {
         return false;
     }
 
+    shared_ptr<Entity> World::getPlayer() const
+    {
+        for(const auto& entity : m_childEntities){
+            if(entity->isPlayer())
+                return entity;
+        }
+        return nullptr;
+    }
+
 
 } // namespace RoadFighter

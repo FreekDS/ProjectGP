@@ -69,6 +69,13 @@ namespace RoadFighter {
         return screenPos;
     }
 
+    bool Transformation::isInGrid(const Position& pos)
+    {
+        bool checkX = pos.x >= m_rangeX.first && pos.x <= m_rangeX.second;
+        bool checkY = pos.y >= m_rangeY.first && pos.y <= m_rangeY.second;
+        return checkX && checkY ;
+    }
+
     Transformation::~Transformation() = default;
 
 } // namespace RoadFighter

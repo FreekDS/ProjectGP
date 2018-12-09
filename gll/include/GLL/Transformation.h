@@ -39,6 +39,8 @@ namespace RoadFighter {
         range getXRange() const;
 
         range getYRange() const;
+
+        bool isInGrid(const Position& pos);
     };
 
 } // namespace RoadFighter

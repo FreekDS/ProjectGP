@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "EntityFactory.h"
+#include "Player.h"
 #include <vector>
 #include <memory>
 
@@ -77,6 +78,8 @@ namespace RoadFighter {
         bool checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2);
 
         bool canBeDestroyed() const override;
+
+        shared_ptr<Entity> getPlayer() const;
     };
 
 } // namespace RoadFighter

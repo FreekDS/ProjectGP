@@ -1,5 +1,6 @@
 #include <World.h>
 #include <GLL/Transformation.h>
+#include <iostream>
 
 namespace RoadFighterSFML {
 
@@ -14,6 +15,9 @@ namespace RoadFighterSFML {
 
     void World::update()
     {
+        for(const auto& entity : m_childEntities){
+            entity->update();
+        }
         readInput();
     }
 
@@ -54,27 +58,40 @@ namespace RoadFighterSFML {
     {
         if (sf::Keyboard::isKeyPressed(m_keymap["up"])) {
             // move player up
-            m_sprite.move(0, 0.8);
-            m_sprite2.move(0, 0.8);
-            backgroundLoopUpdate(m_sprite, m_sprite2);
-            backgroundLoopUpdate(m_sprite2, m_sprite);
+            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+            player->moveUp();
+            player->updateSpriteLocation();
+
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["down"])) {
             // move player down
-            m_sprite.move(0, -0.8f);
-            m_sprite2.move(0, -0.8f);
+            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+            player->moveDown();
+            player->updateSpriteLocation();
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["left"])) {
             // move player left
+            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+            player->moveLeft();
+            player->updateSpriteLocation();
+            player->setSpriteRotation(-8);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["right"])) {
             // move player right
+            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+            player->moveRight();
+            player->updateSpriteLocation();
+            player->setSpriteRotation(8);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["shoot"])) {
             // let player shoot a bullet
+
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["speedup"])) {
             // player accelerates
+            m_sprite.move(0, 0.8);
+            m_sprite2.move(0, 0.8);
+            backgroundLoopUpdate(m_sprite2, m_sprite);
         }
 
     }
@@ -91,6 +108,8 @@ namespace RoadFighterSFML {
 
     void World::backgroundLoopUpdate(sf::Sprite& toMove, sf::Sprite& other)
     {
+        if(toMove.getPosition().y < other.getPosition().y)
+            swap(toMove, other);
         if (toMove.getPosition().y-toMove.getGlobalBounds().height/2>m_window->getSize().y)
             toMove.setPosition(toMove.getPosition().x, other.getPosition().y-other.getGlobalBounds().height);
     }

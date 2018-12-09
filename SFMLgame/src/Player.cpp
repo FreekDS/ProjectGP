@@ -37,9 +37,13 @@ namespace RoadFighterSFML {
 
     void Player::update()
     {
-
+        m_sprite.setRotation(0);
     }
 
+    void Player::setSpriteRotation(float angle)
+    {
+        m_sprite.setRotation(angle);
+    }
 
     Player::~Player() = default;
 
