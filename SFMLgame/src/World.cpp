@@ -1,6 +1,5 @@
 #include <World.h>
 #include <GLL/Transformation.h>
-#include <iostream>
 
 namespace RoadFighterSFML {
 
@@ -23,7 +22,7 @@ namespace RoadFighterSFML {
      */
     void World::update()
     {
-        for(const auto& entity : m_childEntities){
+        for (const auto& entity : m_childEntities) {
             entity->update();
         }
         readInput();
@@ -140,7 +139,7 @@ namespace RoadFighterSFML {
      */
     void World::backgroundLoopUpdate(sf::Sprite& toMove, sf::Sprite& other)
     {
-        if(toMove.getPosition().y < other.getPosition().y)
+        if (toMove.getPosition().y<other.getPosition().y)
             swap(toMove, other);
         if (toMove.getPosition().y-toMove.getGlobalBounds().height/2>m_window->getSize().y)
             toMove.setPosition(toMove.getPosition().x, other.getPosition().y-other.getGlobalBounds().height);

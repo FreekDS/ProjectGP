@@ -26,12 +26,12 @@ namespace RoadFighterSFML {
             :m_window(window)
     {
         string path = "./res/sprites/entity/";
-        m_texture.loadFromFile(path + file_name);
+        m_texture.loadFromFile(path+file_name);
         sf::Sprite sprite(m_texture);
         m_sprite = move(sprite);
         m_sprite.setOrigin(m_sprite.getLocalBounds().width/2, m_sprite.getLocalBounds().height/2);
         // todo scale correctly
-        m_sprite.scale(5,5);
+        m_sprite.scale(5, 5);
         updateSpriteLocation();
     }
 

@@ -33,7 +33,8 @@ namespace RoadFighter {
      * Default constructor for the Player
      * Initializes the location of the player on (-0.25, -2)
      */
-    Player::Player() {
+    Player::Player()
+    {
         setPos(-0.25, -2);
 
     }
@@ -44,7 +45,7 @@ namespace RoadFighter {
     void Player::moveLeft()
     {
         auto trans = Transformation::getInstance();
-        if(trans->isInGrid(getPos()))
+        if (trans->isInGrid(getPos()))
             updatePos(-0.001, 0);
     }
 
@@ -54,7 +55,7 @@ namespace RoadFighter {
     void Player::moveRight()
     {
         auto trans = Transformation::getInstance();
-        if(trans->isInGrid(getPos()))
+        if (trans->isInGrid(getPos()))
             updatePos(0.001, 0);
     }
 
@@ -66,7 +67,7 @@ namespace RoadFighter {
     {
         auto trans = Transformation::getInstance();
         // todo remove second part
-        if(trans->isInGrid(getUpperLeftCorner()) || getPos().y < trans->getYRange().second)
+        if (trans->isInGrid(getUpperLeftCorner()) || getPos().y<trans->getYRange().second)
             updatePos(0, 0.001);
     }
 
@@ -78,7 +79,7 @@ namespace RoadFighter {
     {
         auto trans = Transformation::getInstance();
         // todo remove second part
-        if(trans->isInGrid(getBottomRightCorner()) || getPos().y > trans->getYRange().first)
+        if (trans->isInGrid(getBottomRightCorner()) || getPos().y>trans->getYRange().first)
             updatePos(0, -0.001);
     }
 

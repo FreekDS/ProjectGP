@@ -5,7 +5,6 @@ namespace RoadFighter {
     // instance needs to be initialized to prevent linker errors
     shared_ptr<Transformation> Transformation::m_instance = nullptr;
 
-
     /**
      * Default private (!) constructor (Singleton pattern)
      */
@@ -122,9 +121,9 @@ namespace RoadFighter {
      */
     bool Transformation::isInGrid(const Position& pos)
     {
-        bool checkX = pos.x >= m_rangeX.first && pos.x <= m_rangeX.second;
-        bool checkY = pos.y >= m_rangeY.first && pos.y <= m_rangeY.second;
-        return checkX && checkY ;
+        bool checkX = pos.x>=m_rangeX.first && pos.x<=m_rangeX.second;
+        bool checkY = pos.y>=m_rangeY.first && pos.y<=m_rangeY.second;
+        return checkX && checkY;
     }
 
     /**

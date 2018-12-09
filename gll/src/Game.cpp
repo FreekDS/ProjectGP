@@ -1,6 +1,6 @@
 #include "GLL/Game.h"
 
-namespace RoadFighter{
+namespace RoadFighter {
 
     /**
      * Constructor for Game
@@ -13,7 +13,8 @@ namespace RoadFighter{
      * Default constructor of Game
      * This constructor initializes the World as a nullptr
      */
-    Game::Game() : m_world(nullptr) { }
+    Game::Game()
+            :m_world(nullptr) { }
 
     /**
      * Default destructor of Game

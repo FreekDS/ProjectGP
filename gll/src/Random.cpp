@@ -2,7 +2,7 @@
 #include <iostream>
 #include <ctime>
 
-namespace RoadFighter{
+namespace RoadFighter {
 
     /**
      * Initialize m_instance to avoid linker errors
@@ -14,7 +14,8 @@ namespace RoadFighter{
      * Used to generate the only instance of this class.
      * Creates a random number generator seeded with the time.
      */
-    Random::Random() : m_randomNumberGenerator(static_cast<unsigned int>(time(nullptr))) {}
+    Random::Random()
+            :m_randomNumberGenerator(static_cast<unsigned int>(time(nullptr))) { }
 
     /**
      * Gets the static instance of this class.
@@ -23,7 +24,7 @@ namespace RoadFighter{
      */
     std::shared_ptr<Random> Random::getInstance()
     {
-        if(m_instance == nullptr)
+        if (m_instance==nullptr)
             m_instance = std::shared_ptr<Random>(new Random());
         return m_instance;
     }
@@ -43,7 +44,7 @@ namespace RoadFighter{
     int Random::randNum(unsigned int min, unsigned int max)
     {
         // If min is lower than max, swap values
-        if(max < min){
+        if (max<min) {
             std::swap(max, min);
         }
         std::uniform_int_distribution<int> distribution(min, max);

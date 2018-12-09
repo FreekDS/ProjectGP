@@ -1,5 +1,4 @@
 #include <GLL/World.h>
-#include <GLL/Player.h>
 
 namespace RoadFighter {
 
@@ -20,9 +19,9 @@ namespace RoadFighter {
      */
     void World::remove(shared_ptr<Entity> entity)
     {
-        for(unsigned int i = 0; i<m_childEntities.size(); i++){
-            if(entity == m_childEntities[i]){
-                m_childEntities.erase(m_childEntities.begin() + i);
+        for (unsigned int i = 0; i<m_childEntities.size(); i++) {
+            if (entity==m_childEntities[i]) {
+                m_childEntities.erase(m_childEntities.begin()+i);
                 break;
             }
         }
@@ -56,7 +55,7 @@ namespace RoadFighter {
      */
     World& World::operator=(const World& other)
     {
-        if(this == &other)
+        if (this==&other)
             return *this;
         m_childEntities = other.m_childEntities;
         m_factory = other.m_factory;
@@ -71,10 +70,11 @@ namespace RoadFighter {
     /**
      * Default constructor of World
      */
-    World::World() : m_factory(nullptr)
+    World::World()
+            :m_factory(nullptr)
     {
-        setUpperLeftCorner({-4,3});
-        setBottomRightCorner({3,-4});
+        setUpperLeftCorner({-4, 3});
+        setBottomRightCorner({3, -4});
     }
 
     /**
@@ -110,8 +110,8 @@ namespace RoadFighter {
      */
     shared_ptr<Entity> World::getPlayer() const
     {
-        for(const auto& entity : m_childEntities){
-            if(entity->isPlayer())
+        for (const auto& entity : m_childEntities) {
+            if (entity->isPlayer())
                 return entity;
         }
         return nullptr;

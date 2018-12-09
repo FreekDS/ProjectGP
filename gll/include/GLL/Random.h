@@ -4,7 +4,7 @@
 #include <memory>
 #include <random>
 
-namespace RoadFighter{
+namespace RoadFighter {
 
     /**
      * Class used to generate random numbers.
@@ -21,6 +21,7 @@ namespace RoadFighter{
          * Creates a random number generator seeded with the time.
          */
         Random();
+
     public:
 
         /**

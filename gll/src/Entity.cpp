@@ -152,8 +152,8 @@ namespace RoadFighter {
      */
     void Entity::setPos(double x, double y)
     {
-        double dx = x - m_pos.x;
-        double dy = y - m_pos.y;
+        double dx = x-m_pos.x;
+        double dy = y-m_pos.y;
         m_pos.x = x;
         m_pos.y = y;
         m_cornerBR.x += dx;
