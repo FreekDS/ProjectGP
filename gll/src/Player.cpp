@@ -3,26 +3,44 @@
 
 namespace RoadFighter {
 
+    /**
+     * This function accelerates the Player
+     */
     void Player::accelerate()
     {
 
     }
 
+    /**
+     * Virtual function to determine whether an Entity can be destroyed or not
+     * @return False, a player cannot be destroyed during the process of the game
+     */
     bool Player::canBeDestroyed() const
     {
         return false;
     }
 
+    /**
+     * Virtual function to determine whether the Entity is a Player
+     * @return True
+     */
     bool Player::isPlayer() const
     {
         return true;
     }
 
+    /**
+     * Default constructor for the Player
+     * Initializes the location of the player on (-0.25, -2)
+     */
     Player::Player() {
         setPos(-0.25, -2);
 
     }
 
+    /**
+     * Moves the player to the left
+     */
     void Player::moveLeft()
     {
         auto trans = Transformation::getInstance();
@@ -30,6 +48,9 @@ namespace RoadFighter {
             updatePos(-0.001, 0);
     }
 
+    /**
+     * Moves the player to the right
+     */
     void Player::moveRight()
     {
         auto trans = Transformation::getInstance();
@@ -37,6 +58,10 @@ namespace RoadFighter {
             updatePos(0.001, 0);
     }
 
+    /**
+     * Moves the player up
+     * If the player is on top of the screen, it will not move further up
+     */
     void Player::moveUp()
     {
         auto trans = Transformation::getInstance();
@@ -45,6 +70,10 @@ namespace RoadFighter {
             updatePos(0, 0.001);
     }
 
+    /**
+     * Moves the player down
+     * If the player is on the bottom of the screen, it will not move further down
+     */
     void Player::moveDown()
     {
         auto trans = Transformation::getInstance();

@@ -32,6 +32,12 @@ namespace RoadFighter {
         return *this;
     }
 
+    /**
+     * Outputs the position to a stream
+     * @param os Stream to output to
+     * @param position  Position to output to
+     * @return Reference to updated stream
+     */
     std::ostream& operator<<(std::ostream& os, const Position& position)
     {
         os << "x: " << position.x << " y: " << position.y;

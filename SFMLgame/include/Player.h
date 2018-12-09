@@ -12,7 +12,12 @@ using window_ptr = shared_ptr<sf::RenderWindow>;
 namespace RoadFighterSFML {
 
     /**
-     * With SFML visually representable Player
+     * This class is the SFML implementation of Player
+     * A SFML player has:
+     * - All features of a normal player
+     * - A texture
+     * - A sprite
+     * - A shared pointer to a SFML window
      */
     class Player : public RoadFighter::Player {
     private:
@@ -41,7 +46,6 @@ namespace RoadFighterSFML {
          */
         ~Player() override;
 
-
         /**
          * Updates the screen coordinates of the sprite based on the coordinates in the Game Logic
          * This method makes use of the @see Transformation class
@@ -49,12 +53,20 @@ namespace RoadFighterSFML {
         void updateSpriteLocation();
 
         /**
-         * This function makes the Player visible to the screen
+         * Virtual function to draw the entity
          */
         void draw() const override;
 
+        /**
+         * Virtual function to update the entity
+         * - Resets the rotation of the sprite
+         */
         void update() override;
 
+        /**
+         * Sets the rotation of the sprite
+         * @param angle The angle over which the sprite needs to be rotated
+         */
         void setSpriteRotation(float angle);
     };
 

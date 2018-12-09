@@ -77,8 +77,16 @@ namespace RoadFighter {
          */
         bool checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2);
 
+        /**
+         * Determine whether the Entity can be destroyed or not
+         * @return False, the world cannot be destroyed during the game
+         */
         bool canBeDestroyed() const override;
 
+        /**
+         * Searches for the player in the child entities and returns it if found
+         * @return Shared pointer of an entity (= the player), if nothing found, nullptr
+         */
         shared_ptr<Entity> getPlayer() const;
     };
 

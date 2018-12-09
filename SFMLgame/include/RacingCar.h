@@ -5,6 +5,9 @@
 
 namespace RoadFighterSFML {
 
+    /**
+     * This class is the SFML implementation of a Racing Car
+     */
     class RacingCar : public RoadFighter::RacingCar {
 
     };

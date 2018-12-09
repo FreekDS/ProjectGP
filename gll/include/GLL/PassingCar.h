@@ -5,6 +5,10 @@
 
 namespace RoadFighter {
 
+    /**
+     * This class represents a passing car
+     * This class is derived from @see Entity
+     */
     class PassingCar : public Vehicle {
 
     };

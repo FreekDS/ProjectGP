@@ -95,11 +95,19 @@ namespace RoadFighter {
         World::m_factory = factory;
     }
 
+    /**
+     * Determine whether the Entity can be destroyed or not
+     * @return False, the world cannot be destroyed during the game
+     */
     bool World::canBeDestroyed() const
     {
         return false;
     }
 
+    /**
+     * Searches for the player in the child entities and returns it if found
+     * @return Shared pointer of an entity (= the player), if nothing found, nullptr
+     */
     shared_ptr<Entity> World::getPlayer() const
     {
         for(const auto& entity : m_childEntities){

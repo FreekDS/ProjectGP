@@ -5,6 +5,9 @@
 
 namespace RoadFighterSFML {
 
+    /**
+     * This class is the SFML implemenation of a Passing Car
+     */
     class PassingCar : public RoadFighter::PassingCar {
 
     };
