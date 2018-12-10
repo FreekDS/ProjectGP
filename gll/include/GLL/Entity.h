@@ -2,6 +2,7 @@
 #define ROADFIGHTER_ENTITY_H
 
 #include "Position.h"
+#include "BoxCollider.h"
 
 namespace RoadFighter {
 
@@ -11,12 +12,14 @@ namespace RoadFighter {
      * And two corner positions:
      * - The upper left corner
      * - The bottom right corner
+     * - A vector of box colliders
      */
     class Entity {
     private:
         Position m_pos;
         Position m_cornerUL;
         Position m_cornerBR;
+        vector<BoxCollider> m_colliders;
     public:
         /**
          * Default constructor of Entity
@@ -146,6 +149,18 @@ namespace RoadFighter {
          * @param y Y value to add to the Position
          */
         void updatePos(double x, double y);
+
+        /**
+         * Adds a collider to the Entity
+         * @param collider Collider to add to the entity
+         */
+        void addCollider(const BoxCollider& collider);
+
+        /**
+         * Removes a collider form the Entity
+         * @param i Index of collider to remove
+         */
+        void removeCollider(int i);
     };
 
 } // namespace RoadFighter

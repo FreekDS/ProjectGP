@@ -1,4 +1,5 @@
 #include <GLL/Entity.h>
+#include <GLL/BoxCollider.h>
 #include <GLL/Transformation.h>
 #include <cmath>
 
@@ -176,6 +177,24 @@ namespace RoadFighter {
         m_cornerUL.y += y;
         m_cornerBR.x += x;
         m_cornerBR.y += y;
+    }
+
+    /**
+     * Adds a collider to the Entity
+     * @param collider Collider to add to the entity
+     */
+    void Entity::addCollider(const BoxCollider& collider)
+    {
+        m_colliders.push_back(collider);
+    }
+
+    /**
+     * Removes a collider form the Entity
+     * @param i Index of collider to remove
+     */
+    void Entity::removeCollider(int i)
+    {
+        m_colliders.erase(m_colliders.begin() + i);
     }
 
 } // namespace RoadFighter

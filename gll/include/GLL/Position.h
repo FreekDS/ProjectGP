@@ -46,6 +46,8 @@ namespace RoadFighter {
          * @return Reference to updated stream
          */
         friend std::ostream& operator<<(std::ostream& os, const Position& position);
+
+        const std::string toString() const;
     };
 
 } // namespace RoadFighter

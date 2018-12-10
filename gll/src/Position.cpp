@@ -1,3 +1,6 @@
+
+#include <GLL/Position.h>
+
 #include "GLL/Position.h"
 
 namespace RoadFighter {
@@ -42,6 +45,11 @@ namespace RoadFighter {
     {
         os << "x: " << position.x << " y: " << position.y;
         return os;
+    }
+
+    const std::string Position::toString() const
+    {
+        return "(" + std::to_string(x) + "," + std::to_string(y) + ")";
     }
 
     /**

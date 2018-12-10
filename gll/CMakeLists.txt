@@ -12,6 +12,7 @@ SET(SRC_GLL
         src/Transformation.cpp
         src/EntityFactory.cpp
         src/Game.cpp
+        src/BoxCollider.cpp
         )
 
 # Temporary for testing purpose
