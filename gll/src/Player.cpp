@@ -48,7 +48,7 @@ namespace RoadFighter {
         if (trans->isInGrid(getPos()))
             updatePos(-getMovespeed(), 0);
         if(getUpperLeftCorner().x < world_boundary)
-            updatePos(getMovespeed()+ 0.0001, 0);
+            updatePos(getMovespeed()+ 0.000001, 0);
 
     }
 
@@ -61,7 +61,7 @@ namespace RoadFighter {
         if (trans->isInGrid(getPos()))
             updatePos(getMovespeed(), 0);
         if(getBottomRightCorner().x > world_boundary)
-            updatePos(-getMovespeed() - 0.0001, 0);
+            updatePos(-getMovespeed() - 0.000001, 0);
     }
 
     /**
@@ -73,7 +73,7 @@ namespace RoadFighter {
         auto trans = Transformation::getInstance();
         // todo remove second part
         if (trans->isInGrid(getUpperLeftCorner()) || getPos().y<trans->getYRange().second)
-            updatePos(0, getMovespeed());
+            updatePos(0, getMovespeed() * 1.5);
     }
 
     /**
@@ -85,7 +85,7 @@ namespace RoadFighter {
         auto trans = Transformation::getInstance();
         // todo remove second part
         if (trans->isInGrid(getBottomRightCorner()) || getPos().y>trans->getYRange().first)
-            updatePos(0, -getMovespeed());
+            updatePos(0, -getMovespeed() * 1.5);
     }
 
 } // namespace RoadFighter

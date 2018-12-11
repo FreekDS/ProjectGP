@@ -74,9 +74,9 @@ namespace RoadFighterSFML {
      */
     void World::readInput()
     {
+        shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
         if (sf::Keyboard::isKeyPressed(m_keymap["up"])) {
             // move player up
-            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
             player->moveUp();
             player->updateSpriteLocation();
 
@@ -89,14 +89,12 @@ namespace RoadFighterSFML {
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["left"])) {
             // move player left
-            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
             player->moveLeft(getLeftBoundary());
             player->updateSpriteLocation();
             player->setSpriteRotation(-8);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["right"])) {
             // move player right
-            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
             player->moveRight(getRightBoundary());
             player->updateSpriteLocation();
             player->setSpriteRotation(8);

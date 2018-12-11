@@ -8,7 +8,7 @@ namespace RoadFighter {
      * @param speed Speed of the vehicle
      */
     Vehicle::Vehicle(double speed)
-            :m_speed(speed), m_movementSpeed(0.001) { }
+            :m_speed(speed), m_movementSpeed(3.0) { }
 
     /**
      * Getter for speed of vehicle
@@ -28,12 +28,22 @@ namespace RoadFighter {
         Vehicle::m_speed = speed;
     }
 
-    double Vehicle::getMovespeed() const
+    /**
+     * Getter for the movement speed of the vehicle
+     * Divides movement speed by 1000 for appropriate movement speed in gll
+     * @param division Divider of movement speed, default 1000
+     * @return Movement speed of the vehicle
+     */
+    double Vehicle::getMovespeed(double division) const
     {
-        return m_movementSpeed;
+        return m_movementSpeed / division;
     }
 
-    void Vehicle::setMovespeed(double ms)
+    /**
+     * Setter for the movement speed of the vehicle
+     * @param ms Movement speed of the vehicle
+     */
+    void Vehicle::setMoveSpeed(double ms)
     {
         m_movementSpeed = ms;
     }
@@ -41,6 +51,6 @@ namespace RoadFighter {
     /**
      * Default constructor for vehicle
      */
-    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(0.01) {}
+    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0) {}
 
 } // namespace RoadFighter

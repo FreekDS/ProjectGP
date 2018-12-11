@@ -69,15 +69,17 @@ namespace RoadFighter {
 
         /**
          * Getter for the movement speed of the vehicle
+         * Divides movement speed by 1000 for appropriate movement speed in gll
+         * @param division Divider of movement speed, default 1000
          * @return Movement speed of the vehicle
          */
-        double getMovespeed() const;
+        double getMovespeed(double division = 1000) const;
 
         /**
          * Setter for the movement speed of the vehicle
          * @param ms Movement speed of the vehicle
          */
-        void setMovespeed(double ms);
+        void setMoveSpeed(double ms);
     };
 
 } // namespace RoadFighter

@@ -2,6 +2,7 @@
 #include <Player.h>
 #include <World.h>
 #include <GLL/Transformation.h>
+#include <GLL/Clock.h>
 
 namespace RoadFighterSFML {
 
@@ -51,19 +52,22 @@ namespace RoadFighterSFML {
         auto player = make_shared<Player>("player_car.png", m_window);
         m_world->add(player);
 
+        RoadFighter::Clock clock;
+        double gameTick = 1.0 / 60.0;
+
         while (m_window->isOpen()) {
-            // Handle events
-            handleSFMLEvents();
+            if(clock.getTimeAsMilliseconds() >= gameTick) {
+                clock.reset();
+                // Handle events
+                handleSFMLEvents();
+                // Update the world
+                m_world->update();
+            }
 
             // Clear the window
             m_window->clear(sf::Color::Black);
-
-            // Update the world
-            m_world->update();
-
             // Draw to window
             m_world->draw();
-
             // Display the window
             m_window->display();
         }

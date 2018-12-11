@@ -13,6 +13,7 @@ SET(SRC_GLL
         src/EntityFactory.cpp
         src/Game.cpp
         src/BoxCollider.cpp
+        src/Clock.cpp
         )
 
 # Temporary for testing purpose
