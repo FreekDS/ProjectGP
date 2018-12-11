@@ -14,11 +14,17 @@ namespace RoadFighter {
     /**
      * This class represents the World of Road Fighter
      * Based on Composite design pattern
+     * A world has:
+     * - A list of child entities
+     * - An abstract factory
+     * - Two boundaries (left and right)
      */
     class World : public Entity {
     protected:
         vector<shared_ptr<Entity>> m_childEntities;
         shared_ptr<EntityFactory> m_factory;
+        double m_boundary1;
+        double m_boundary2;
     public:
         /**
          * Default constructor of World
@@ -88,6 +94,18 @@ namespace RoadFighter {
          * @return Shared pointer of an entity (= the player), if nothing found, nullptr
          */
         shared_ptr<Entity> getPlayer() const;
+
+        /**
+         * Getter for boundary1 of world
+         * @return Boundary1
+         */
+        double getLeftBoundary() const;
+
+        /**
+         * Getter for boundary2 of world
+         * @return Boundary2;
+         */
+        double getRightBoundary() const;
     };
 
 } // namespace RoadFighter

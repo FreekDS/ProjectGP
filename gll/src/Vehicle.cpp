@@ -1,4 +1,5 @@
-#include "GLL/Vehicle.h"
+#include <GLL/Vehicle.h>
+
 
 namespace RoadFighter {
 
@@ -7,7 +8,7 @@ namespace RoadFighter {
      * @param speed Speed of the vehicle
      */
     Vehicle::Vehicle(double speed)
-            :m_speed(speed) { }
+            :m_speed(speed), m_movementSpeed(0.001) { }
 
     /**
      * Getter for speed of vehicle
@@ -27,9 +28,19 @@ namespace RoadFighter {
         Vehicle::m_speed = speed;
     }
 
+    double Vehicle::getMovespeed() const
+    {
+        return m_movementSpeed;
+    }
+
+    void Vehicle::setMovespeed(double ms)
+    {
+        m_movementSpeed = ms;
+    }
+
     /**
      * Default constructor for vehicle
      */
-    Vehicle::Vehicle() = default;
+    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(0.01) {}
 
 } // namespace RoadFighter

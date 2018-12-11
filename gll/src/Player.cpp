@@ -42,21 +42,26 @@ namespace RoadFighter {
     /**
      * Moves the player to the left
      */
-    void Player::moveLeft()
+    void Player::moveLeft(double world_boundary)
     {
         auto trans = Transformation::getInstance();
         if (trans->isInGrid(getPos()))
-            updatePos(-0.001, 0);
+            updatePos(-getMovespeed(), 0);
+        if(getUpperLeftCorner().x < world_boundary)
+            updatePos(getMovespeed()+ 0.0001, 0);
+
     }
 
     /**
      * Moves the player to the right
      */
-    void Player::moveRight()
+    void Player::moveRight(double world_boundary)
     {
         auto trans = Transformation::getInstance();
         if (trans->isInGrid(getPos()))
-            updatePos(0.001, 0);
+            updatePos(getMovespeed(), 0);
+        if(getBottomRightCorner().x > world_boundary)
+            updatePos(-getMovespeed() - 0.0001, 0);
     }
 
     /**
@@ -68,7 +73,7 @@ namespace RoadFighter {
         auto trans = Transformation::getInstance();
         // todo remove second part
         if (trans->isInGrid(getUpperLeftCorner()) || getPos().y<trans->getYRange().second)
-            updatePos(0, 0.001);
+            updatePos(0, getMovespeed());
     }
 
     /**
@@ -80,7 +85,7 @@ namespace RoadFighter {
         auto trans = Transformation::getInstance();
         // todo remove second part
         if (trans->isInGrid(getBottomRightCorner()) || getPos().y>trans->getYRange().first)
-            updatePos(0, -0.001);
+            updatePos(0, -getMovespeed());
     }
 
 } // namespace RoadFighter

@@ -90,14 +90,14 @@ namespace RoadFighterSFML {
         if (sf::Keyboard::isKeyPressed(m_keymap["left"])) {
             // move player left
             shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
-            player->moveLeft();
+            player->moveLeft(getLeftBoundary());
             player->updateSpriteLocation();
             player->setSpriteRotation(-8);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["right"])) {
             // move player right
             shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
-            player->moveRight();
+            player->moveRight(getRightBoundary());
             player->updateSpriteLocation();
             player->setSpriteRotation(8);
         }

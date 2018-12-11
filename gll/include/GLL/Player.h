@@ -37,12 +37,12 @@ namespace RoadFighter {
         /**
          * Moves the player to the left
          */
-        void moveLeft() override;
+        void moveLeft(double world_boundary) override;
 
         /**
          * Moves the player to the right
          */
-        void moveRight() override;
+        void moveRight(double world_boundary) override;
 
         /**
          * Moves the player up

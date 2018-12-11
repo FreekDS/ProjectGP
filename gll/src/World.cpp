@@ -71,7 +71,7 @@ namespace RoadFighter {
      * Default constructor of World
      */
     World::World()
-            :m_factory(nullptr)
+            :m_factory(nullptr), m_boundary1(-0.50), m_boundary2(1.20)
     {
         setUpperLeftCorner({-4, 3});
         setBottomRightCorner({3, -4});
@@ -115,6 +115,24 @@ namespace RoadFighter {
                 return entity;
         }
         return nullptr;
+    }
+
+    /**
+     * Getter for boundary1 of world
+     * @return Boundary1
+     */
+    double World::getLeftBoundary() const
+    {
+        return m_boundary1;
+    }
+
+    /**
+     * Getter for boundary2 of world
+     * @return Boundary2;
+     */
+    double World::getRightBoundary() const
+    {
+        return m_boundary2;
     }
 
 
