@@ -1,5 +1,4 @@
 #include <GLL/Entity.h>
-#include <GLL/BoxCollider.h>
 #include <GLL/Transformation.h>
 #include <cmath>
 
@@ -43,7 +42,11 @@ namespace RoadFighter {
      * @param other Entity to move
      */
     Entity::Entity(Entity&& other) noexcept
-            :m_pos(other.m_pos), m_cornerUL(other.m_cornerUL), m_cornerBR(other.m_cornerBR) { }
+            :m_pos(other.m_pos), m_cornerUL(other.m_cornerUL), m_cornerBR(other.m_cornerBR),
+             m_colliders(other.m_colliders)
+    {
+        other.m_colliders.clear();
+    }
 
     /**
      * Move assignment operator
@@ -57,6 +60,8 @@ namespace RoadFighter {
         m_pos = other.m_pos;
         m_cornerBR = other.m_cornerBR;
         m_cornerUL = other.m_cornerUL;
+        m_colliders = other.m_colliders;
+        other.m_colliders.clear();
         return *this;
     }
 
@@ -161,6 +166,9 @@ namespace RoadFighter {
         m_cornerBR.y += dy;
         m_cornerUL.x += dx;
         m_cornerUL.y += dy;
+        for(BoxCollider& collider : m_colliders){
+            collider.updateCollider(dx, dy);
+        }
     }
 
     /**
@@ -177,6 +185,8 @@ namespace RoadFighter {
         m_cornerUL.y += y;
         m_cornerBR.x += x;
         m_cornerBR.y += y;
+        for(auto& collider : m_colliders)
+            collider.updateCollider(x, y);
     }
 
     /**
@@ -194,7 +204,16 @@ namespace RoadFighter {
      */
     void Entity::removeCollider(int i)
     {
-        m_colliders.erase(m_colliders.begin() + i);
+        m_colliders.erase(m_colliders.begin()+i);
+    }
+
+    /**
+     * Getter for colliders
+     * @return Vector of box colliders
+     */
+    const vector<BoxCollider>& Entity::getColliders() const
+    {
+        return m_colliders;
     }
 
 } // namespace RoadFighter

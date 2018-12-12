@@ -41,7 +41,32 @@ namespace RoadFighter {
         return m_br;
     }
 
+    /**
+     * Default destructor for BoxCollider
+     */
     BoxCollider::~BoxCollider() = default;
 
+    /**
+     * Updates the corners of the collider
+     * @param x X value to add to collider
+     * @param y Y value to add to collider
+     */
+    void BoxCollider::updateCollider(double x, double y) {
+        m_br.x += x;
+        m_br.y += y;
+        m_ul.x += x;
+        m_ul.y += y;
+    }
+
+    /**
+     * Calculates the center of the box and return it
+     * @return Position of center of the box collider
+     */
+    Position BoxCollider::getCenter() const
+    {
+        double x = (m_ul.x + m_br.x) / 2.0;
+        double y = (m_br.y + m_ul.y) / 2.0;
+        return Position(x, y);
+    }
 
 } // namespace RoadFighter

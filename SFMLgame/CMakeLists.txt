@@ -7,7 +7,7 @@ SET(SRC_GAME
         src/World.cpp
         src/Bullet.cpp
         src/Game.cpp
-        )
+        src/Utilities.cpp include/Utilities.h)
 
 # Set the SFML ROOT (used on my Windows environment)
 SET(SFML_ROOT C:/Libs/SFML-BUILD)

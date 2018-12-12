@@ -9,6 +9,7 @@ namespace RoadFighterSFML {
     class Game : public RoadFighter::Game {
     private:
         shared_ptr<sf::RenderWindow> m_window;
+        bool m_debug;
     public:
         /**
          * Constructor for Game
@@ -16,8 +17,9 @@ namespace RoadFighterSFML {
          * The @see Transformation Singleton class is updated with the screen sizes
          * @param title Title of the window which is "Road Fighter" by default
          * @param fullscreen Enable or disable fullscreen, by default this is true
+         * @param debug Enable or disable debug information, by default this is false
          */
-        explicit Game(const string& title = "Road Fighter", bool fullscreen = true);
+        explicit Game(const string& title = "Road Fighter", bool fullscreen = true, bool debug = false);
 
         /**
          * Runs the game

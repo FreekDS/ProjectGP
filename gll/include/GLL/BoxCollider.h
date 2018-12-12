@@ -45,6 +45,19 @@ namespace RoadFighter {
          * Default destructor for BoxCollider
          */
         virtual ~BoxCollider();
+
+        /**
+         * Updates the corners of the collider
+         * @param x X value to add to collider
+         * @param y Y value to add to collider
+         */
+        void updateCollider(double x, double y);
+
+        /**
+         * Calculates the center of the box and return it
+         * @return Position of center of the box collider
+         */
+        Position getCenter() const;
     };
 
 } // namespace RoadFighter

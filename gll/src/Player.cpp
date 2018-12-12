@@ -32,11 +32,16 @@ namespace RoadFighter {
     /**
      * Default constructor for the Player
      * Initializes the location of the player on (-0.25, -2)
+     * Initializes the collider of the player on its bounds
      */
     Player::Player()
     {
-        setPos(-0.25, -2);
-
+        double width = 0.24;
+        double height = 0.45;
+        setUpperLeftCorner({-width/2, height/2});
+        setBottomRightCorner({width/2,-height/2});
+        BoxCollider collider(getUpperLeftCorner(), getBottomRightCorner());
+        addCollider(collider);
     }
 
     /**

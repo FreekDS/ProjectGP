@@ -71,7 +71,7 @@ namespace RoadFighter {
      * Default constructor of World
      */
     World::World()
-            :m_factory(nullptr), m_boundary1(-0.50), m_boundary2(1.20)
+            :m_factory(nullptr), m_boundary1(-0.56), m_boundary2(1.17)
     {
         setUpperLeftCorner({-4, 3});
         setBottomRightCorner({3, -4});

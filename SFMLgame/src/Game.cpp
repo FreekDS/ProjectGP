@@ -13,7 +13,7 @@ namespace RoadFighterSFML {
      * @param title Title of the window which is "Road Fighter" by default
      * @param fullscreen Enable or disable fullscreen, by default this is true
      */
-    Game::Game(const string& title, bool fullscreen)
+    Game::Game(const string& title, bool fullscreen, bool debug) : m_debug(debug)
     {
         // Initialize the window
         sf::VideoMode videoMode = sf::VideoMode::getDesktopMode();
@@ -32,7 +32,7 @@ namespace RoadFighterSFML {
         trans->setScreenSize(m_window->getSize().x, m_window->getSize().y);
 
         // Initialize the world of the Game
-        m_world = make_shared<World>("background.png", m_window);
+        m_world = make_shared<World>("background.png", m_window, m_debug);
     }
 
     /**

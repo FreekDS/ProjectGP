@@ -25,14 +25,16 @@ namespace RoadFighterSFML {
         sf::Texture m_texture;
         window_ptr m_window;
         keymap m_keymap;
+        bool m_debug;
     public:
         /**
          * Constructor for the SFML World
          * This constructor will look for file_name in the folder ./res/sprites/ui/
          * @param file_name Name of the file of the background
          * @param window Reference to the SFML window
+         * @param debug Enable or disable debug information
          */
-        World(const string& file_name, window_ptr& window);
+        World(const string& file_name, window_ptr& window, bool debug = false);
 
         /**
          * Draws the world and its components to the window
@@ -67,6 +69,17 @@ namespace RoadFighterSFML {
          * If toMove is visible, and other is not, both sprites are swapped
          */
         void backgroundLoopUpdate(sf::Sprite& toMove, sf::Sprite& other);
+
+        /**
+         * Draws the colliders of an entity
+         * @param entity Entity to draw colliders of
+         */
+        void drawColliders(const shared_ptr<RoadFighter::Entity>& entity) const;
+
+        /**
+         * Draws the boundaries of the world (great for debugging)
+         */
+        void drawBounds() const;
     };
 
 }

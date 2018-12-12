@@ -34,6 +34,12 @@ namespace RoadFighter {
         Entity(const Entity& other);
 
         /**
+         * Getter for colliders
+         * @return Vector of box colliders
+         */
+        const vector<BoxCollider>& getColliders() const;
+
+        /**
          * Assignment operator of Entity
          * @param other Const reference to other entity
          * @return Reference to Entity which is equal to other
