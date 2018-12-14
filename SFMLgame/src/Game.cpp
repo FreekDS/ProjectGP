@@ -21,8 +21,8 @@ namespace RoadFighterSFML {
             m_window = make_shared<sf::RenderWindow>(videoMode, title,
                     sf::Style::None);
         else
-            m_window = make_shared<sf::RenderWindow>(videoMode, title,
-                    sf::Style::Default);
+            m_window = make_shared<sf::RenderWindow>(sf::VideoMode(900, 600), title,
+                    sf::Style::Titlebar | sf::Style::Close);
         sf::Image icon;
         icon.loadFromFile("./res/sprites/ui/icon.png");
         m_window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
@@ -53,23 +53,24 @@ namespace RoadFighterSFML {
         m_world->add(player);
 
         RoadFighter::Clock clock;
-        double gameTick = 1.0 / 60.0;
+        double gameTick = 1.0 / 120.0;
 
         while (m_window->isOpen()) {
-            if(clock.getTimeAsMilliseconds() >= gameTick) {
+            if (clock.getTimeAsSeconds()>=gameTick) {
                 clock.reset();
                 // Handle events
                 handleSFMLEvents();
                 // Update the world
                 m_world->update();
-            }
 
-            // Clear the window
-            m_window->clear(sf::Color::Black);
-            // Draw to window
-            m_world->draw();
-            // Display the window
-            m_window->display();
+            }
+                // Clear the window
+                m_window->clear(sf::Color::Black);
+                // Draw to window
+                m_world->draw();
+                // Display the window
+                m_window->display();
+
         }
     }
 

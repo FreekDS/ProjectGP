@@ -1,11 +1,14 @@
 #include <iostream>
 #include <Game.h>
-
+#include <Utilities.h>
 
 int main(int argc, char* argv[])
 {
+    bool fullscreen = true;
+    bool debug;
+    parseProgramArgs(argc, argv, fullscreen, debug);
     try {
-        RoadFighterSFML::Game game("Road Fighter", true, true);
+        RoadFighterSFML::Game game("Road Fighter", fullscreen, debug);
         game.runGame();
     }
     catch (exception& e) {

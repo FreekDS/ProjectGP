@@ -83,7 +83,6 @@ namespace RoadFighterSFML {
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["down"])) {
             // move player down
-            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
             player->moveDown();
             player->updateSpriteLocation();
         }
@@ -105,8 +104,8 @@ namespace RoadFighterSFML {
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["speedup"])) {
             // player accelerates
-            m_sprite.move(0, 0.8);
-            m_sprite2.move(0, 0.8);
+            m_sprite.move(0, 20.8);
+            m_sprite2.move(0, 20.8);
             backgroundLoopUpdate(m_sprite2, m_sprite);
         }
 

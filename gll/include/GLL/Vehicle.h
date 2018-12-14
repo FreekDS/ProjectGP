@@ -73,7 +73,7 @@ namespace RoadFighter {
          * @param division Divider of movement speed, default 1000
          * @return Movement speed of the vehicle
          */
-        double getMovespeed(double division = 1000) const;
+        double getMovespeed(double division = 140) const;
 
         /**
          * Setter for the movement speed of the vehicle

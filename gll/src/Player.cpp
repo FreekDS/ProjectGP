@@ -76,9 +76,8 @@ namespace RoadFighter {
     void Player::moveUp()
     {
         auto trans = Transformation::getInstance();
-        // todo remove second part
-        if (trans->isInGrid(getUpperLeftCorner()) || getPos().y<trans->getYRange().second)
-            updatePos(0, getMovespeed() * 1.5);
+        if (trans->isInGrid(getUpperLeftCorner()))
+            updatePos(0, getMovespeed());
     }
 
     /**
@@ -88,9 +87,8 @@ namespace RoadFighter {
     void Player::moveDown()
     {
         auto trans = Transformation::getInstance();
-        // todo remove second part
-        if (trans->isInGrid(getBottomRightCorner()) || getPos().y>trans->getYRange().first)
-            updatePos(0, -getMovespeed() * 1.5);
+        if (trans->isInGrid(getBottomRightCorner()))
+            updatePos(0, -getMovespeed());
     }
 
 } // namespace RoadFighter

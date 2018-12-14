@@ -36,3 +36,16 @@ void scaleSprite(sf::Sprite& sprite,  Position point1,  Position point2)
     float scaleY = static_cast<float>(height/texture->getSize().y);
     sprite.scale(scaleX, scaleY);
 }
+
+void parseProgramArgs(int argc, char* argv[], bool& fullscreen, bool& debug)
+{
+    if(argc < 2)
+        return;
+    for(int i = 0; i<argc; i++){
+        string currentArg = argv[i];
+        if(currentArg == "-debug")
+            debug = true;
+        else if(currentArg == "-windowed")
+            fullscreen = false;
+    }
+}
