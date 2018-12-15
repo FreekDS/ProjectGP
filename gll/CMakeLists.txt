@@ -14,6 +14,7 @@ SET(SRC_GLL
         src/Game.cpp
         src/BoxCollider.cpp
         src/Clock.cpp
+        src/Observer.cpp
         )
 
 # Temporary for testing purpose

@@ -2,14 +2,22 @@
 #define ROADFIGHTER_PLAYER_H
 
 #include "Vehicle.h"
+#include "Observer.h"
 
 namespace RoadFighter {
+
+    using observer_ptr = shared_ptr<Observer>;
 
     /**
      * This class represents the Player
      * This class is derived from @see Vehicle
+     * A player has:
+     * - all attributes of a vehicle
+     * - a vector of observers (observer design pattern)
      */
     class Player : public Vehicle {
+    protected:
+        vector<observer_ptr> m_observers;
     public:
         /**
          * This function accelerates the Player
@@ -55,6 +63,17 @@ namespace RoadFighter {
          * If the player is on the bottom of the screen, it will not move further down
          */
         void moveDown() override;
+
+        /**
+         * Attaches an observer to the player
+         * @param observer Observer to attach to the player
+         */
+        void attach(const observer_ptr& observer);
+
+        /**
+         * Notifies all observers of made changes
+         */
+        void notify() const;
     };
 
 } // namespace RoadFighter

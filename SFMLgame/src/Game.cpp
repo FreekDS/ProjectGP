@@ -2,6 +2,7 @@
 #include <Player.h>
 #include <World.h>
 #include <GLL/Transformation.h>
+#include <Observer.h>
 #include <GLL/Clock.h>
 
 namespace RoadFighterSFML {
@@ -50,6 +51,8 @@ namespace RoadFighterSFML {
         // create a player for testing purpose
         // Player player("player_car.png", m_window);
         auto player = make_shared<Player>("player_car.png", m_window);
+        auto observer = make_shared<SpeedObserver>(player, "Speed: ", m_window);
+        player->attach(observer);
         m_world->add(player);
 
         RoadFighter::Clock clock;

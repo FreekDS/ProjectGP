@@ -1,5 +1,6 @@
 #include <GLL/Player.h>
 #include <GLL/Transformation.h>
+#include <iostream>
 
 namespace RoadFighter {
 
@@ -8,7 +9,7 @@ namespace RoadFighter {
      */
     void Player::accelerate()
     {
-
+        notify();
     }
 
     /**
@@ -89,6 +90,25 @@ namespace RoadFighter {
         auto trans = Transformation::getInstance();
         if (trans->isInGrid(getBottomRightCorner()))
             updatePos(0, -getMovespeed());
+    }
+
+    /**
+     * Attaches an observer to the player
+     * @param observer Observer to attach to the player
+     */
+    void Player::attach(const shared_ptr<Observer>& observer)
+    {
+        m_observers.push_back(observer);
+    }
+
+    /**
+     * Notifies all observers of made changes
+     */
+    void Player::notify() const
+    {
+        for(const observer_ptr& observer : m_observers) {
+            observer->update();
+        }
     }
 
 } // namespace RoadFighter

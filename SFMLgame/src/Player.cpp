@@ -43,6 +43,8 @@ namespace RoadFighterSFML {
     void Player::draw() const
     {
         m_window->draw(m_sprite);
+        for(const shared_ptr<RoadFighter::Observer>& obs : m_observers)
+            obs->draw();
     }
 
     /**

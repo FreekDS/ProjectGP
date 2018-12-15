@@ -106,6 +106,7 @@ namespace RoadFighterSFML {
             // player accelerates
             m_sprite.move(0, 20.8);
             m_sprite2.move(0, 20.8);
+            player->accelerate();
             backgroundLoopUpdate(m_sprite2, m_sprite);
         }
 
