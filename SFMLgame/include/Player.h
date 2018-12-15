@@ -70,6 +70,6 @@ namespace RoadFighterSFML {
         void setSpriteRotation(float angle);
     };
 
-}
+} // namespace RoadFighterSFML
 
 #endif //ROADFIGHTER_SFML_PLAYER_H

@@ -47,6 +47,10 @@ namespace RoadFighter {
          */
         friend std::ostream& operator<<(std::ostream& os, const Position& position);
 
+        /**
+         * Converts a position to a string of the form (x,y)
+         * @return String representing the position
+         */
         const std::string toString() const;
     };
 

@@ -24,6 +24,13 @@ pair<float, float> getSFMLSize(const Position& cartPos1, const Position& cartPos
  */
 void scaleSprite(sf::Sprite& sprite, Position point1, Position point2);
 
+/**
+ * Parses the program arguments and puts them in the given parameters
+ * @param argc Argument count
+ * @param argv Array of arguments
+ * @param fullscreen Storage for fullscreen bool
+ * @param debug Storage for debug bool
+ */
 void parseProgramArgs(int argc, char* argv[], bool& fullscreen, bool& debug);
 
 #endif //ROADFIGHTER_SFML_UTILITIES_H

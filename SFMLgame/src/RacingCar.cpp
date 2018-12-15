@@ -2,4 +2,4 @@
 
 namespace RoadFighterSFML{
 
-}
+} // namespace RoadFigherSFML

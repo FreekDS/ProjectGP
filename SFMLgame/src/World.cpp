@@ -90,13 +90,15 @@ namespace RoadFighterSFML {
             // move player left
             player->moveLeft(getLeftBoundary());
             player->updateSpriteLocation();
-            player->setSpriteRotation(-8);
+            if(player->isMoving())
+                player->setSpriteRotation(-8);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["right"])) {
             // move player right
             player->moveRight(getRightBoundary());
             player->updateSpriteLocation();
-            player->setSpriteRotation(8);
+            if(player->isMoving())
+                player->setSpriteRotation(8);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["shoot"])) {
             // let player shoot a bullet
@@ -104,12 +106,15 @@ namespace RoadFighterSFML {
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["speedup"])) {
             // player accelerates
-            m_sprite.move(0, 20.8);
-            m_sprite2.move(0, 20.8);
             player->accelerate();
-            backgroundLoopUpdate(m_sprite2, m_sprite);
+        }
+        if(!sf::Keyboard::isKeyPressed(m_keymap["speedup"])){
+            player->slowDown();
         }
 
+        m_sprite.move(0, static_cast<float>(player->getSpeed()));
+        m_sprite2.move(0, static_cast<float>(player->getSpeed()));
+        backgroundLoopUpdate(m_sprite2, m_sprite);
     }
 
     /**

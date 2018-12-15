@@ -37,6 +37,13 @@ void scaleSprite(sf::Sprite& sprite,  Position point1,  Position point2)
     sprite.scale(scaleX, scaleY);
 }
 
+/**
+ * Parses the program arguments and puts them in the given parameters
+ * @param argc Argument count
+ * @param argv Array of arguments
+ * @param fullscreen Storage for fullscreen bool
+ * @param debug Storage for debug bool
+ */
 void parseProgramArgs(int argc, char* argv[], bool& fullscreen, bool& debug)
 {
     if(argc < 2)

@@ -47,6 +47,10 @@ namespace RoadFighter {
         return os;
     }
 
+    /**
+     * Converts a position to a string of the form (x,y)
+     * @return String representing the position
+     */
     const std::string Position::toString() const
     {
         return "(" + std::to_string(x) + "," + std::to_string(y) + ")";

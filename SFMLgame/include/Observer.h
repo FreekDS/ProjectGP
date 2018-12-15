@@ -14,6 +14,7 @@ namespace RoadFighterSFML {
         window_ptr m_window;
         sf::Font m_font;
         sf::Text m_text;
+        sf::Text m_value;
     public:
         /**
          * Constructor for SpeedObserver
@@ -33,7 +34,15 @@ namespace RoadFighterSFML {
          */
         void update() override;
 
+        /**
+         * Draws the observer to the window
+         */
         void draw() const override;
+
+        /**
+         * Updates the text color based on the speed of the player
+         */
+        void updateTextColor();
     };
 
 } // namespace RoadFighterSFML

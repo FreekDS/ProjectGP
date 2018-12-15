@@ -53,4 +53,13 @@ namespace RoadFighter {
      */
     Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0) {}
 
+    /**
+     * Determine whether the vehicle is significantly moving (~speed > 0.3)
+     * @return True when Vehicle moves
+     */
+    bool Vehicle::isMoving() const
+    {
+        return m_speed > 0.3;
+    }
+
 } // namespace RoadFighter

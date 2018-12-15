@@ -95,11 +95,19 @@ namespace RoadFighter {
         Entity::m_pos = pos;
     }
 
+    /**
+     * Getter for upper left corner of the Entity
+     * @return Const reference to Position of the upper left corner
+     */
     const Position& Entity::getUpperLeftCorner() const
     {
         return m_cornerUL;
     }
 
+    /**
+     * Getter for the bottom right corner of the Entity
+     * @return Const reference to Position of bottom right corner
+     */
     const Position& Entity::getBottomRightCorner() const
     {
         return m_cornerBR;

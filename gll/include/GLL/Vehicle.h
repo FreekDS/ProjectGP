@@ -46,6 +46,11 @@ namespace RoadFighter {
         virtual void accelerate() = 0;
 
         /**
+         * Pure virtual function to slow down the player
+         */
+        virtual void slowDown() = 0;
+
+        /**
          * Pure virtual function to move the vehicle to the left
          * @param world_boundary Left boundary of the world
          */
@@ -80,6 +85,12 @@ namespace RoadFighter {
          * @param ms Movement speed of the vehicle
          */
         void setMoveSpeed(double ms);
+
+        /**
+         * Determine whether the vehicle is significantly moving (~speed > 0.3)
+         * @return True when Vehicle moves
+         */
+        bool isMoving() const;
     };
 
 } // namespace RoadFighter

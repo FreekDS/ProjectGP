@@ -1,5 +1,5 @@
-#include "PassingCar.h"
+#include <PassingCar.h>
 
 namespace RoadFighterSFML{
 
-}
+} // namespace RoadFighterSFML

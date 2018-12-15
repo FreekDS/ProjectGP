@@ -13,6 +13,7 @@ namespace RoadFighterSFML {
      * The @see Transformation Singleton class is updated with the screen sizes
      * @param title Title of the window which is "Road Fighter" by default
      * @param fullscreen Enable or disable fullscreen, by default this is true
+     * @param debug Enable or disable debug information, by default this is false
      */
     Game::Game(const string& title, bool fullscreen, bool debug) : m_debug(debug)
     {

@@ -9,6 +9,10 @@ namespace RoadFighter {
      */
     void Player::accelerate()
     {
+        if(getSpeed() < m_maxSpeed)
+            setSpeed(getSpeed() + 0.01);
+        if(getSpeed() > m_maxSpeed)
+            setSpeed(getSpeed() - 0.01);
         notify();
     }
 
@@ -22,7 +26,7 @@ namespace RoadFighter {
     }
 
     /**
-     * Virtual function to determine whether the Entity is a Player
+     * Overridden function to determine whether the Entity is a Player
      * @return True
      */
     bool Player::isPlayer() const
@@ -35,7 +39,7 @@ namespace RoadFighter {
      * Initializes the location of the player on (-0.25, -2)
      * Initializes the collider of the player on its bounds
      */
-    Player::Player()
+    Player::Player() : m_maxSpeed(20), m_maxSpeedWhenMovingUp(22)
     {
         double width = 0.24;
         double height = 0.45;
@@ -50,12 +54,13 @@ namespace RoadFighter {
      */
     void Player::moveLeft(double world_boundary)
     {
-        auto trans = Transformation::getInstance();
-        if (trans->isInGrid(getPos()))
-            updatePos(-getMovespeed(), 0);
-        if(getUpperLeftCorner().x < world_boundary)
-            updatePos(getMovespeed()+ 0.000001, 0);
-
+        if(isMoving()) {
+            auto trans = Transformation::getInstance();
+            if (trans->isInGrid(getPos()))
+                updatePos(-getMovespeed(), 0);
+            if (getUpperLeftCorner().x<world_boundary)
+                updatePos(getMovespeed()+0.000001, 0);
+        }
     }
 
     /**
@@ -63,11 +68,13 @@ namespace RoadFighter {
      */
     void Player::moveRight(double world_boundary)
     {
-        auto trans = Transformation::getInstance();
-        if (trans->isInGrid(getPos()))
-            updatePos(getMovespeed(), 0);
-        if(getBottomRightCorner().x > world_boundary)
-            updatePos(-getMovespeed() - 0.000001, 0);
+        if(isMoving()) {
+            auto trans = Transformation::getInstance();
+            if (trans->isInGrid(getPos()))
+                updatePos(getMovespeed(), 0);
+            if (getBottomRightCorner().x>world_boundary)
+                updatePos(-getMovespeed()-0.000001, 0);
+        }
     }
 
     /**
@@ -76,9 +83,15 @@ namespace RoadFighter {
      */
     void Player::moveUp()
     {
-        auto trans = Transformation::getInstance();
-        if (trans->isInGrid(getUpperLeftCorner()))
-            updatePos(0, getMovespeed());
+        if(isMoving()) {
+            auto trans = Transformation::getInstance();
+            if (trans->isInGrid(getUpperLeftCorner())) {
+                updatePos(0, getMovespeed());
+                if (getSpeed()<m_maxSpeedWhenMovingUp)
+                    setSpeed(getSpeed()+0.03);
+                notify();
+            }
+        }
     }
 
     /**
@@ -87,9 +100,14 @@ namespace RoadFighter {
      */
     void Player::moveDown()
     {
-        auto trans = Transformation::getInstance();
-        if (trans->isInGrid(getBottomRightCorner()))
-            updatePos(0, -getMovespeed());
+        if(isMoving()) {
+            auto trans = Transformation::getInstance();
+            if (trans->isInGrid(getBottomRightCorner())) {
+                updatePos(0, -getMovespeed());
+                setSpeed(getSpeed()-0.015);
+                notify();
+            }
+        }
     }
 
     /**
@@ -109,6 +127,31 @@ namespace RoadFighter {
         for(const observer_ptr& observer : m_observers) {
             observer->update();
         }
+    }
+
+    /**
+     * This function slows the player down when not accelerating
+     */
+    void Player::slowDown()
+    {
+        if(getSpeed() > 0)
+            setSpeed(getSpeed() - 0.02);
+        if(getSpeed() < 0)
+            setSpeed(0);
+        notify();
+    }
+
+    /**
+     * Getter for the max speed of the Player
+     * @param whenPressed If this value is true, the function returns the max speed when the up key is pressed
+     * @return max speed of the player
+     */
+    double Player::getMaxSpeed(bool whenPressed) const
+    {
+        if(whenPressed)
+            return m_maxSpeedWhenMovingUp;
+        else
+            return m_maxSpeed;
     }
 
 } // namespace RoadFighter

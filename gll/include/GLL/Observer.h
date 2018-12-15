@@ -14,7 +14,10 @@ namespace RoadFighter {
      * Abstract observer class
      * See Observer design pattern for details
      */
-    struct Observer {
+    class Observer {
+    protected:
+        double m_textLength = 0;
+    public:
         /**
          * Default constructor of Observer
          */
@@ -60,6 +63,12 @@ namespace RoadFighter {
          * Update the speed observer with the new speed of the subject
          */
         void update() override;
+
+        /**
+         * Get the player speed in a 'realistic' form
+         * @return Speed in a 'realistic' form (multiplied by 10)
+         */
+        unsigned int getPlayerSpeed() const;
     };
 
 } // namespace RoadFighter
