@@ -19,10 +19,10 @@ namespace RoadFighterSFML {
         m_font.loadFromFile("./res/font/font.ttf");
         m_text.setFont(m_font);
         m_text.setString(str);
-        m_text.setFillColor(sf::Color::White);
+        m_text.setColor(sf::Color::White);
         m_value.setFont(m_font);
         m_value.setString("0");
-        m_value.setFillColor(sf::Color::Green);
+        m_value.setColor(sf::Color::Green);
 
         m_text.scale(0.7, 0.7);
         m_value.scale(0.7, 0.7);
