@@ -134,8 +134,14 @@ namespace RoadFighter {
      */
     void Player::slowDown()
     {
-        if(getSpeed() > 0)
-            setSpeed(getSpeed() - 0.02);
+        if(getSpeed() > 0) {
+            if (getSpeed() > 3) {
+                setSpeed(getSpeed()-0.009);
+            }
+            else {
+                setSpeed(getSpeed()-0.003);
+            }
+        }
         if(getSpeed() < 0)
             setSpeed(0);
         notify();

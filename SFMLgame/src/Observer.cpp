@@ -59,12 +59,12 @@ namespace RoadFighterSFML {
     void SpeedObserver::updateTextColor()
     {
         if(m_subject->getSpeed() < m_subject->getMaxSpeed()/2)
-            m_value.setFillColor(sf::Color::Green);
+            m_value.setColor(sf::Color::Green);
         if(m_subject-> getSpeed() > m_subject->getMaxSpeed()/2
             && m_subject->getSpeed() < m_subject->getMaxSpeed()* 8/10)
-            m_value.setFillColor(sf::Color(253, 106, 2));
+            m_value.setColor(sf::Color(253, 106, 2));
         if(m_subject->getSpeed() > m_subject->getMaxSpeed()* 8/10)
-            m_value.setFillColor(sf::Color::Red);
+            m_value.setColor(sf::Color::Red);
     }
 
 } // namespace RoadFighterSFML
