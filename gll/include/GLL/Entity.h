@@ -167,6 +167,16 @@ namespace RoadFighter {
          * @param i Index of collider to remove
          */
         void removeCollider(int i);
+
+        /**
+         * Initializes the upper left and the bottom right corner.
+         * This function also adds a collider to the entity.
+         * Make sure the position is (0,0) when this function gets called.
+         * If there is another position, it will be reset to (0,0).
+         * @param width Width of the entity.
+         * @param height Height of the entity.
+         */
+        void initializeCorners(double width, double height);
     };
 
 } // namespace RoadFighter

@@ -42,11 +42,9 @@ namespace RoadFighter {
     Player::Player() : m_maxSpeed(20), m_maxSpeedWhenMovingUp(22)
     {
         double width = 0.24;
-        double height = 0.45;
-        setUpperLeftCorner({-width/2, height/2});
-        setBottomRightCorner({width/2,-height/2});
-        BoxCollider collider(getUpperLeftCorner(), getBottomRightCorner());
-        addCollider(collider);
+        double height = 0.40;
+        initializeCorners(width, height);
+        setPos(-0.25, -2);
     }
 
     /**
@@ -135,12 +133,7 @@ namespace RoadFighter {
     void Player::slowDown()
     {
         if(getSpeed() > 0) {
-            if (getSpeed() > 3) {
-                setSpeed(getSpeed()-0.009);
-            }
-            else {
-                setSpeed(getSpeed()-0.003);
-            }
+            setSpeed(getSpeed()-0.02);
         }
         if(getSpeed() < 0)
             setSpeed(0);

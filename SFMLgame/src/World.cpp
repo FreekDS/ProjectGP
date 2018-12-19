@@ -91,14 +91,14 @@ namespace RoadFighterSFML {
             player->moveLeft(getLeftBoundary());
             player->updateSpriteLocation();
             if(player->isMoving())
-                player->setSpriteRotation(-8);
+                player->setSpriteRotation(-10);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["right"])) {
             // move player right
             player->moveRight(getRightBoundary());
             player->updateSpriteLocation();
             if(player->isMoving())
-                player->setSpriteRotation(8);
+                player->setSpriteRotation(10);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["shoot"])) {
             // let player shoot a bullet
@@ -161,7 +161,10 @@ namespace RoadFighterSFML {
             rectangle.setSize(size);
             rectangle.setOutlineThickness(1.5f);
             rectangle.setFillColor(sf::Color::Transparent);
-            rectangle.setOutlineColor(sf::Color::Blue);
+            if(entity->isPlayer())
+                rectangle.setOutlineColor(sf::Color::Blue);
+            else
+                rectangle.setOutlineColor(sf::Color::Green);
             rectangle.setOrigin(rectangle.getGlobalBounds().width /2, rectangle.getGlobalBounds().height/2);
             auto trans = RoadFighter::Transformation::getInstance();
             RoadFighter::Position screenPos = trans->getScreenCoordinate(collider.getCenter());
