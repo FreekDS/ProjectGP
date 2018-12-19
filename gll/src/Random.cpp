@@ -41,13 +41,30 @@ namespace RoadFighter {
      * @param max maximum value
      * @return random number between min and max
      */
-    int Random::randNum(unsigned int min, unsigned int max)
+    int Random::randInt(unsigned int min, unsigned int max)
     {
         // If min is lower than max, swap values
         if (max<min) {
             std::swap(max, min);
         }
         std::uniform_int_distribution<int> distribution(min, max);
+        return distribution(this->m_randomNumberGenerator);
+    }
+
+    /**
+     * Generates a random double between two values.
+     * If min > max, the values are swapped.
+     * @param min Minimum value.
+     * @param max Maximum value.
+     * @return Random double between min and max.
+     */
+    double Random::randDouble(double min, double max)
+    {
+        // If min is lower than max, swap values
+        if(max<min){
+            std::swap(max, min);
+        }
+        std::uniform_real_distribution<double> distribution(min, max);
         return distribution(this->m_randomNumberGenerator);
     }
 
