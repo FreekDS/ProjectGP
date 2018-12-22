@@ -194,4 +194,13 @@ namespace RoadFighterSFML {
         m_window->draw(bound2);
     }
 
+    /**
+     * Returns a shared pointer of this World.
+     * @return Shared pointer of this world.
+     */
+    shared_ptr<RoadFighter::World> World::getPtr()
+    {
+        return shared_from_this();
+    }
+
 } // namespace RoadFighter

@@ -10,13 +10,14 @@ using keymap = map<string, sf::Keyboard::Key>;
 namespace RoadFighterSFML {
 
     /**
-     * This class is the SFML implementation of a World
+     * This class is the SFML implementation of a World.
      * A SFML World has:
-     * - The same features as a World
-     * - Two sprites of the same texture to represent the infinite background
-     * - A background texture
-     * - A shared pointer to an SFML window
-     * - A keymap which contains the controls
+     * - The same features as a World.
+     * - Two sprites of the same texture to represent the infinite background.
+     * - A background texture.
+     * - A shared pointer to an SFML window.
+     * - A keymap which contains the controls.
+     * - A boolean to determine whether the game is in debug mode or not.
      */
     class World : public RoadFighter::World {
     private:
@@ -80,6 +81,17 @@ namespace RoadFighterSFML {
          * Draws the boundaries of the world (great for debugging)
          */
         void drawBounds() const;
+
+        /**
+         * This overridden function does nothing with the world.
+         */
+        void updateSpriteLocation() override {}
+
+        /**
+         * Returns a shared pointer of this World.
+         * @return Shared pointer of this world.
+         */
+        shared_ptr<RoadFighter::World> getPtr() override;
     };
 
 }

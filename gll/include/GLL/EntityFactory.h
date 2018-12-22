@@ -2,11 +2,14 @@
 #define ROADFIGHTER_ABSTRACTFACTORY_H
 
 #include "Entity.h"
+#include "Player.h"
 #include <memory>
 
 using namespace std;
 
 namespace RoadFighter {
+
+    class World;
 
     /**
      * This class is used to create all entities
@@ -30,7 +33,7 @@ namespace RoadFighter {
          * Pure virtual function which will create a Passing Car
          * @return shared pointer to an Entity
          */
-        virtual shared_ptr<Entity> createPassingCar() const = 0;
+        virtual shared_ptr<Entity> createPassingCar(shared_ptr<World> world, shared_ptr<Player> player) const = 0;
 
         /**
          * Pure virtual function which will create a Race Car

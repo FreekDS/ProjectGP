@@ -9,6 +9,7 @@ SET(SRC_GAME
         src/Game.cpp
         src/Utilities.cpp
         src/Observer.cpp
+        src/EntityFactory.cpp
         )
 
 # Set the SFML ROOT (used on my Windows environment)

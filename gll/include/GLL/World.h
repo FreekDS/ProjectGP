@@ -18,8 +18,11 @@ namespace RoadFighter {
      * - A list of child entities
      * - An abstract factory
      * - Two boundaries (left and right)
+     *
+     * The world is derived from Entity and std::enable_shared_from_this to create
+     * a shared pointer of this class.
      */
-    class World : public Entity {
+    class World : public Entity, public std::enable_shared_from_this<World> {
     protected:
         vector<shared_ptr<Entity>> m_childEntities;
         shared_ptr<EntityFactory> m_factory;
@@ -90,22 +93,28 @@ namespace RoadFighter {
         bool canBeDestroyed() const override;
 
         /**
-         * Searches for the player in the child entities and returns it if found
-         * @return Shared pointer of an entity (= the player), if nothing found, nullptr
+         * Searches for the player in the child entities and returns it if found.
+         * @return Shared pointer of an entity (= the player), if nothing found, nullptr.
          */
         shared_ptr<Entity> getPlayer() const;
 
         /**
-         * Getter for boundary1 of world
+         * Getter for boundary1 of world.
          * @return Boundary1
          */
         double getLeftBoundary() const;
 
         /**
-         * Getter for boundary2 of world
-         * @return Boundary2;
+         * Getter for boundary2 of world.
+         * @return Boundary2.
          */
         double getRightBoundary() const;
+
+        /**
+         * Returns a shared pointer of this World.
+         * @return Shared pointer of this world.
+         */
+        virtual shared_ptr<World> getPtr();
     };
 
 } // namespace RoadFighter

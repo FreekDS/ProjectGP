@@ -135,5 +135,14 @@ namespace RoadFighter {
         return m_boundary2;
     }
 
+    /**
+     * Returns a shared pointer of this World.
+     * @return Shared pointer of this world.
+     */
+    shared_ptr<World> World::getPtr()
+    {
+        return shared_from_this();
+    }
+
 
 } // namespace RoadFighter
