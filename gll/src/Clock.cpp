@@ -1,4 +1,6 @@
 #include <GLL/Clock.h>
+#include <stdexcept>
+#include <cmath>
 
 namespace RoadFighter {
 
@@ -33,6 +35,42 @@ namespace RoadFighter {
     void RoadFighter::Clock::reset()
     {
         m_start = clock();
+    }
+
+    Clock::Clock(int ms_to_wait) : m_start(clock()), m_msToWait(ms_to_wait), m_timerRunning(false)
+    {}
+
+    void Clock::startTimer()
+    {
+        m_timerRunning = true;
+        reset();
+    }
+
+    bool Clock::timerFinished()
+    {
+        if(getTimeAsMilliseconds() >= m_msToWait) {
+            m_timerRunning = false;
+            return true;
+        }
+        return false;
+    }
+
+    void Clock::setTimer(int ms_to_wait)
+    {
+        m_msToWait = ms_to_wait;
+    }
+
+    int Clock::timeRemaining() const
+    {
+        if(m_timerRunning)
+            return m_msToWait - static_cast<int>(round(getTimeAsMilliseconds()));
+        else
+            throw std::runtime_error("Timer is not running...");
+    }
+
+    int Clock::timeRemainingAsSeconds() const
+    {
+        return static_cast<int>(round(timeRemaining() / 1000));
     }
 
 } // namespace RoadFighter

@@ -1,4 +1,5 @@
 #include <Game.h>
+#include <EntityFactory.h>
 #include <Player.h>
 #include <World.h>
 #include <GLL/Transformation.h>
@@ -50,11 +51,9 @@ namespace RoadFighterSFML {
     void Game::runGame()
     {
         // create a player for testing purpose
-        // Player player("player_car.png", m_window);
-        auto player = make_shared<Player>("player_car.png", m_window);
-        auto observer = make_shared<SpeedObserver>(player, "Speed: ", m_window);
-        player->attach(observer);
-        m_world->add(player);
+        auto entityFac = make_shared<EntityFactory>(m_window);
+        m_world->add(entityFac->createPlayer());
+        m_world->setFactory(entityFac);
 
         RoadFighter::Clock clock;
         double gameTick = 1.0 / 120.0;

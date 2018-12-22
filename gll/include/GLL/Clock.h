@@ -15,12 +15,16 @@ namespace RoadFighter {
     class Clock {
     private:
         clock_t m_start;
+        int m_msToWait;
+        bool m_timerRunning;
     public:
         /**
          * Default constructor for Clock
          * This constructor will start the time
          */
         Clock();
+
+        explicit Clock(int ms_to_wait);
 
         /**
          * Calculates the elapsed time and returns it as seconds
@@ -38,6 +42,16 @@ namespace RoadFighter {
          * Resets the clock
          */
         void reset();
+
+        void startTimer();
+
+        bool timerFinished();
+
+        void setTimer(int ms_to_wait);
+
+        int timeRemaining() const;
+
+        int timeRemainingAsSeconds() const;
     };
 
 } // namespace RoadFighter
