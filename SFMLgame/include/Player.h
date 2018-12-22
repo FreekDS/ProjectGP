@@ -31,7 +31,7 @@ namespace RoadFighterSFML {
          * @param sprite Sprite of the player
          * @param window RenderWindow to be drawn on
          */
-        Player(const sf::Sprite& sprite, window_ptr& window);
+        Player(const sf::Sprite& sprite, const window_ptr& window);
 
         /**
          * Constructor for SFML Player
@@ -39,7 +39,7 @@ namespace RoadFighterSFML {
          * @param file_name File name of .png image
          * @param window RenderWindow to be drawn on
          */
-        Player(const std::string& file_name, shared_ptr<sf::RenderWindow>& window);
+        Player(const std::string& file_name, const window_ptr& window);
 
         /**
          * Default destructor for SFML Player
@@ -50,7 +50,7 @@ namespace RoadFighterSFML {
          * Updates the screen coordinates of the sprite based on the coordinates in the Game Logic
          * This method makes use of the @see Transformation class
          */
-        void updateSpriteLocation();
+        void updateSpriteLocation() override;
 
         /**
          * Virtual function to draw the entity

@@ -10,7 +10,7 @@ namespace RoadFighterSFML {
      * @param sprite Sprite of the player
      * @param window RenderWindow to be drawn on
      */
-    Player::Player(const sf::Sprite& sprite, window_ptr& window)
+    Player::Player(const sf::Sprite& sprite, const window_ptr& window)
             :m_texture(*sprite.getTexture()), m_sprite(sprite), m_window(window)
     {
         m_sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height/2);
@@ -23,7 +23,7 @@ namespace RoadFighterSFML {
      * @param file_name File name of .png image
      * @param window RenderWindow to be drawn on
      */
-    Player::Player(const std::string& file_name, window_ptr& window)
+    Player::Player(const std::string& file_name, const window_ptr& window)
             :m_window(window)
     {
         string path = "./res/sprites/entity/";

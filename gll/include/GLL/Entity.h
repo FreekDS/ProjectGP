@@ -177,6 +177,11 @@ namespace RoadFighter {
          * @param height Height of the entity.
          */
         void initializeCorners(double width, double height);
+
+        /**
+         * Pure virtual function to update the location of the sprite.
+         */
+        virtual void updateSpriteLocation() = 0;
     };
 
 } // namespace RoadFighter

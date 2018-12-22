@@ -8,7 +8,7 @@ namespace RoadFighter {
      * @param speed Speed of the vehicle
      */
     Vehicle::Vehicle(double speed)
-            :m_speed(speed), m_movementSpeed(3.0) { }
+            :m_speed(speed), m_movementSpeed(3.0), m_crashed(false) { }
 
     /**
      * Getter for speed of vehicle
@@ -51,7 +51,7 @@ namespace RoadFighter {
     /**
      * Default constructor for vehicle
      */
-    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0) {}
+    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0), m_crashed(false) {}
 
     /**
      * Determine whether the vehicle is significantly moving (~speed > 0.3)
@@ -60,6 +60,23 @@ namespace RoadFighter {
     bool Vehicle::isMoving() const
     {
         return m_speed > 0.3;
+    }
+
+    /**
+     * This function lets a vehicle crash. (sets its variable to true)
+     */
+    void Vehicle::crash()
+    {
+        m_crashed = true;
+    }
+
+    /**
+     * Determine whether the vehicle has crashed or not.
+     * @return True if the vehicle has crashed, else false.
+     */
+    bool Vehicle::hasCrashed() const
+    {
+        return m_crashed;
     }
 
 } // namespace RoadFighter

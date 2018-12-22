@@ -11,11 +11,13 @@ namespace RoadFighter {
      * A vehicle has:
      * - a driving speed
      * - a movement speed (for horizontal and vertical movement in the grid)
+     * - a bool to check if the vehicle has crashed or not
      */
     class Vehicle : public Entity {
     private:
         double m_speed;
         double m_movementSpeed;
+        bool m_crashed;
     public:
         /**
          * Default constructor for vehicle
@@ -91,6 +93,17 @@ namespace RoadFighter {
          * @return True when Vehicle moves
          */
         bool isMoving() const;
+
+        /**
+         * This function lets a vehicle crash. (sets its variable to true)
+         */
+        void crash();
+
+        /**
+         * Determine whether the vehicle has crashed or not.
+         * @return True if the vehicle has crashed, else false.
+         */
+        bool hasCrashed() const;
     };
 
 } // namespace RoadFighter

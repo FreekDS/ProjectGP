@@ -48,6 +48,7 @@ namespace RoadFighter {
          * Determine whether the PassingCar can be destroyed or not.
          * A PassingCar can be destroyed if it's Y position is lower than 2 times the minimum Y
          * or if it's Y position is greater than 2 times the maximum Y.
+         * A PassingCar can also be destroyed if it has crashed.
          * This minimum and maximum are obtained from @see Transformation
          * @return True if the PassingCar can be destroyed
          */
