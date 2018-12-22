@@ -3,6 +3,7 @@
 #include <GLL/PassingCar.h>
 #include <GLL/Transformation.h>
 #include <GLL/Random.h>
+#include <iostream>
 
 namespace RoadFighter {
 
@@ -20,7 +21,23 @@ namespace RoadFighter {
         initializeCorners(width, height);
         initializePosition();
         auto rand = Random::getInstance();
-        setMoveSpeed(rand->randDouble(m_player->getMovespeed()/5, m_player->getMovespeed()*1.5));
+        setMoveSpeed(rand->randDouble(3,8));
+    }
+
+    /**
+     * Constructor of PassingCar taking the Player and World as parameter.
+     * @param player Shared pointer to the Player.
+     * @param world Shared pointer to the World.
+     */
+    PassingCar::PassingCar(const shared_ptr<Player>& player, const shared_ptr<World>& world)
+            :m_player(player), m_world(world)
+    {
+        double width = 0.24;
+        double height = 0.40;
+        initializeCorners(width, height);
+        initializePosition();
+        auto rand = Random::getInstance();
+        setMoveSpeed(rand->randDouble(3,8));
     }
 
     /**
@@ -28,10 +45,8 @@ namespace RoadFighter {
      */
     void PassingCar::update()
     {
-        if(m_player->getSpeed() < getSpeed())
-            moveUp();
-        else
-            moveDown();
+        updateSpriteLocation();
+        moveDown();
     }
 
     /**
@@ -69,22 +84,6 @@ namespace RoadFighter {
      * Default destructor of PassingCar.
      */
     PassingCar::~PassingCar() = default;
-
-    /**
-     * Constructor of PassingCar taking the Player and World as parameter.
-     * @param player Shared pointer to the Player.
-     * @param world Shared pointer to the World.
-     */
-    PassingCar::PassingCar(const shared_ptr<Player>& player, const shared_ptr<World>& world)
-            :m_player(player), m_world(world)
-    {
-        double width = 0.24;
-        double height = 0.40;
-        initializeCorners(width, height);
-        initializePosition();
-        auto rand = Random::getInstance();
-        setMoveSpeed(rand->randDouble(m_player->getMovespeed()/5, m_player->getMovespeed()*1.5));
-    }
 
     /**
      * Initializes the position randomly inside the World.

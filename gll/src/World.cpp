@@ -1,4 +1,7 @@
 #include <GLL/World.h>
+#include <GLL/Random.h>
+#include <algorithm>
+#include <iostream>
 
 namespace RoadFighter {
 
@@ -75,6 +78,8 @@ namespace RoadFighter {
     {
         setUpperLeftCorner({-4, 3});
         setBottomRightCorner({3, -4});
+        resetSpawnTimer();
+        m_spawnCooldown.startTimer();
     }
 
     /**
@@ -142,6 +147,25 @@ namespace RoadFighter {
     shared_ptr<World> World::getPtr()
     {
         return shared_from_this();
+    }
+
+    /**
+     * Removes all entities that can be removed from the list.
+     */
+    void World::removeRemovableEntities()
+    {
+        auto erase = [](shared_ptr<Entity> entity) { return entity->canBeDestroyed(); };
+        m_childEntities.erase(std::remove_if(m_childEntities.begin(), m_childEntities.end(), erase),
+                m_childEntities.end());
+    }
+
+    /**
+     * Resets the spawn timer.
+     */
+    void World::resetSpawnTimer()
+    {
+        auto random = Random::getInstance();
+        m_spawnCooldown.setTimer(random->randInt(100, 3000));
     }
 
 

@@ -49,7 +49,7 @@ namespace RoadFighter {
     bool Clock::timerFinished()
     {
         if(getTimeAsMilliseconds() >= m_msToWait) {
-            m_timerRunning = false;
+            m_start = clock();
             return true;
         }
         return false;

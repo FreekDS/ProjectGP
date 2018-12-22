@@ -1,6 +1,7 @@
 #include <PassingCar.h>
 #include <GLL/Transformation.h>
 #include <Utilities.h>
+#include <iostream>
 
 namespace RoadFighterSFML {
 

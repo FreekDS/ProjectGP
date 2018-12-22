@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "EntityFactory.h"
 #include "Player.h"
+#include "Clock.h"
 #include <vector>
 #include <memory>
 
@@ -18,6 +19,7 @@ namespace RoadFighter {
      * - A list of child entities
      * - An abstract factory
      * - Two boundaries (left and right)
+     * - A clock used as cooldown for the spawning of entities
      *
      * The world is derived from Entity and std::enable_shared_from_this to create
      * a shared pointer of this class.
@@ -28,6 +30,7 @@ namespace RoadFighter {
         shared_ptr<EntityFactory> m_factory;
         double m_boundary1;
         double m_boundary2;
+        Clock m_spawnCooldown;
     public:
         /**
          * Default constructor of World
@@ -115,6 +118,16 @@ namespace RoadFighter {
          * @return Shared pointer of this world.
          */
         virtual shared_ptr<World> getPtr();
+
+        /**
+         * Removes all entities that can be removed from the list.
+         */
+        void removeRemovableEntities();
+
+        /**
+         * Resets the spawn timer.
+         */
+        void resetSpawnTimer();
     };
 
 } // namespace RoadFighter
