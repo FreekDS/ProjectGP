@@ -87,7 +87,7 @@ namespace RoadFighter {
          * @param entity2 Second Entity to check
          * @return True if entity1 and entity2 collide
          */
-        bool checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2);
+        bool checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2) const;
 
         /**
          * Determine whether the Entity can be destroyed or not
@@ -128,6 +128,11 @@ namespace RoadFighter {
          * Resets the spawn timer.
          */
         void resetSpawnTimer();
+
+        /**
+         * Checks all entities for collision.
+         */
+        void checkCollisionOfAll() const;
     };
 
 } // namespace RoadFighter

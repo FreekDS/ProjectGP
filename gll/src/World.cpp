@@ -45,9 +45,23 @@ namespace RoadFighter {
      * @param entity2 Second Entity to check
      * @return True if entity1 and entity2 collide
      */
-    bool World::checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2)
+    bool World::checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2) const
     {
-        // todo implement
+        auto doOverlap = [](const BoxCollider& c1, const BoxCollider& c2) -> bool {
+            if (c1.getUpperLeftCorner().x>c2.getBottomRightCorner().x
+                    || c2.getUpperLeftCorner().x>c1.getBottomRightCorner().x)
+                return false;
+            return !(c1.getUpperLeftCorner().y<c2.getBottomRightCorner().y
+                || c2.getUpperLeftCorner().y<c1.getBottomRightCorner().y);
+        };
+
+        for (const BoxCollider& collider1 : entity1->getColliders()) {
+            for (const BoxCollider& collider2 : entity2->getColliders()) {
+                if (doOverlap(collider1, collider2)) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -166,6 +180,33 @@ namespace RoadFighter {
     {
         auto random = Random::getInstance();
         m_spawnCooldown.setTimer(random->randInt(100, 3000));
+    }
+
+    /**
+     * Checks all entities for collision.
+     */
+    void World::checkCollisionOfAll() const
+    {
+        for(const auto& entity1 : m_childEntities)
+            for(const auto& entity2 : m_childEntities) {
+                if(entity1 == entity2)
+                    continue;
+                if (checkCollision(entity1, entity2)) {
+                    if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity1)) {
+                        auto vehicle = dynamic_pointer_cast<RoadFighter::Vehicle>(entity1);
+                        if (vehicle->hasCrashed())
+                            continue;
+                        vehicle->crash();
+                    }
+                    if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity2)) {
+                        auto vehicle = dynamic_pointer_cast<RoadFighter::Vehicle>(entity2);
+                        if (vehicle->hasCrashed())
+                            continue;
+                        vehicle->crash();
+                    }
+
+                }
+            }
     }
 
 

@@ -28,12 +28,15 @@ namespace RoadFighterSFML {
      */
     void World::update()
     {
+        // check for collision
+        checkCollisionOfAll();
+
         // remove entities
         removeRemovableEntities();
 
         // add new entities
         if(m_spawnCooldown.timerFinished()){
-            if(m_childEntities.size() > 5){
+            if(m_childEntities.size() > 10){
 //                cout << "Exceeded max entities! " << m_childEntities.size() <<endl;
             }else {
                 add(m_factory->createPassingCar(getPtr(), dynamic_pointer_cast<RoadFighter::Player>(getPlayer())));
