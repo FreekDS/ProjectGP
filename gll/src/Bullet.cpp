@@ -7,7 +7,9 @@ namespace RoadFighter {
      * @param shootSpeed shooting speed of the bullet
      */
     Bullet::Bullet(double shootSpeed)
-            :m_shootSpeed(shootSpeed) { }
+            :m_shootSpeed(shootSpeed) {
+        setType(EntityType::BULLET);
+    }
 
     /**
      * Default constructor for Bullet

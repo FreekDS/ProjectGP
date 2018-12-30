@@ -150,6 +150,8 @@ namespace RoadFighter {
     RacingCar::RacingCar(const shared_ptr<Player>& player, const shared_ptr<World>& world)
             :m_player(player), m_world(world), m_lastMove(move::NONE)
     {
+        setType(EntityType::RACE_CAR);
+
         double width = 0.24;
         double height = 0.40;
         double maxPlayer = player->getMaxSpeed(true);

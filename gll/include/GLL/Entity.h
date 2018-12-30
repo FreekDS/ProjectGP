@@ -7,6 +7,18 @@
 namespace RoadFighter {
 
     /**
+     * Enumeration of all different Entity types.
+     */
+    enum EntityType{
+        PLAYER,
+        WORLD,
+        BULLET,
+        PASSING_CAR,
+        RACE_CAR,
+        UNKNOWN
+    };
+
+    /**
      * Abstract base class of all Entities
      * Each entity has a position (= the center of the Entity)
      * And two corner positions:
@@ -20,6 +32,15 @@ namespace RoadFighter {
         Position m_cornerUL;
         Position m_cornerBR;
         vector<BoxCollider> m_colliders;
+        EntityType m_type = EntityType::UNKNOWN;
+
+    protected:
+        /**
+         * Setter for the type of the Entity.
+         * @param type Type of the entity.
+         */
+        void setType(const EntityType& type);
+
     public:
         /**
          * Default constructor of Entity
@@ -182,6 +203,12 @@ namespace RoadFighter {
          * Pure virtual function to update the location of the sprite.
          */
         virtual void updateSpriteLocation() = 0;
+
+        /**
+         * Getter for the type of the Entity
+         * @return Type of the entity.
+         */
+        EntityType getType() const;
     };
 
 } // namespace RoadFighter

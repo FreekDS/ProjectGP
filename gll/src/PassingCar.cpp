@@ -22,6 +22,7 @@ namespace RoadFighter {
         initializePosition();
         auto rand = Random::getInstance();
         setMoveSpeed(rand->randDouble(3,8));
+        setType(EntityType::PASSING_CAR);
     }
 
     /**
@@ -38,6 +39,7 @@ namespace RoadFighter {
         initializePosition();
         auto rand = Random::getInstance();
         setMoveSpeed(rand->randDouble(3,8));
+        setType(EntityType::PASSING_CAR);
     }
 
     /**

@@ -9,7 +9,7 @@ namespace RoadFighter {
      * Initializes the position, and both corners on (0,0)
      */
     Entity::Entity()
-            :m_pos(Position()), m_cornerUL(Position()), m_cornerBR(Position()) { }
+            :m_pos(Position()), m_cornerUL(Position()), m_cornerBR(Position()), m_type(EntityType::UNKNOWN) { }
 
     /**
      * Default destructor for Entity
@@ -34,6 +34,7 @@ namespace RoadFighter {
         m_pos = other.m_pos;
         m_cornerBR = other.m_cornerBR;
         m_cornerUL = other.m_cornerUL;
+        m_type = other.m_type;
         return *this;
     }
 
@@ -43,7 +44,7 @@ namespace RoadFighter {
      */
     Entity::Entity(Entity&& other) noexcept
             :m_pos(other.m_pos), m_cornerUL(other.m_cornerUL), m_cornerBR(other.m_cornerBR),
-             m_colliders(other.m_colliders)
+             m_colliders(other.m_colliders), m_type(other.m_type)
     {
         other.m_colliders.clear();
     }
@@ -61,6 +62,7 @@ namespace RoadFighter {
         m_cornerBR = other.m_cornerBR;
         m_cornerUL = other.m_cornerUL;
         m_colliders = other.m_colliders;
+        m_type = other.m_type;
         other.m_colliders.clear();
         return *this;
     }
@@ -239,6 +241,24 @@ namespace RoadFighter {
         setBottomRightCorner({width/2,-height/2});
         BoxCollider collider(getUpperLeftCorner(), getBottomRightCorner());
         addCollider(collider);
+    }
+
+    /**
+     * Getter for the type of the Entity
+     * @return Type of the entity.
+     */
+    EntityType Entity::getType() const
+    {
+        return m_type;
+    }
+
+    /**
+     * Setter for the type of the Entity.
+     * @param type Type of the entity.
+     */
+    void Entity::setType(const EntityType& type)
+    {
+        m_type = type;
     }
 
 } // namespace RoadFighter

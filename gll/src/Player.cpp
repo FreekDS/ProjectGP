@@ -26,15 +26,6 @@ namespace RoadFighter {
     }
 
     /**
-     * Overridden function to determine whether the Entity is a Player
-     * @return True
-     */
-    bool Player::isPlayer() const
-    {
-        return true;
-    }
-
-    /**
      * Default constructor for the Player
      * Initializes the location of the player on (-0.25, -2)
      * Initializes the collider of the player on its bounds
@@ -45,6 +36,7 @@ namespace RoadFighter {
         double height = 0.40;
         initializeCorners(width, height);
         setPos(-0.25, -2);
+        setType(EntityType::PLAYER);
     }
 
     /**

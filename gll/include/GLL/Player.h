@@ -45,12 +45,6 @@ namespace RoadFighter {
         bool canBeDestroyed() const override;
 
         /**
-         * Overridden function to determine whether the Entity is a Player
-         * @return True
-         */
-        bool isPlayer() const override;
-
-        /**
          * Moves the player to the left
          */
         void moveLeft(double world_boundary) override;

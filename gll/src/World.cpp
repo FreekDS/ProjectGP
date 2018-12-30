@@ -90,6 +90,7 @@ namespace RoadFighter {
     World::World()
             :m_factory(nullptr), m_boundary1(-0.56), m_boundary2(1.17)
     {
+        setType(EntityType::WORLD);
         setUpperLeftCorner({-4, 3});
         setBottomRightCorner({3, -4});
         resetSpawnTimer();
@@ -130,7 +131,7 @@ namespace RoadFighter {
     shared_ptr<Entity> World::getPlayer() const
     {
         for (const auto& entity : m_childEntities) {
-            if (entity->isPlayer())
+            if (entity->getType() == EntityType::PLAYER)
                 return entity;
         }
         return nullptr;
