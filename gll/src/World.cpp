@@ -52,7 +52,7 @@ namespace RoadFighter {
                     || c2.getUpperLeftCorner().x>c1.getBottomRightCorner().x)
                 return false;
             return !(c1.getUpperLeftCorner().y<c2.getBottomRightCorner().y
-                || c2.getUpperLeftCorner().y<c1.getBottomRightCorner().y);
+                    || c2.getUpperLeftCorner().y<c1.getBottomRightCorner().y);
         };
 
         for (const BoxCollider& collider1 : entity1->getColliders()) {
@@ -187,9 +187,9 @@ namespace RoadFighter {
      */
     void World::checkCollisionOfAll() const
     {
-        for(const auto& entity1 : m_childEntities)
-            for(const auto& entity2 : m_childEntities) {
-                if(entity1 == entity2)
+        for (const auto& entity1 : m_childEntities)
+            for (const auto& entity2 : m_childEntities) {
+                if (entity1==entity2)
                     continue;
                 if (checkCollision(entity1, entity2)) {
                     if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity1)) {
@@ -209,5 +209,35 @@ namespace RoadFighter {
             }
     }
 
+    /**
+     * Updates the world and all its components
+     * This function first updates all the components
+     * After that it will read the input with @see readInput()
+     */
+    void World::update()
+    {
+        // check for collision
+        checkCollisionOfAll();
+
+        // remove entities
+        removeRemovableEntities();
+
+        // add new entities
+        if (m_spawnCooldown.timerFinished()) {
+            if (m_childEntities.size()>10) {
+//                cout << "Exceeded max entities! " << m_childEntities.size() <<endl;
+            }
+            else {
+                add(m_factory->createPassingCar(getPtr(), dynamic_pointer_cast<Player>(getPlayer())));
+                resetSpawnTimer();
+            }
+        }
+
+        // update entities
+        for (const auto& entity : m_childEntities) {
+            entity->update();
+        }
+        readInput();
+    }
 
 } // namespace RoadFighter

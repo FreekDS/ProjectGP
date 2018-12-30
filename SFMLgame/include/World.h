@@ -42,17 +42,11 @@ namespace RoadFighterSFML {
          */
         void draw() const override;
 
-        /**
-         * Updates the world and all its components
-         * This function first updates all the components
-         * After that it will read the input with @see readInput()
-         */
-        void update() override;
 
         /**
          * Reads the user input and interprets them
          */
-        void readInput();
+        void readInput() override;
 
         /**
          * Initializes the keymap

@@ -1,7 +1,6 @@
 #include <World.h>
 #include <Utilities.h>
 #include <GLL/Transformation.h>
-#include <iostream>
 
 namespace RoadFighterSFML {
 
@@ -14,41 +13,11 @@ namespace RoadFighterSFML {
         m_window->draw(m_sprite2);
         for (const auto& entity : m_childEntities) {
             entity->draw();
-            if(m_debug) {
+            if (m_debug) {
                 drawColliders(entity);
                 drawBounds();
             }
         }
-    }
-
-    /**
-     * Updates the world and all its components
-     * This function first updates all the components
-     * After that it will read the input with @see readInput()
-     */
-    void World::update()
-    {
-        // check for collision
-        checkCollisionOfAll();
-
-        // remove entities
-        removeRemovableEntities();
-
-        // add new entities
-        if(m_spawnCooldown.timerFinished()){
-            if(m_childEntities.size() > 10){
-//                cout << "Exceeded max entities! " << m_childEntities.size() <<endl;
-            }else {
-                add(m_factory->createPassingCar(getPtr(), dynamic_pointer_cast<RoadFighter::Player>(getPlayer())));
-                resetSpawnTimer();
-            }
-        }
-
-        // update entities
-        for (const auto& entity : m_childEntities) {
-            entity->update();
-        }
-        readInput();
     }
 
     /**
@@ -107,14 +76,14 @@ namespace RoadFighterSFML {
             // move player left
             player->moveLeft(getLeftBoundary());
             player->updateSpriteLocation();
-            if(player->isMoving())
+            if (player->isMoving())
                 player->setSpriteRotation(-10);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["right"])) {
             // move player right
             player->moveRight(getRightBoundary());
             player->updateSpriteLocation();
-            if(player->isMoving())
+            if (player->isMoving())
                 player->setSpriteRotation(10);
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["shoot"])) {
@@ -125,7 +94,7 @@ namespace RoadFighterSFML {
             // player accelerates
             player->accelerate();
         }
-        if(!sf::Keyboard::isKeyPressed(m_keymap["speedup"])){
+        if (!sf::Keyboard::isKeyPressed(m_keymap["speedup"])) {
             player->slowDown();
         }
 
@@ -171,18 +140,18 @@ namespace RoadFighterSFML {
      */
     void World::drawColliders(const shared_ptr<RoadFighter::Entity>& entity) const
     {
-        for(const RoadFighter::BoxCollider& collider : entity->getColliders()){
+        for (const RoadFighter::BoxCollider& collider : entity->getColliders()) {
             sf::RectangleShape rectangle;
             pair<float, float> collSize = getSFMLSize(collider.getUpperLeftCorner(), collider.getBottomRightCorner());
             sf::Vector2f size(collSize.first, collSize.second);
             rectangle.setSize(size);
             rectangle.setOutlineThickness(1.5f);
             rectangle.setFillColor(sf::Color::Transparent);
-            if(entity->isPlayer())
+            if (entity->isPlayer())
                 rectangle.setOutlineColor(sf::Color::Blue);
             else
                 rectangle.setOutlineColor(sf::Color::Green);
-            rectangle.setOrigin(rectangle.getGlobalBounds().width /2, rectangle.getGlobalBounds().height/2);
+            rectangle.setOrigin(rectangle.getGlobalBounds().width/2, rectangle.getGlobalBounds().height/2);
             auto trans = RoadFighter::Transformation::getInstance();
             RoadFighter::Position screenPos = trans->getScreenCoordinate(collider.getCenter());
             rectangle.setPosition(static_cast<float>(screenPos.x), static_cast<float>(screenPos.y));

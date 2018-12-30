@@ -133,6 +133,18 @@ namespace RoadFighter {
          * Checks all entities for collision.
          */
         void checkCollisionOfAll() const;
+
+        /**
+         * This pure virtual function is needed to read input.
+         */
+        virtual void readInput() = 0;
+
+        /**
+         * Updates the world and all its components
+         * This function first updates all the components
+         * After that it will read the input with @see readInput()
+         */
+        void update() override;
     };
 
 } // namespace RoadFighter
