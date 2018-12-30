@@ -46,9 +46,9 @@ namespace RoadFighterSFML {
          */
         shared_ptr<RoadFighter::Entity> createPassingCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const override;
 
-        shared_ptr<RoadFighter::Entity> createBullet() const override;
+        shared_ptr<RoadFighter::Entity> createRaceCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const override;
 
-        shared_ptr<RoadFighter::Entity> createRaceCar() const override;
+        shared_ptr<RoadFighter::Entity> createBullet(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const override;
     };
 
 } // namespace RoadFighterSFML

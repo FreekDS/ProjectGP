@@ -1,5 +1,6 @@
 #include <EntityFactory.h>
 #include <Player.h>
+#include <RacingCar.h>
 #include <PassingCar.h>
 #include <Observer.h>
 
@@ -31,12 +32,13 @@ namespace RoadFighterSFML {
         return passingCar;
     }
 
-    shared_ptr<RoadFighter::Entity> EntityFactory::createBullet() const
+    shared_ptr<RoadFighter::Entity> EntityFactory::createRaceCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const
     {
-        return shared_ptr<RoadFighter::Entity>();
+        auto racingCar = make_shared<RacingCar>("racing_car.png", m_window, world, player);
+        return racingCar;
     }
 
-    shared_ptr<RoadFighter::Entity> EntityFactory::createRaceCar() const
+    shared_ptr<RoadFighter::Entity> EntityFactory::createBullet(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const
     {
         return shared_ptr<RoadFighter::Entity>();
     }

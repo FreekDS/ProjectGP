@@ -240,4 +240,10 @@ namespace RoadFighter {
         readInput();
     }
 
+    void World::setupRaceCars()
+    {
+        for(int i = 0; i<5; i++)
+            add(m_factory->createRaceCar(getPtr(), dynamic_pointer_cast<Player>(getPlayer())));
+    }
+
 } // namespace RoadFighter

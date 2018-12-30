@@ -54,6 +54,7 @@ namespace RoadFighterSFML {
         auto entityFac = make_shared<EntityFactory>(m_window);
         m_world->add(entityFac->createPlayer());
         m_world->setFactory(entityFac);
+        m_world->setupRaceCars();
 
         RoadFighter::Clock clock;
         double gameTick = 1.0 / 120.0;

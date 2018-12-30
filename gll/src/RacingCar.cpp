@@ -1,6 +1,7 @@
 #include <GLL/RacingCar.h>
 #include <GLL/Random.h>
 #include <GLL/Transformation.h>
+#include <iostream>
 
 namespace RoadFighter {
 
@@ -33,6 +34,8 @@ namespace RoadFighter {
                 updatePos(-getMovespeed(), 0);
             if (getUpperLeftCorner().x<world_boundary)
                 updatePos(getMovespeed()+0.000001, 0);
+
+            m_lastMove = move::LEFT;
         }
     }
 
@@ -44,21 +47,28 @@ namespace RoadFighter {
                 updatePos(getMovespeed(), 0);
             if (getBottomRightCorner().x>world_boundary)
                 updatePos(-getMovespeed()-0.000001, 0);
+
+            m_lastMove = move::RIGHT;
         }
     }
 
     void RacingCar::moveUp()
     {
-        updatePos(0, getMovespeed());
+        auto trans = Transformation::getInstance();
+        if(getPos().y < 2*trans->getYRange().second)
+            updatePos(0, getMovespeed());
     }
 
     void RacingCar::moveDown()
     {
-        updatePos(0, -getMovespeed());
+        auto trans = Transformation::getInstance();
+        if(getPos().y > 4*trans->getYRange().first)
+            updatePos(0, -getMovespeed());
     }
 
     /**
      * Updates the race car every game tick.
+     * Updates the location of the sprite.
      *
      * First phase: the player has not started moving:
      * - We don't do anything, whenever the player starts moving, we move to phase two.
@@ -80,6 +90,8 @@ namespace RoadFighter {
      */
     void RacingCar::update()
     {
+        updateSpriteLocation();
+
         if(hasFinished())
             return;
 
@@ -115,15 +127,18 @@ namespace RoadFighter {
             accelerate();
 
 
-        if (rand->randInt(0, 100)<20) // 20% chance
+        if (rand->randInt(0, 100)<90) // 20% chance
             slowDown();
 
         updateMoveSpeed();
 
+        bool lastLeft = m_lastMove == move::LEFT;
+        bool lastRight = m_lastMove == move::RIGHT;
+
         // move left or right randomly if possible
-        if (rand->randInt(0, 100)<50)   // 50% chance
+        if (rand->randInt(0, 100)<50 || (lastLeft && rand->randInt(0,100) < 60))   // 50% chance
             moveLeft(m_world->getLeftBoundary());
-        if (rand->randInt(0, 100)<50)    // 50% chance
+        if (rand->randInt(0, 100)<40 || (lastRight && rand->randInt(0,100) < 40))  // 50% chance
             moveRight(m_world->getRightBoundary());
     }
 
@@ -133,16 +148,18 @@ namespace RoadFighter {
     }
 
     RacingCar::RacingCar(const shared_ptr<Player>& player, const shared_ptr<World>& world)
-            :m_player(player), m_world(world)
+            :m_player(player), m_world(world), m_lastMove(move::NONE)
     {
         double width = 0.24;
         double height = 0.40;
         double maxPlayer = player->getMaxSpeed(true);
-        m_range.first = maxPlayer*1/3;
-        m_range.second = maxPlayer*1.5;
+        m_range.first = maxPlayer*3/4;
+        m_range.second = maxPlayer*3;
         initializeCorners(width, height);
         initializePosition();
-        setMoveSpeed(3.6);
+
+        auto rand = Random::getInstance();
+        setMoveSpeed(rand->randDouble(3.5, 4));
         CAR_COUNT++;
     }
 
@@ -154,18 +171,18 @@ namespace RoadFighter {
     void RacingCar::initializePosition()
     {
         if (CAR_COUNT==0)
-            setPos(0, 0);
+            setPos(0.55, 1);
         else if (CAR_COUNT==1) {
-            setPos(0, 0);
+            setPos(0.85, 0.5);
         }
         else if (CAR_COUNT==2) {
-            setPos(0, 0);
+            setPos(0.55, 0);
         }
         else if (CAR_COUNT==3) {
-            setPos(0, 0);
+            setPos(0.85, -0.5);
         }
         else if (CAR_COUNT==4) {
-            setPos(0, 0);
+            setPos(0.55, -1.0);
         }
         else
             throw runtime_error("Too much racing cars created... (Created "+to_string(CAR_COUNT+1)

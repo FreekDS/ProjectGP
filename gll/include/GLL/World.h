@@ -145,6 +145,8 @@ namespace RoadFighter {
          * After that it will read the input with @see readInput()
          */
         void update() override;
+
+        void setupRaceCars();
     };
 
 } // namespace RoadFighter

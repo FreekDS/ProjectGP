@@ -27,7 +27,7 @@ namespace RoadFighter {
          * Pure virtual function which will create a Bullet
          * @return shared pointer to an Entity
          */
-        virtual shared_ptr<Entity> createBullet() const = 0;
+        virtual shared_ptr<Entity> createBullet(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const = 0;
 
         /**
          * Pure virtual function which will create a Passing Car
@@ -39,7 +39,7 @@ namespace RoadFighter {
          * Pure virtual function which will create a Race Car
          * @return shared pointer to an Entity
          */
-        virtual shared_ptr<Entity> createRaceCar() const = 0;
+        virtual shared_ptr<Entity> createRaceCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const = 0;
     };
 
 } // namespace RoadFighter

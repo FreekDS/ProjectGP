@@ -10,6 +10,12 @@ namespace RoadFighter {
 
     using speedRange = pair<double, double>;
 
+    enum move{
+        LEFT,
+        RIGHT,
+        NONE
+    };
+
     /**
      * This class represents a racing car
      * This class is derived from @see Vehicle
@@ -20,6 +26,7 @@ namespace RoadFighter {
         shared_ptr<World> m_world;
         speedRange m_range;
         bool m_finished;
+        move m_lastMove;
 
         /**
          * Static counter to count instances of this class.
@@ -45,6 +52,7 @@ namespace RoadFighter {
 
         /**
          * Updates the race car every game tick.
+         * Updates the location of the sprite.
          *
          * First phase: the player has not started moving:
          * - We don't do anything, whenever the player starts moving, we move to phase two.
