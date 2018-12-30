@@ -147,7 +147,7 @@ namespace RoadFighterSFML {
             rectangle.setSize(size);
             rectangle.setOutlineThickness(1.5f);
             rectangle.setFillColor(sf::Color::Transparent);
-            if (entity->isPlayer())
+            if (entity->getType() == EntityType::PLAYER)
                 rectangle.setOutlineColor(sf::Color::Blue);
             else
                 rectangle.setOutlineColor(sf::Color::Green);

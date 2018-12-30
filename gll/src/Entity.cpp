@@ -152,16 +152,6 @@ namespace RoadFighter {
     }
 
     /**
-     * Virtual function to determine whether the Entity is a Player
-     * @see Player for the overridden function
-     * @return True if the Entity is a Player
-     */
-    bool Entity::isPlayer() const
-    {
-        return false;
-    }
-
-    /**
      * Setter for position of Entity
      * @param x X value of Position of Entity
      * @param y Y value of Position of Entity

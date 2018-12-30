@@ -108,13 +108,6 @@ namespace RoadFighter {
         virtual bool canBeDestroyed() const = 0;
 
         /**
-         * Virtual function to determine whether the Entity is a Player
-         * @see Player for the overridden function
-         * @return True if the Entity is a Player
-         */
-        virtual bool isPlayer() const;
-
-        /**
          * Getter for Position of entity
          * @return Const reference to entity position
          */
