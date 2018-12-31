@@ -24,6 +24,10 @@ namespace RoadFighterSFML {
 
         void updateSpriteLocation() override;
 
+        void rotateSprite(float angle) override;
+
+        void setSpriteRotation(float angle) override;
+
     };
 
 }

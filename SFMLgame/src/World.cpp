@@ -61,6 +61,8 @@ namespace RoadFighterSFML {
     void World::readInput()
     {
         shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+        if(player->hasCrashed())
+            return;
         if (sf::Keyboard::isKeyPressed(m_keymap["up"])) {
             // move player up
             player->moveUp();

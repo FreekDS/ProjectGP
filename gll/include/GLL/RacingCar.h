@@ -33,6 +33,7 @@ namespace RoadFighter {
         const int m_cooldownTime;
         const int m_id;
         bool m_gameStarted;
+        double m_moveSpeed;
 
         /**
          * Static counter to count instances of this class.
@@ -99,6 +100,10 @@ namespace RoadFighter {
         void doHorizontalMovement();
 
         void updateSpeedRandom();
+
+        virtual void rotateSprite(float angle) = 0;
+
+        virtual void setSpriteRotation(float angle) = 0;
     };
 
 } // namespace RoadFighter

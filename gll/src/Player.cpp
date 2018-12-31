@@ -37,6 +37,7 @@ namespace RoadFighter {
         initializeCorners(width, height);
         setPos(-0.25, -2);
         setType(EntityType::PLAYER);
+        setRepairTime(1000);
     }
 
     /**
@@ -143,6 +144,17 @@ namespace RoadFighter {
             return m_maxSpeedWhenMovingUp;
         else
             return m_maxSpeed;
+    }
+
+    void Player::update()
+    {
+        if(hasCrashed()){
+            setSpeed(0);
+            rotateSprite(10);
+            repair();
+        }else {
+            setSpriteRotation(0);
+        }
     }
 
 } // namespace RoadFighter

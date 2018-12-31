@@ -57,17 +57,18 @@ namespace RoadFighterSFML {
          */
         void draw() const override;
 
-        /**
-         * Virtual function to update the entity
-         * - Resets the rotation of the sprite
-         */
-        void update() override;
 
         /**
          * Sets the rotation of the sprite
          * @param angle The angle over which the sprite needs to be rotated
          */
-        void setSpriteRotation(float angle);
+        void setSpriteRotation(float angle) override;
+
+        /**
+         * Rotates the sprite relative to its previous rotation.
+         * @param angle Angle over which the sprite needs to be rotated.
+         */
+        void rotateSprite(float angle) override;
     };
 
 } // namespace RoadFighterSFML

@@ -113,10 +113,17 @@ namespace RoadFighter {
             repair(true);
         if (hasCrashed()) {
             setSpeed(0);
+            if(!m_player->isMoving())
+                setMoveSpeed(0);
+            rotateSprite(10);
             if(repair()) {
                 setPos(rand->randDouble(m_world->getLeftBoundary(), m_world->getRightBoundary()),
                         getPos().y);
             }
+        }
+        else {
+            setSpriteRotation(0);
+            setMoveSpeed(m_moveSpeed);
         }
 
         // First phase
@@ -173,7 +180,8 @@ namespace RoadFighter {
         m_moveCooldown.startTimer();
 
         auto rand = Random::getInstance();
-        setMoveSpeed(rand->randDouble(3.5, 4));
+        m_moveSpeed = rand->randDouble(3.5, 4);
+        setMoveSpeed(m_moveSpeed);
 
         setRepairTime(1000);
 
@@ -224,6 +232,9 @@ namespace RoadFighter {
     void RacingCar::doHorizontalMovement()
     {
         auto rand = Random::getInstance();
+
+        if(rand->randInt(0,100)<70) // 70% chance car does not turn
+            return;
 
         bool lastLeft = m_lastMoveHorizontal==move::LEFT;
         bool lastRight = m_lastMoveHorizontal==move::RIGHT;

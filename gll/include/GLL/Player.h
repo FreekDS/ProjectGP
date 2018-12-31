@@ -83,6 +83,24 @@ namespace RoadFighter {
          * @return max speed of the player
          */
         double getMaxSpeed(bool whenPressed = true) const;
+
+        /**
+         * Sets the absolute rotation of the sprite.
+         * @param angle The angle over which the sprite needs to be rotated
+         */
+        virtual void setSpriteRotation(float angle) = 0;
+
+        /**
+         * Rotates the sprite relative to its previous rotation.
+         * @param angle Angle over which the sprite needs to be rotated.
+         */
+        virtual void rotateSprite(float angle) = 0;
+
+        /**
+         * Virtual function to update the entity
+         * - Resets the rotation of the sprite
+         */
+        void update() override;
     };
 
 } // namespace RoadFighter

@@ -57,21 +57,21 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Virtual function to update the entity
-     * - Resets the rotation of the sprite
-     */
-    void Player::update()
-    {
-        m_sprite.setRotation(0);
-    }
-
-    /**
-     * Sets the rotation of the sprite
+     * Sets the absolute rotation of the sprite.
      * @param angle The angle over which the sprite needs to be rotated
      */
     void Player::setSpriteRotation(float angle)
     {
         m_sprite.setRotation(angle);
+    }
+
+    /**
+     * Rotates the sprite relative to its previous rotation.
+     * @param angle Angle over which the sprite needs to be rotated.
+     */
+    void Player::rotateSprite(float angle)
+    {
+        m_sprite.rotate(angle);
     }
 
     /**
