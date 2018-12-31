@@ -1,5 +1,5 @@
 #include <GLL/Vehicle.h>
-
+#include <iostream>
 
 namespace RoadFighter {
 
@@ -51,7 +51,9 @@ namespace RoadFighter {
     /**
      * Default constructor for vehicle
      */
-    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0), m_crashed(false) {}
+    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0), m_crashed(false), m_repairTime(1000)
+    {
+    }
 
     /**
      * Determine whether the vehicle is significantly moving (~speed > 0.3)
@@ -77,6 +79,31 @@ namespace RoadFighter {
     bool Vehicle::hasCrashed() const
     {
         return m_crashed;
+    }
+
+    bool Vehicle::repair(bool immediate)
+    {
+        if(immediate){
+            m_crashed = false;
+            return true;
+        }
+        if(m_repairTimer.timerRunning()){
+            if (m_repairTimer.timerFinished()) {
+                m_repairTimer.reset();
+                m_crashed = false;
+                return true;
+            }
+        }else {
+            m_repairTimer.setTimer(m_repairTime);
+            m_repairTimer.startTimer();
+        }
+        return false;
+    }
+
+    void Vehicle::setRepairTime(int repairTime)
+    {
+        m_repairTime = repairTime;
+        m_repairTimer.setTimer(repairTime);
     }
 
 } // namespace RoadFighter

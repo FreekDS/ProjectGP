@@ -2,6 +2,7 @@
 #define ROADFIGHTER_VEHICLE_H
 
 #include "Entity.h"
+#include "Clock.h"
 
 namespace RoadFighter {
 
@@ -18,6 +19,8 @@ namespace RoadFighter {
         double m_speed;
         double m_movementSpeed;
         bool m_crashed;
+        Clock m_repairTimer;
+        int m_repairTime;
     public:
         /**
          * Default constructor for vehicle
@@ -104,6 +107,14 @@ namespace RoadFighter {
          * @return True if the vehicle has crashed, else false.
          */
         bool hasCrashed() const;
+
+        /**
+         * Repairs the car.
+         * Sets crashed to false.
+         */
+        bool repair(bool immediate = false);
+
+        void setRepairTime(int repairTime);
     };
 
 } // namespace RoadFighter

@@ -35,7 +35,14 @@ namespace RoadFighter {
             if (getUpperLeftCorner().x<world_boundary)
                 updatePos(getMovespeed()+0.000001, 0);
 
-            m_lastMove = move::LEFT;
+            if (m_moveCooldown.timerFinished()) {
+                m_lastMoveHorizontal = move::NONE;
+                m_moveCooldown.setTimer(m_cooldownTime);
+                m_moveCooldown.startTimer();
+            }
+            else {
+                m_lastMoveHorizontal = move::LEFT;
+            }
         }
     }
 
@@ -48,21 +55,28 @@ namespace RoadFighter {
             if (getBottomRightCorner().x>world_boundary)
                 updatePos(-getMovespeed()-0.000001, 0);
 
-            m_lastMove = move::RIGHT;
+            if (m_moveCooldown.timerFinished()) {
+                m_lastMoveHorizontal = move::NONE;
+                m_moveCooldown.setTimer(m_cooldownTime);
+                m_moveCooldown.startTimer();
+            }
+            else {
+                m_lastMoveHorizontal = move::RIGHT;
+            }
         }
     }
 
     void RacingCar::moveUp()
     {
         auto trans = Transformation::getInstance();
-        if(getPos().y < 2*trans->getYRange().second)
+        if (getPos().y<2*trans->getYRange().second)
             updatePos(0, getMovespeed());
     }
 
     void RacingCar::moveDown()
     {
         auto trans = Transformation::getInstance();
-        if(getPos().y > 4*trans->getYRange().first)
+        if (getPos().y>4*trans->getYRange().first)
             updatePos(0, -getMovespeed());
     }
 
@@ -91,25 +105,34 @@ namespace RoadFighter {
     void RacingCar::update()
     {
         updateSpriteLocation();
-
-        if(hasFinished())
+        if (hasFinished())
             return;
 
         auto rand = Random::getInstance();
+        if(!m_gameStarted && hasCrashed())
+            repair(true);
+        if (hasCrashed()) {
+            setSpeed(0);
+            if(repair()) {
+                setPos(rand->randDouble(m_world->getLeftBoundary(), m_world->getRightBoundary()),
+                        getPos().y);
+            }
+        }
 
         // First phase
 
         // initially the player is not moving and the car is not moving, so we do nothing.
         // The racing car starts updating whenever the player starts moving.
-        if (m_player->getSpeed()==0 && getSpeed()==0)
+        if (m_player->getSpeed()==0 && getSpeed()==0 && !m_gameStarted)
             return;
-
+        else
+            m_gameStarted = true;
         // Second phase
 
         // move up or down depending on the player's speed
         // The position of this statements is important. If they are not in this position, the
         // racing cars would not move up or down when the cars are speeding up for the first time.
-        if (m_player->getSpeed()<getSpeed())
+        if (m_player->getSpeed()<=getSpeed())
             moveUp();
         else
             moveDown();
@@ -119,27 +142,13 @@ namespace RoadFighter {
             accelerate();
             return;
         }
-
         // Third phase
 
         // accelerate or slow down randomly if possible
-        if (rand->randInt(0, 100)<80)   // 80% chance
-            accelerate();
-
-
-        if (rand->randInt(0, 100)<90) // 20% chance
-            slowDown();
+        updateSpeedRandom();
 
         updateMoveSpeed();
-
-        bool lastLeft = m_lastMove == move::LEFT;
-        bool lastRight = m_lastMove == move::RIGHT;
-
-        // move left or right randomly if possible
-        if (rand->randInt(0, 100)<50 || (lastLeft && rand->randInt(0,100) < 60))   // 50% chance
-            moveLeft(m_world->getLeftBoundary());
-        if (rand->randInt(0, 100)<40 || (lastRight && rand->randInt(0,100) < 40))  // 50% chance
-            moveRight(m_world->getRightBoundary());
+        doHorizontalMovement();
     }
 
     bool RacingCar::canBeDestroyed() const
@@ -148,7 +157,7 @@ namespace RoadFighter {
     }
 
     RacingCar::RacingCar(const shared_ptr<Player>& player, const shared_ptr<World>& world)
-            :m_player(player), m_world(world), m_lastMove(move::NONE)
+            :m_player(player), m_world(world), m_lastMoveHorizontal(move::NONE), m_cooldownTime(500), m_id(CAR_COUNT), m_gameStarted(false)
     {
         setType(EntityType::RACE_CAR);
 
@@ -160,8 +169,14 @@ namespace RoadFighter {
         initializeCorners(width, height);
         initializePosition();
 
+        m_moveCooldown.setTimer(m_cooldownTime);
+        m_moveCooldown.startTimer();
+
         auto rand = Random::getInstance();
         setMoveSpeed(rand->randDouble(3.5, 4));
+
+        setRepairTime(1000);
+
         CAR_COUNT++;
     }
 
@@ -172,18 +187,18 @@ namespace RoadFighter {
 
     void RacingCar::initializePosition()
     {
-        if (CAR_COUNT==0)
+        if (m_id==0)
             setPos(0.55, 1);
-        else if (CAR_COUNT==1) {
+        else if (m_id==1) {
             setPos(0.85, 0.5);
         }
-        else if (CAR_COUNT==2) {
+        else if (m_id==2) {
             setPos(0.55, 0);
         }
-        else if (CAR_COUNT==3) {
+        else if (m_id==3) {
             setPos(0.85, -0.5);
         }
-        else if (CAR_COUNT==4) {
+        else if (m_id==4) {
             setPos(0.55, -1.0);
         }
         else
@@ -203,6 +218,40 @@ namespace RoadFighter {
 
     void RacingCar::updateMoveSpeed()
     {
+
+    }
+
+    void RacingCar::doHorizontalMovement()
+    {
+        auto rand = Random::getInstance();
+
+        bool lastLeft = m_lastMoveHorizontal==move::LEFT;
+        bool lastRight = m_lastMoveHorizontal==move::RIGHT;
+
+        // move left or right randomly if possible
+        if (m_lastMoveHorizontal==move::NONE) {
+            if (rand->randInt(0, 100)<50)   // 50% chance
+                moveLeft(m_world->getLeftBoundary());
+            if (rand->randInt(0, 100)<50)   // 50% chance
+                moveRight(m_world->getRightBoundary());
+        }
+        if (lastLeft) {
+            if (rand->randInt(0, 100)<75)   // 75% chance
+                moveLeft(m_world->getLeftBoundary());
+        }
+        else if (lastRight) {
+            if (rand->randInt(0, 100)<75)     // 75% chance
+                moveRight(m_world->getRightBoundary());
+        }
+    }
+
+    void RacingCar::updateSpeedRandom()
+    {
+        auto rand = Random::getInstance();
+        if (rand->randInt(0, 100)<60)   // 60% chance
+            accelerate();
+        if (rand->randInt(0, 100)<50) // 50% chance
+            slowDown();
 
     }
 

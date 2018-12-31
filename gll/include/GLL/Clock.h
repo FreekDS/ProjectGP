@@ -52,6 +52,8 @@ namespace RoadFighter {
         int timeRemaining() const;
 
         int timeRemainingAsSeconds() const;
+
+        bool timerRunning() const;
     };
 
 } // namespace RoadFighter

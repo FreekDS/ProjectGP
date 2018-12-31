@@ -35,6 +35,7 @@ namespace RoadFighter {
     void RoadFighter::Clock::reset()
     {
         m_start = clock();
+        m_timerRunning = false;
     }
 
     Clock::Clock(int ms_to_wait) : m_start(clock()), m_msToWait(ms_to_wait), m_timerRunning(false)
@@ -42,8 +43,8 @@ namespace RoadFighter {
 
     void Clock::startTimer()
     {
-        m_timerRunning = true;
         reset();
+        m_timerRunning = true;
     }
 
     bool Clock::timerFinished()
@@ -71,6 +72,11 @@ namespace RoadFighter {
     int Clock::timeRemainingAsSeconds() const
     {
         return static_cast<int>(round(timeRemaining() / 1000));
+    }
+
+    bool Clock::timerRunning() const
+    {
+        return m_timerRunning;
     }
 
 } // namespace RoadFighter

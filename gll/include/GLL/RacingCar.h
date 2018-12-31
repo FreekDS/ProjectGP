@@ -13,6 +13,8 @@ namespace RoadFighter {
     enum move{
         LEFT,
         RIGHT,
+        UP,
+        DOWN,
         NONE
     };
 
@@ -26,7 +28,11 @@ namespace RoadFighter {
         shared_ptr<World> m_world;
         speedRange m_range;
         bool m_finished;
-        move m_lastMove;
+        move m_lastMoveHorizontal;
+        Clock m_moveCooldown;
+        const int m_cooldownTime;
+        const int m_id;
+        bool m_gameStarted;
 
         /**
          * Static counter to count instances of this class.
@@ -90,6 +96,9 @@ namespace RoadFighter {
 
         bool hasFinished() const;
 
+        void doHorizontalMovement();
+
+        void updateSpeedRandom();
     };
 
 } // namespace RoadFighter
