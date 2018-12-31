@@ -24,6 +24,8 @@ namespace RoadFighterSFML {
         void draw() const override;
 
         void updateSpriteLocation() override;
+
+        void rotateSprite(float angle) override;
     };
 }
 

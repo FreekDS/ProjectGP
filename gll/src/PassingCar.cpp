@@ -31,7 +31,7 @@ namespace RoadFighter {
      * @param world Shared pointer to the World.
      */
     PassingCar::PassingCar(const shared_ptr<Player>& player, const shared_ptr<World>& world)
-            :m_player(player), m_world(world)
+            :m_player(player), m_world(world), m_destroyAble(false)
     {
         double width = 0.24;
         double height = 0.40;
@@ -40,6 +40,7 @@ namespace RoadFighter {
         auto rand = Random::getInstance();
         setMoveSpeed(rand->randDouble(3,8));
         setType(EntityType::PASSING_CAR);
+        setRepairTime(200);
     }
 
     /**
@@ -49,6 +50,12 @@ namespace RoadFighter {
     {
         updateSpriteLocation();
         moveDown();
+        if(hasCrashed()){
+            setMoveSpeed(0);
+            rotateSprite(5);
+            if(repair())
+                m_destroyAble = true;
+        }
     }
 
     /**
@@ -63,7 +70,7 @@ namespace RoadFighter {
     {
         auto trans = Transformation::getInstance();
         range yRange = trans->getYRange();
-        return getPos().y<2*yRange.first || getPos().y>2*yRange.second || hasCrashed();
+        return getPos().y<2*yRange.first || getPos().y>2*yRange.second || m_destroyAble;
     }
 
     /**

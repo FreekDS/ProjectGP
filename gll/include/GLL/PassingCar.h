@@ -18,6 +18,7 @@ namespace RoadFighter {
     private:
         shared_ptr<Player> m_player;
         shared_ptr<World> m_world;
+        bool m_destroyAble;
     public:
         /**
          * Constructor of PassingCar taking the speed of the vehicle.
@@ -95,6 +96,8 @@ namespace RoadFighter {
          * The position will be initialized in between the two boundaries of the World.
          */
         void initializePosition();
+
+        virtual void rotateSprite(float angle) = 0;
     };
 
 } // namespace RoadFighter

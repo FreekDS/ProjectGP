@@ -29,5 +29,10 @@ namespace RoadFighterSFML {
         m_sprite.setPosition(static_cast<float>(screenPos.x), static_cast<float>(screenPos.y));
     }
 
+    void PassingCar::rotateSprite(float angle)
+    {
+        m_sprite.rotate(angle);
+    }
+
 
 } // namespace RoadFighterSFML
