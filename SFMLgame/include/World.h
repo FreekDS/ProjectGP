@@ -29,50 +29,50 @@ namespace RoadFighterSFML {
         bool m_debug;
     public:
         /**
-         * Constructor for the SFML World
-         * This constructor will look for file_name in the folder ./res/sprites/ui/
-         * @param file_name Name of the file of the background
-         * @param window Reference to the SFML window
-         * @param debug Enable or disable debug information
+         * Constructor for the SFML World.
+         * This constructor will look for file_name in the folder "./res/sprites/ui/".
+         * @param file_name Name of the file of the background.
+         * @param window Reference to the SFML window.
+         * @param debug Enable or disable debug information.
          */
         World(const string& file_name, window_ptr& window, bool debug = false);
 
         /**
-         * Draws the world and its components to the window
+         * Draws the world and its components to the window.
          */
         void draw() const override;
 
 
         /**
-         * Reads the user input and interprets them
+         * Reads the user input and interprets them.
          */
         void readInput() override;
 
         /**
-         * Initializes the keymap
+         * Initializes the keymap.
          */
         void initializeKeymap();
 
         /**
-         * Updates the background loop
+         * Updates the background loop.
          * The background loop works as follows: there are two equal sprites pasted above each other.
-         * When one sprite leaves the window completely (is not visible anymore) This one is moved above
-         * the one which is still visible to create a notion of an infinite scrolling background
-         * @param toMove The sprite which is not visible on the screen
-         * @param other The other sprite
+         * When one sprite leaves the window completely (is not visible anymore) This one is moved above.
+         * the one which is still visible to create a notion of an infinite scrolling background.
+         * @param toMove The sprite which is not visible on the screen.
+         * @param other The other sprite.
          *
-         * If toMove is visible, and other is not, both sprites are swapped
+         * If toMove is visible, and other is not, both sprites are swapped.
          */
         void backgroundLoopUpdate(sf::Sprite& toMove, sf::Sprite& other);
 
         /**
-         * Draws the colliders of an entity
-         * @param entity Entity to draw colliders of
+         * Draws the colliders of an entity.
+         * @param entity Entity to draw colliders of.
          */
         void drawColliders(const shared_ptr<RoadFighter::Entity>& entity) const;
 
         /**
-         * Draws the boundaries of the world (great for debugging)
+         * Draws the boundaries of the world (great for debugging).
          */
         void drawBounds() const;
 

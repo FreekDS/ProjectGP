@@ -3,8 +3,8 @@
 namespace RoadFighter {
 
     /**
-     * Constructor for Bullet
-     * @param shootSpeed shooting speed of the bullet
+     * Constructor for Bullet.
+     * @param shootSpeed shooting speed of the bullet.
      */
     Bullet::Bullet(double shootSpeed)
             :m_shootSpeed(shootSpeed) {
@@ -12,15 +12,15 @@ namespace RoadFighter {
     }
 
     /**
-     * Default constructor for Bullet
+     * Default constructor for Bullet.
      */
     Bullet::Bullet()
             :m_shootSpeed(0) { }
 
     /**
-     * Assignment operator for Bullet
-     * @param other The other bullet
-     * @return Reference to bullet which is equal to other
+     * Assignment operator for Bullet.
+     * @param other The other bullet.
+     * @return Reference to bullet which is equal to other.
      */
     Bullet& Bullet::operator=(const RoadFighter::Bullet& other)
     {
@@ -31,8 +31,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for the shooting speed of the Bullet
-     * @return Shooting speed of the Bullet
+     * Getter for the shooting speed of the Bullet.
+     * @return Shooting speed of the Bullet.
      */
     double Bullet::getShootSpeed() const
     {
@@ -40,8 +40,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Setter for the shooting speed of the Bullet
-     * @param speed New shooting speed for the Bullet
+     * Setter for the shooting speed of the Bullet.
+     * @param speed New shooting speed for the Bullet.
      */
     void Bullet::setShootSpeed(double speed)
     {
@@ -49,7 +49,7 @@ namespace RoadFighter {
     }
 
     /**
-     * Default destructor for Bullet
+     * Default destructor for Bullet.
      */
     Bullet::~Bullet() = default;
 

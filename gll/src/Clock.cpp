@@ -5,15 +5,15 @@
 namespace RoadFighter {
 
     /**
-     * Default constructor for Clock
-     * This constructor will start the time
+     * Default constructor for Clock.
+     * This constructor will start the time.
      */
     RoadFighter::Clock::Clock()
             :m_start(clock()) { }
 
     /**
-     * Calculates the elapsed time and returns it as seconds
-     * @return Elapsed time in seconds
+     * Calculates the elapsed time and returns it as seconds.
+     * @return Elapsed time in seconds.
      */
     double RoadFighter::Clock::getTimeAsSeconds() const
     {
@@ -21,8 +21,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Calculates the elapsed time and returns it as milliseconds
-     * @return Elapsed time in milliseconds
+     * Calculates the elapsed time and returns it as milliseconds.
+     * @return Elapsed time in milliseconds.
      */
     double RoadFighter::Clock::getTimeAsMilliseconds() const
     {
@@ -30,7 +30,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Resets the clock
+     * Resets the clock.
+     * Also resets the timer.
      */
     void RoadFighter::Clock::reset()
     {
@@ -41,12 +42,19 @@ namespace RoadFighter {
     Clock::Clock(int ms_to_wait) : m_start(clock()), m_msToWait(ms_to_wait), m_timerRunning(false)
     {}
 
+    /**
+     * Starts the timer.
+     */
     void Clock::startTimer()
     {
         reset();
         m_timerRunning = true;
     }
 
+    /**
+     * Check whether the timer has finished.
+     * @return True if the timer has finished.
+     */
     bool Clock::timerFinished()
     {
         if(getTimeAsMilliseconds() >= m_msToWait) {
@@ -56,11 +64,19 @@ namespace RoadFighter {
         return false;
     }
 
+    /**
+     * Sets the timer.
+     * @param ms_to_wait Amount of milliseconds to time.
+     */
     void Clock::setTimer(int ms_to_wait)
     {
         m_msToWait = ms_to_wait;
     }
 
+    /**
+     * Returns remaining time of timer.
+     * @return Remaining time (in milliseconds).
+     */
     int Clock::timeRemaining() const
     {
         if(m_timerRunning)
@@ -69,11 +85,19 @@ namespace RoadFighter {
             throw std::runtime_error("Timer is not running...");
     }
 
+    /**
+     * Returns remaining time of timer.
+     * @return Remaining time (in seconds).
+     */
     int Clock::timeRemainingAsSeconds() const
     {
         return static_cast<int>(round(timeRemaining() / 1000));
     }
 
+    /**
+     * Check whether the timer is running.
+     * @return True if the timer is running.
+     */
     bool Clock::timerRunning() const
     {
         return m_timerRunning;

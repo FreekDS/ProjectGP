@@ -8,9 +8,9 @@ namespace RoadFighter {
 //Speed observer /////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Constructor for SpeedObserver
+     * Constructor for SpeedObserver.
      * @param subject Subject to observe
-     * @param str String containing additional information ex. 'speed: '
+     * @param str String containing additional information ex. 'speed: '.
      */
     SpeedObserver::SpeedObserver(const shared_ptr<Player>& subject, const string& str)
             :m_subject(subject), m_string(str), m_pos(1.5,2.5)
@@ -19,7 +19,7 @@ namespace RoadFighter {
     }
 
     /**
-     * Update the speed observer with the new speed of the subject
+     * Update the speed observer with the new speed of the subject.
      */
     void SpeedObserver::update()
     {
@@ -27,8 +27,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Get the player speed in a 'realistic' form
-     * @return Speed in a 'realistic' form (multiplied by 10)
+     * Get the player speed in a 'realistic' form.
+     * @return Speed in a 'realistic' form (multiplied by 10).
      */
     unsigned int SpeedObserver::getPlayerSpeed() const
     {

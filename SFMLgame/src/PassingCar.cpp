@@ -5,6 +5,13 @@
 
 namespace RoadFighterSFML {
 
+    /**
+     * Constructor for PassingCar.
+     * @param file_name File name of texture. Looks in the folder "./res/sprites/entity/".
+     * @param window Shared pointer to the window.
+     * @param world Shared pointer to the world.
+     * @param player Shared pointer to the Player.
+     */
     PassingCar::PassingCar(const string& file_name, const window_ptr& window, shared_ptr<RoadFighter::World>& world,
             shared_ptr<RoadFighter::Player>& player)
             :RoadFighter::PassingCar(player, world), m_window(window)
@@ -17,11 +24,17 @@ namespace RoadFighterSFML {
         scaleSprite(m_sprite, getUpperLeftCorner(), getBottomRightCorner());
     }
 
+    /**
+     * Draws the passing car to the window.
+     */
     void PassingCar::draw() const
     {
         m_window->draw(m_sprite);
     }
 
+    /**
+     * Updates the location of the sprite.
+     */
     void PassingCar::updateSpriteLocation()
     {
         shared_ptr<RoadFighter::Transformation> trans = RoadFighter::Transformation::getInstance();
@@ -29,6 +42,10 @@ namespace RoadFighterSFML {
         m_sprite.setPosition(static_cast<float>(screenPos.x), static_cast<float>(screenPos.y));
     }
 
+    /**
+     * Rotates the sprite relative to its current rotation.
+     * @param angle Angle to rotate over.
+     */
     void PassingCar::rotateSprite(float angle)
     {
         m_sprite.rotate(angle);

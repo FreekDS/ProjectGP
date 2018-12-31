@@ -5,27 +5,27 @@
 namespace RoadFighter {
 
     /**
-     * Default constructor of Entity
-     * Initializes the position, and both corners on (0,0)
+     * Default constructor of Entity.
+     * Initializes the position, and both corners on (0,0).
      */
     Entity::Entity()
             :m_pos(Position()), m_cornerUL(Position()), m_cornerBR(Position()), m_type(EntityType::UNKNOWN) { }
 
     /**
-     * Default destructor for Entity
+     * Default destructor for Entity.
      */
     Entity::~Entity() = default;
 
     /**
-     * Copy constructor of Entity
-     * @param other Const reference to entity which needs to be copied
+     * Copy constructor of Entity.
+     * @param other Const reference to entity which needs to be copied.
      */
     Entity::Entity(const Entity& other) = default;
 
     /**
-     * Assignment operator of Entity
-     * @param other Const reference to other entity
-     * @return Reference to Entity which is equal to other
+     * Assignment operator of Entity.
+     * @param other Const reference to other entity.
+     * @return Reference to Entity which is equal to other.
      */
     Entity& Entity::operator=(const Entity& other)
     {
@@ -39,8 +39,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Move constructor of Entity
-     * @param other Entity to move
+     * Move constructor of Entity.
+     * @param other Entity to move.
      */
     Entity::Entity(Entity&& other) noexcept
             :m_pos(other.m_pos), m_cornerUL(other.m_cornerUL), m_cornerBR(other.m_cornerBR),
@@ -50,9 +50,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Move assignment operator
-     * @param other Entity to move
-     * @return Reference to entity which is equal to the original other
+     * Move assignment operator.
+     * @param other Entity to move.
+     * @return Reference to entity which is equal to the original other.
      */
     Entity& Entity::operator=(Entity&& other) noexcept
     {
@@ -68,8 +68,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Checks whether the Entity is in the coordinate system of the game logic
-     * @return True if the position is in [-4,4] x [-3,3]
+     * Checks whether the Entity is in the coordinate system of the game logic.
+     * @return True if the position is in [-4,4] x [-3,3].
      */
     bool Entity::isVisible() const
     {
@@ -80,8 +80,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for Position of entity
-     * @return Const reference to entity position
+     * Getter for Position of entity.
+     * @return Const reference to entity position.
      */
     const Position& Entity::getPos() const
     {
@@ -89,8 +89,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Setter for Position of Entity
-     * @param pos New position for Entity
+     * Setter for Position of Entity.
+     * @param pos New position for Entity.
      */
     void Entity::setPos(const Position& pos)
     {
@@ -98,8 +98,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for upper left corner of the Entity
-     * @return Const reference to Position of the upper left corner
+     * Getter for upper left corner of the Entity.
+     * @return Const reference to Position of the upper left corner.
      */
     const Position& Entity::getUpperLeftCorner() const
     {
@@ -107,8 +107,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for the bottom right corner of the Entity
-     * @return Const reference to Position of bottom right corner
+     * Getter for the bottom right corner of the Entity.
+     * @return Const reference to Position of bottom right corner.
      */
     const Position& Entity::getBottomRightCorner() const
     {
@@ -116,8 +116,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Setter for upper left corner of Entity
-     * @param cornerUpLeft New Position of upper left corner
+     * Setter for upper left corner of Entity.
+     * @param cornerUpLeft New Position of upper left corner.
      */
     void Entity::setUpperLeftCorner(const Position& cornerUpLeft)
     {
@@ -125,8 +125,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Setter for bottom right corner of Entity
-     * @param cornerBottomRight New Position of bottom right corner
+     * Setter for bottom right corner of Entity.
+     * @param cornerBottomRight New Position of bottom right corner.
      */
     void Entity::setBottomRightCorner(const Position& cornerBottomRight)
     {
@@ -134,8 +134,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Calculates the width of the Entity based on the two corners
-     * @return Width of Entity
+     * Calculates the width of the Entity based on the two corners.
+     * @return Width of Entity.
      */
     double Entity::getWidth() const
     {
@@ -143,8 +143,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Calculates the height of the Entity based on the two corners
-     * @return Height of the Entity
+     * Calculates the height of the Entity based on the two corners.
+     * @return Height of the Entity.
      */
     double Entity::getHeight() const
     {
@@ -152,9 +152,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Setter for position of Entity
-     * @param x X value of Position of Entity
-     * @param y Y value of Position of Entity
+     * Setter for position of Entity.
+     * @param x X value of Position of Entity.
+     * @param y Y value of Position of Entity.
      */
     void Entity::setPos(double x, double y)
     {
@@ -172,10 +172,10 @@ namespace RoadFighter {
     }
 
     /**
-     * Updates the position of the entity
-     * This function also updates the two corners respectively
-     * @param x X value to add to the Position
-     * @param y Y value to add to the Position
+     * Updates the position of the entity.
+     * This function also updates the two corners respectively.
+     * @param x X value to add to the Position.
+     * @param y Y value to add to the Position.
      */
     void Entity::updatePos(double x, double y)
     {
@@ -190,8 +190,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Adds a collider to the Entity
-     * @param collider Collider to add to the entity
+     * Adds a collider to the Entity.
+     * @param collider Collider to add to the entity.
      */
     void Entity::addCollider(const BoxCollider& collider)
     {
@@ -199,8 +199,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Removes a collider form the Entity
-     * @param i Index of collider to remove
+     * Removes a collider form the Entity.
+     * @param i Index of collider to remove.
      */
     void Entity::removeCollider(int i)
     {
@@ -208,8 +208,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for colliders
-     * @return Vector of box colliders
+     * Getter for colliders.
+     * @return Vector of box colliders.
      */
     const vector<BoxCollider>& Entity::getColliders() const
     {
@@ -234,7 +234,7 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for the type of the Entity
+     * Getter for the type of the Entity.
      * @return Type of the entity.
      */
     EntityType Entity::getType() const

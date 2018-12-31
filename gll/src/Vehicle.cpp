@@ -4,15 +4,15 @@
 namespace RoadFighter {
 
     /**
-     * Constructor for Vehicle
-     * @param speed Speed of the vehicle
+     * Constructor for Vehicle.
+     * @param speed Speed of the vehicle.
      */
     Vehicle::Vehicle(double speed)
             :m_speed(speed), m_movementSpeed(3.0), m_crashed(false) { }
 
     /**
-     * Getter for speed of vehicle
-     * @return Speed of vehicle
+     * Getter for speed of vehicle.
+     * @return Speed of vehicle.
      */
     double Vehicle::getSpeed() const
     {
@@ -20,8 +20,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Setter for speed of vehicle
-     * @param speed New speed of vehicle
+     * Setter for speed of vehicle.
+     * @param speed New speed of vehicle.
      */
     void Vehicle::setSpeed(double speed)
     {
@@ -29,10 +29,10 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for the movement speed of the vehicle
-     * Divides movement speed by 1000 for appropriate movement speed in gll
-     * @param division Divider of movement speed, default 1000
-     * @return Movement speed of the vehicle
+     * Getter for the movement speed of the vehicle.
+     * Divides movement speed by 1000 for appropriate movement speed in gll.
+     * @param division Divider of movement speed, default 1000.
+     * @return Movement speed of the vehicle.
      */
     double Vehicle::getMovespeed(double division) const
     {
@@ -40,8 +40,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Setter for the movement speed of the vehicle
-     * @param ms Movement speed of the vehicle
+     * Setter for the movement speed of the vehicle.
+     * @param ms Movement speed of the vehicle.
      */
     void Vehicle::setMoveSpeed(double ms)
     {
@@ -49,15 +49,15 @@ namespace RoadFighter {
     }
 
     /**
-     * Default constructor for vehicle
+     * Default constructor for vehicle.
      */
     Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0), m_crashed(false), m_repairTime(1000)
     {
     }
 
     /**
-     * Determine whether the vehicle is significantly moving (~speed > 0.3)
-     * @return True when Vehicle moves
+     * Determine whether the vehicle is significantly moving (~speed > 0.3).
+     * @return True when Vehicle moves.
      */
     bool Vehicle::isMoving() const
     {
@@ -65,7 +65,7 @@ namespace RoadFighter {
     }
 
     /**
-     * This function lets a vehicle crash. (sets its variable to true)
+     * This function lets a vehicle crash. (sets its variable to true).
      */
     void Vehicle::crash()
     {
@@ -81,6 +81,10 @@ namespace RoadFighter {
         return m_crashed;
     }
 
+    /**
+     * Repairs the car.
+     * Sets crashed to false.
+     */
     bool Vehicle::repair(bool immediate)
     {
         if(immediate){
@@ -100,6 +104,10 @@ namespace RoadFighter {
         return false;
     }
 
+    /**
+     * Sets the time it takes to repair the vehicle.
+     * @param repairTime Time it takes to repair in milliseconds.
+     */
     void Vehicle::setRepairTime(int repairTime)
     {
         m_repairTime = repairTime;

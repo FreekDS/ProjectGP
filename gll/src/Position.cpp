@@ -6,25 +6,25 @@
 namespace RoadFighter {
 
     /**
-     * Constructor of Position
-     * Initializes the position on (0,0)
+     * Constructor of Position.
+     * Initializes the position on (0,0).
      */
     Position::Position()
             :x(0), y(0) { }
 
     /**
-     * Constructor of Position
-     * Initializes the position on given (x, y) value
-     * @param x X value of position
-     * @param y Y value of position
+     * Constructor of Position.
+     * Initializes the position on given (x, y) value.
+     * @param x X value of position.
+     * @param y Y value of position.
      */
     Position::Position(double xPos, double yPos)
             :x(xPos), y(yPos) { }
 
     /**
-     * Assignment operator of Position
-     * @param other Assign 'this' to other
-     * @return reference to 'this'
+     * Assignment operator of Position.
+     * @param other Assign 'this' to other.
+     * @return reference to 'this'.
      */
     Position& Position::operator=(Position const& other)
     {
@@ -36,10 +36,10 @@ namespace RoadFighter {
     }
 
     /**
-     * Outputs the position to a stream
-     * @param os Stream to output to
-     * @param position  Position to output to
-     * @return Reference to updated stream
+     * Outputs the position to a stream.
+     * @param os Stream to output to.
+     * @param position  Position to output to.
+     * @return Reference to updated stream.
      */
     std::ostream& operator<<(std::ostream& os, const Position& position)
     {
@@ -48,8 +48,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Converts a position to a string of the form (x,y)
-     * @return String representing the position
+     * Converts a position to a string of the form (x,y).
+     * @return String representing the position.
      */
     const std::string Position::toString() const
     {
@@ -57,7 +57,7 @@ namespace RoadFighter {
     }
 
     /**
-     * Default destructor of Position
+     * Default destructor of Position.
      */
     Position::~Position() = default;
 

@@ -10,8 +10,8 @@ namespace RoadFighter {
      * Class used to generate random numbers.
      * This class is based on the Singleton design pattern.
      * This class has:
-     * - A generator
-     * - An instance of itself (singleton)
+     * - A generator.
+     * - An instance of itself (singleton).
      */
     class Random {
     private:

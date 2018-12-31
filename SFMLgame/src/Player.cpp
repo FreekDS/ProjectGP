@@ -5,10 +5,10 @@
 namespace RoadFighterSFML {
 
     /**
-     * Constructor for SFML Player
-     * m_texture is taken from m_sprite
-     * @param sprite Sprite of the player
-     * @param window RenderWindow to be drawn on
+     * Constructor for SFML Player.
+     * m_texture is taken from m_sprite.
+     * @param sprite Sprite of the player.
+     * @param window RenderWindow to be drawn on.
      */
     Player::Player(const sf::Sprite& sprite, const window_ptr& window)
             :m_texture(*sprite.getTexture()), m_sprite(sprite), m_window(window)
@@ -18,10 +18,10 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Constructor for SFML Player
-     * This constructor will look for file_name in the res/sprites/entity folder
-     * @param file_name File name of .png image
-     * @param window RenderWindow to be drawn on
+     * Constructor for SFML Player.
+     * This constructor will look for file_name in the res/sprites/entity folder.
+     * @param file_name File name of .png image.
+     * @param window RenderWindow to be drawn on.
      */
     Player::Player(const std::string& file_name, const window_ptr& window)
             :m_window(window)
@@ -36,7 +36,7 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Virtual function to draw the entity
+     * Virtual function to draw the entity.
      */
     void Player::draw() const
     {
@@ -46,8 +46,8 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Updates the screen coordinates of the sprite based on the coordinates in the Game Logic
-     * This method makes use of the @see Transformation class
+     * Updates the screen coordinates of the sprite based on the coordinates in the Game Logic.
+     * This method makes use of the @see Transformation class.
      */
     void Player::updateSpriteLocation()
     {
@@ -58,7 +58,7 @@ namespace RoadFighterSFML {
 
     /**
      * Sets the absolute rotation of the sprite.
-     * @param angle The angle over which the sprite needs to be rotated
+     * @param angle The angle over which the sprite needs to be rotated.
      */
     void Player::setSpriteRotation(float angle)
     {
@@ -75,7 +75,7 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Default destructor for SFML Player
+     * Default destructor for SFML Player.
      */
     Player::~Player() = default;
 

@@ -13,13 +13,13 @@ using namespace std;
 namespace RoadFighter {
 
     /**
-     * This class represents the World of Road Fighter
-     * Based on Composite design pattern
+     * This class represents the World of Road Fighter.
+     * Based on Composite design pattern.
      * A world has:
-     * - A list of child entities
-     * - An abstract factory
-     * - Two boundaries (left and right)
-     * - A clock used as cooldown for the spawning of entities
+     * - A list of child entities.
+     * - An abstract factory.
+     * - Two boundaries (left and right).
+     * - A clock used as cooldown for the spawning of entities.
      *
      * The world is derived from Entity and std::enable_shared_from_this to create
      * a shared pointer of this class.
@@ -33,65 +33,65 @@ namespace RoadFighter {
         Clock m_spawnCooldown;
     public:
         /**
-         * Default constructor of World
+         * Default constructor of World.
          */
         World();
 
         /**
-         * Setter for the Entity factory of the world
-         * @param factory EntityFactory of the world
+         * Setter for the Entity factory of the world.
+         * @param factory EntityFactory of the world.
          */
         void setFactory(const shared_ptr<EntityFactory>& factory);
 
         /**
-         * Getter for the EntityFactory of the world
-         * @return Reference to the EntityFactory
+         * Getter for the EntityFactory of the world.
+         * @return Reference to the EntityFactory.
          */
         const shared_ptr<EntityFactory>& getFactory() const;
 
         /**
-         * Default destructor of World
+         * Default destructor of World.
          */
         ~World() override;
 
         /**
-         * Assignment operator for World
-         * @param other World to assign this one to
-         * @return Reference to a World object
+         * Assignment operator for World.
+         * @param other World to assign this one to.
+         * @return Reference to a World object.
          */
         World& operator=(const World& other);
 
         /**
-         * Adds an Entity to the world
-         * Part of the Composite design pattern
-         * @param entity
+         * Adds an Entity to the world.
+         * Part of the Composite design pattern.
+         * @param entity Entity to add.
          */
         void add(shared_ptr<Entity> entity);
 
         /**
-         * Remove an Entity of the world
-         * Part of the Composite design pattern
-         * @param entity Entity which needs to be removed
+         * Remove an Entity of the world.
+         * Part of the Composite design pattern.
+         * @param entity Entity which needs to be removed.
          */
         void remove(shared_ptr<Entity> entity);
 
         /**
-         * Check whether the world is empty or not
-         * @return True if the world has no Entities in it
+         * Check whether the world is empty or not.
+         * @return True if the world has no Entities in it.
          */
         bool empty();
 
         /**
-         * Check for collision between two entities
-         * @param entity1 First Entity to check
-         * @param entity2 Second Entity to check
-         * @return True if entity1 and entity2 collide
+         * Check for collision between two entities.
+         * @param entity1 First Entity to check.
+         * @param entity2 Second Entity to check.
+         * @return True if entity1 and entity2 collide.
          */
         bool checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2) const;
 
         /**
-         * Determine whether the Entity can be destroyed or not
-         * @return False, the world cannot be destroyed during the game
+         * Determine whether the Entity can be destroyed or not.
+         * @return False, the world cannot be destroyed during the game.
          */
         bool canBeDestroyed() const override;
 
@@ -103,7 +103,7 @@ namespace RoadFighter {
 
         /**
          * Getter for boundary1 of world.
-         * @return Boundary1
+         * @return Boundary1.
          */
         double getLeftBoundary() const;
 
@@ -140,12 +140,15 @@ namespace RoadFighter {
         virtual void readInput() = 0;
 
         /**
-         * Updates the world and all its components
-         * This function first updates all the components
-         * After that it will read the input with @see readInput()
+         * Updates the world and all its components.
+         * This function first updates all the components.
+         * After that it will read the input with @see readInput().
          */
         void update() override;
 
+        /**
+         * Sets the racing cars.
+         */
         void setupRaceCars();
     };
 

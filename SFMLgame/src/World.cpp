@@ -5,7 +5,7 @@
 namespace RoadFighterSFML {
 
     /**
-     * Draws the world and its components to the window
+     * Draws the world and its components to the window.
      */
     void World::draw() const
     {
@@ -21,12 +21,12 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Constructor for the SFML World
-     * This constructor will look for file_name in the folder ./res/sprites/ui/
-     * This constructor will initialize the sprites and the texture and scale them so they match the window
-     * The keymap will be initialized as well using @see initializeKeymap()
-     * @param file_name Name of the file of the background
-     * @param window Reference to the SFML window
+     * Constructor for the SFML World.
+     * This constructor will look for file_name in the folder "./res/sprites/ui/".
+     * This constructor will initialize the sprites and the texture and scale them so they match the window.
+     * The keymap will be initialized as well using @see initializeKeymap().
+     * @param file_name Name of the file of the background.
+     * @param window Reference to the SFML window.
      */
     World::World(const string& file_name, window_ptr& window, bool debug)
             :m_window(window), m_debug(debug)
@@ -56,7 +56,7 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Reads the user input and interprets them
+     * Reads the user input and interprets them.
      */
     void World::readInput()
     {
@@ -106,7 +106,7 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Initializes the keymap
+     * Initializes the keymap.
      */
     void World::initializeKeymap()
     {
@@ -119,14 +119,14 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Updates the background loop
+     * Updates the background loop.
      * The background loop works as follows: there are two equal sprites pasted above each other.
-     * When one sprite leaves the window completely (is not visible anymore) This one is moved above
-     * the one which is still visible to create a notion of an infinite scrolling background
-     * @param toMove The sprite which is not visible on the screen
-     * @param other The other sprite
+     * When one sprite leaves the window completely (is not visible anymore) This one is moved above.
+     * the one which is still visible to create a notion of an infinite scrolling background.
+     * @param toMove The sprite which is not visible on the screen.
+     * @param other The other sprite.
      *
-     * If toMove is visible, and other is not, both sprites are swapped
+     * If toMove is visible, and other is not, both sprites are swapped.
      */
     void World::backgroundLoopUpdate(sf::Sprite& toMove, sf::Sprite& other)
     {
@@ -137,8 +137,8 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Draws the colliders of an entity
-     * @param entity Entity to draw colliders of
+     * Draws the colliders of an entity.
+     * @param entity Entity to draw colliders of.
      */
     void World::drawColliders(const shared_ptr<RoadFighter::Entity>& entity) const
     {
@@ -162,7 +162,7 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Draws the boundaries of the world (great for debugging)
+     * Draws the boundaries of the world (great for debugging).
      */
     void World::drawBounds() const
     {

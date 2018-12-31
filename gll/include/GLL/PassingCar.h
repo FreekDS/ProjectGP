@@ -13,6 +13,7 @@ namespace RoadFighter {
      * A passing car has:
      * - A shared pointer of the player.
      * - A shared pointer to the world.
+     * - A boolean to determine whether te car can be destroyed or not.
      */
     class PassingCar : public Vehicle {
     private:
@@ -49,7 +50,7 @@ namespace RoadFighter {
          * Determine whether the PassingCar can be destroyed or not.
          * A PassingCar can be destroyed if it's Y position is lower than 2 times the minimum Y
          * or if it's Y position is greater than 2 times the maximum Y.
-         * A PassingCar can also be destroyed if it has crashed.
+         * A PassingCar can also be destroyed if it has crashed (= m_destroyAble is true).
          * This minimum and maximum are obtained from @see Transformation
          * @return True if the PassingCar can be destroyed
          */
@@ -97,6 +98,10 @@ namespace RoadFighter {
          */
         void initializePosition();
 
+        /**
+         * Rotates the sprite relative to its current rotation.
+         * @param angle Angle to rotate over.
+         */
         virtual void rotateSprite(float angle) = 0;
     };
 

@@ -14,10 +14,11 @@ namespace RoadFighter {
              m_rangeX({-4, 4}),
              m_rangeY({-3, 3}) { }
 
+
     /**
-     * Getter for the instance of the class
-     * If there is no instance yet, it will be created
-     * @return Static instance of the class as a shared pointer
+     * Getter for the instance of the class.
+     * If there is no instance yet, it will be created.
+     * @return Static instance of the class as a shared pointer.
      */
     shared_ptr<RoadFighter::Transformation> Transformation::getInstance()
     {
@@ -27,9 +28,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Sets the sizes of the window
-     * @param width Width of the window
-     * @param height Height of the window
+     * Sets the sizes of the window.
+     * @param width Width of the window.
+     * @param height Height of the window.
      */
     void Transformation::setScreenSize(unsigned int width, unsigned int height)
     {
@@ -38,11 +39,11 @@ namespace RoadFighter {
     }
 
     /**
-     * Sets the range on the x-axis
-     * If from is bigger than to, the values are swapped
-     * @param from Minimum of the range
-     * @param to Maximum of the range
-     */
+      * Sets the range on the x-axis.
+      * If from is bigger than to, the values are swapped.
+      * @param from Minimum of the range.
+      * @param to Maximum of the range.
+      */
     void Transformation::setRangeX(double from, double to)
     {
         if (from>to)
@@ -52,10 +53,10 @@ namespace RoadFighter {
     }
 
     /**
-     * Sets the range on the y-axis
-     * If from is bigger than to, the values are swapped
-     * @param from Minimum of the range
-     * @param to Maximum of the range
+     * Sets the range on the y-axis.
+     * If from is bigger than to, the values are swapped.
+     * @param from Minimum of the range.
+     * @param to Maximum of the range.
      */
     void Transformation::setRangeY(double from, double to)
     {
@@ -66,10 +67,10 @@ namespace RoadFighter {
     }
 
     /**
-     * Calculates the coordinate on the window
-     * @param cartesianX X value of coordinate in game logic
-     * @param cartesianY Y value of coordinate in game logic
-     * @return Position on the screen (screen coordinate)
+     * Calculates the coordinate on the window.
+     * @param cartesianX X value of coordinate in game logic.
+     * @param cartesianY Y value of coordinate in game logic.
+     * @return Position on the screen (screen coordinate).
      */
     Position Transformation::getScreenCoordinate(double cartesianX, double cartesianY)
     {
@@ -82,8 +83,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for the range of x-axis
-     * @return A pair of doubles representing the range on the x-axis
+     * Getter for the range of x-axis.
+     * @return A pair of doubles representing the range on the x-axis.
      */
     range Transformation::getXRange() const
     {
@@ -91,8 +92,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for the range of y-axis
-     * @return A pair of doubles representing the range on the y-axis
+     * Getter for the range of y-axis.
+     * @return A pair of doubles representing the range on the y-axis.
      */
     range Transformation::getYRange() const
     {
@@ -100,9 +101,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Calculates the coordinate on the window
-     * @param cartesianPos Coordinate in game logic
-     * @return Position on the screen (screen coordinate)
+     * Calculates the coordinate on the window.
+     * @param cartesianPos Coordinate in game logic.
+     * @return Position on the screen (screen coordinate).
      */
     Position Transformation::getScreenCoordinate(const Position& cartesianPos)
     {
@@ -115,9 +116,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Determine whether a position is in the grid or not
-     * @param pos Position which needs to be checked
-     * @return True if the position is in the grid
+     * Determine whether a position is in the grid or not.
+     * @param pos Position which needs to be checked.
+     * @return True if the position is in the grid.
      */
     bool Transformation::isInGrid(const Position& pos)
     {

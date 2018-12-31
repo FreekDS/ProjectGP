@@ -3,9 +3,9 @@
 namespace RoadFighter {
 
     /**
-     * Constructor for a box collider
+     * Constructor for a box collider.
      * The constructor will reformat the corners if corner1 is not the upper left corner
-     * and corner two is not the bottom right corner, so they match the requirements for this collider
+     * and corner two is not the bottom right corner, so they match the requirements for this collider.
      * @param corner1 First corner of the collision rectangle
      * @param corner2 Second corner of the collision rectangle
      */
@@ -24,8 +24,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for upper left corner
-     * @return Upper left corner
+     * Getter for upper left corner.
+     * @return Upper left corner.
      */
     const Position& BoxCollider::getUpperLeftCorner() const
     {
@@ -33,8 +33,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for bottom right corner
-     * @return Bottom right corner
+     * Getter for bottom right corner.
+     * @return Bottom right corner..
      */
     const Position& BoxCollider::getBottomRightCorner() const
     {
@@ -42,14 +42,14 @@ namespace RoadFighter {
     }
 
     /**
-     * Default destructor for BoxCollider
+     * Default destructor for BoxCollider.
      */
     BoxCollider::~BoxCollider() = default;
 
     /**
-     * Updates the corners of the collider
-     * @param x X value to add to collider
-     * @param y Y value to add to collider
+     * Updates the corners of the collider.
+     * @param x X value to add to collider.
+     * @param y Y value to add to collider.
      */
     void BoxCollider::updateCollider(double x, double y) {
         m_br.x += x;
@@ -59,8 +59,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Calculates the center of the box and return it
-     * @return Position of center of the box collider
+     * Calculates the center of the box and return it.
+     * @return Position of center of the box collider.
      */
     Position BoxCollider::getCenter() const
     {

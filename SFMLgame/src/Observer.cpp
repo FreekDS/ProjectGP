@@ -5,13 +5,13 @@
 namespace RoadFighterSFML {
 
     /**
-     * Constructor for SpeedObserver
-     * This constructor initializes the font on the font ./res/font/font.ttf
-     * The SFML text is initialized with the string of the base class + 0
-     * The position of the text is determined by converting m_pos to screen coordinates
-     * @param subject Subject to observe (Player)
-     * @param str String with additional information ex. 'Speed: '
-     * @param window Window to draw results to
+     * Constructor for SpeedObserver.
+     * This constructor initializes the font with the font "./res/font/font.ttf".
+     * The SFML text is initialized with the string of the base class + 0.
+     * The position of the text is determined by converting m_pos to screen coordinates.
+     * @param subject Subject to observe (Player).
+     * @param str String with additional information ex. 'Speed: '.
+     * @param window Window to draw results to.
      */
     SpeedObserver::SpeedObserver(const shared_ptr<RoadFighter::Player>& subject, const string& str,
             const window_ptr& window) : RoadFighter::SpeedObserver(subject, str), m_window(window)
@@ -34,9 +34,9 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Updates the SpeedObserver
-     * - Changes SFML text to string of base class + speed of subject
-     * - Draws the text to the screen
+     * Updates the SpeedObserver.
+     * - Changes SFML text to string of base class + speed of subject.
+     * - Draws the text to the screen.
      */
     void SpeedObserver::update()
     {
@@ -45,7 +45,7 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Draws the observer to the window
+     * Draws the observer to the window.
      */
     void SpeedObserver::draw() const
     {
@@ -54,7 +54,7 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Updates the text color based on the speed of the player
+     * Updates the text color based on the speed of the player.
      */
     void SpeedObserver::updateTextColor()
     {

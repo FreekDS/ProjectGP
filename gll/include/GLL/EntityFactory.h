@@ -18,25 +18,31 @@ namespace RoadFighter {
     class EntityFactory {
     public:
         /**
-         * Pure virtual function which will create a Player
-         * @return shared pointer to an Entity
+         * Pure virtual function which will create a Player.
+         * @return shared pointer to an Entity.
          */
         virtual shared_ptr<Entity> createPlayer() const = 0;
 
         /**
-         * Pure virtual function which will create a Bullet
-         * @return shared pointer to an Entity
+         * Pure virtual function which will create a Bullet.
+         * @param world shared pointer to world.
+         * @param player shared pointer to player.
+         * @return shared pointer to an Entity.
          */
         virtual shared_ptr<Entity> createBullet(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const = 0;
 
         /**
          * Pure virtual function which will create a Passing Car
+         * @param world shared pointer to world.
+         * @param player shared pointer to player.
          * @return shared pointer to an Entity
          */
         virtual shared_ptr<Entity> createPassingCar(shared_ptr<World> world, shared_ptr<Player> player) const = 0;
 
         /**
          * Pure virtual function which will create a Race Car
+         * @param world shared pointer to world.
+         * @param player shared pointer to player.
          * @return shared pointer to an Entity
          */
         virtual shared_ptr<Entity> createRaceCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const = 0;

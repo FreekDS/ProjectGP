@@ -5,7 +5,7 @@
 namespace RoadFighter {
 
     /**
-     * This function accelerates the Player
+     * This function accelerates the Player.
      */
     void Player::accelerate()
     {
@@ -17,8 +17,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Virtual function to determine whether an Entity can be destroyed or not
-     * @return False, a player cannot be destroyed during the process of the game
+     * Virtual function to determine whether an Entity can be destroyed or not.
+     * @return False, a player cannot be destroyed during the process of the game.
      */
     bool Player::canBeDestroyed() const
     {
@@ -26,9 +26,11 @@ namespace RoadFighter {
     }
 
     /**
-     * Default constructor for the Player
-     * Initializes the location of the player on (-0.25, -2)
-     * Initializes the collider of the player on its bounds
+     * Default constructor for the Player.
+     * Initializes the location of the player on (-0.25, -2).
+     * Initializes the collider of the player on its bounds.
+     * Sets the type of the entity to Player
+     * Initializes the repair time.
      */
     Player::Player() : m_maxSpeed(20), m_maxSpeedWhenMovingUp(22)
     {
@@ -41,7 +43,7 @@ namespace RoadFighter {
     }
 
     /**
-     * Moves the player to the left
+     * Moves the player to the left.
      */
     void Player::moveLeft(double world_boundary)
     {
@@ -55,7 +57,7 @@ namespace RoadFighter {
     }
 
     /**
-     * Moves the player to the right
+     * Moves the player to the right.
      */
     void Player::moveRight(double world_boundary)
     {
@@ -69,8 +71,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Moves the player up
-     * If the player is on top of the screen, it will not move further up
+     * Moves the player up.
+     * If the player is on top of the screen, it will not move further up.
      */
     void Player::moveUp()
     {
@@ -86,8 +88,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Moves the player down
-     * If the player is on the bottom of the screen, it will not move further down
+     * Moves the player down.
+     * If the player is on the bottom of the screen, it will not move further down.
      */
     void Player::moveDown()
     {
@@ -102,8 +104,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Attaches an observer to the player
-     * @param observer Observer to attach to the player
+     * Attaches an observer to the player.
+     * @param observer Observer to attach to the player.
      */
     void Player::attach(const shared_ptr<Observer>& observer)
     {
@@ -111,7 +113,7 @@ namespace RoadFighter {
     }
 
     /**
-     * Notifies all observers of made changes
+     * Notifies all observers of made changes.
      */
     void Player::notify() const
     {
@@ -121,7 +123,7 @@ namespace RoadFighter {
     }
 
     /**
-     * This function slows the player down when not accelerating
+     * This function slows the player down when not accelerating.
      */
     void Player::slowDown()
     {
@@ -134,9 +136,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for the max speed of the Player
-     * @param whenPressed If this value is true, the function returns the max speed when the up key is pressed
-     * @return max speed of the player
+     * Getter for the max speed of the Player.
+     * @param whenPressed If this value is true, the function returns the max speed when the up key is pressed.
+     * @return max speed of the player.
      */
     double Player::getMaxSpeed(bool whenPressed) const
     {
@@ -146,6 +148,11 @@ namespace RoadFighter {
             return m_maxSpeed;
     }
 
+    /**
+     * Virtual function to update the entity.
+     * - Resets the rotation of the sprite.
+     * - Handles the crash if one happened.
+     */
     void Player::update()
     {
         if(hasCrashed()){

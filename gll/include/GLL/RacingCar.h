@@ -8,8 +8,15 @@
 
 namespace RoadFighter {
 
+    /**
+     * Represents the range of the speed.
+     * The first double is the minimum speed, the second is the maximum speed.
+     */
     using speedRange = pair<double, double>;
 
+    /**
+     * This enumeration represents all possible moves.
+     */
     enum move{
         LEFT,
         RIGHT,
@@ -19,8 +26,19 @@ namespace RoadFighter {
     };
 
     /**
-     * This class represents a racing car
-     * This class is derived from @see Vehicle
+     * This class represents a racing car.
+     * This class is derived from @see Vehicle.
+     * A racing car has:
+     * - A shared pointer to the player.
+     * - A shared pointer to the world.
+     * - A speed range.
+     * - A boolean to determine whether the car has reached the finish or not.
+     * - The last move the car made.
+     * - A move cooldown clock.
+     * - A cooldown time.
+     * - An ID.
+     * - A boolean to check if the game has started.
+     * - A movement speed (double).
      */
     class RacingCar : public Vehicle {
     private:
@@ -47,14 +65,30 @@ namespace RoadFighter {
          */
         void initializePosition();
 
+        /**
+         * Updates the movement speed of the Racing car.
+         */
         void updateMoveSpeed();
 
     public:
-
+        /**
+         * Default destructor of Racing car.
+         */
         ~RacingCar() override;
 
+        /**
+         * Constructor of Racing car.
+         * This constructor also initializes the corners and position, the cooldown timer, the move speed, the repair
+         * time, the last move the car made, the cooldown time and the ID. The static value of CAR_COUNT is
+         * increased by one.
+         * @param player Shared pointer to the player.
+         * @param world Shared pointer to the world.
+         */
         RacingCar(const shared_ptr<Player>& player, const shared_ptr<World>& world);
 
+        /**
+         * Accelerates the racing car.
+         */
         void accelerate() override;
 
         /**
@@ -81,28 +115,72 @@ namespace RoadFighter {
          */
         void update() override;
 
+        /**
+         * Determine if the car can be destroyed.
+         * @return False, a race car cannot be destroyed.
+         */
         bool canBeDestroyed() const override;
 
+        /**
+         * Slows down the racing car.
+         */
         void slowDown() override;
 
+        /**
+         * Moves the player to the left if possible.
+         * @param world_boundary Left boundary of the world.
+         */
         void moveLeft(double world_boundary) override;
 
+        /**
+         * Moves the player to the right if possible.
+         * @param world_boundary Right boundary of the world.
+         */
         void moveRight(double world_boundary) override;
 
+        /**
+         * Moves the race car up on the screen.
+         */
         void moveUp() override;
 
+        /**
+         * Moves the race car down on the screen.
+         */
         void moveDown() override;
 
+        /**
+         * Lets the race car finish.
+         */
         void finish();
 
+        /**
+         * Determine if the race car has finished
+         * @return True if the race car has finished.
+         */
         bool hasFinished() const;
 
+        /**
+         * Does the horizontal movement.
+         * @see update()
+         */
         void doHorizontalMovement();
 
+        /**
+         * Updates the speed of the race car.
+         * @see update()
+         */
         void updateSpeedRandom();
 
+        /**
+         * Rotates the sprite over an angle relative to the current rotation.
+         * @param angle Angle to rotate over.
+         */
         virtual void rotateSprite(float angle) = 0;
 
+        /**
+         * Sets the absolute rotation of the sprite.
+         * @param angle Rotation angle to set.
+         */
         virtual void setSpriteRotation(float angle) = 0;
     };
 

@@ -1,7 +1,6 @@
 #include <GLL/RacingCar.h>
 #include <GLL/Random.h>
 #include <GLL/Transformation.h>
-#include <iostream>
 
 namespace RoadFighter {
 
@@ -10,6 +9,9 @@ namespace RoadFighter {
      */
     unsigned int RacingCar::CAR_COUNT = 0;
 
+    /**
+     * Accelerates the racing car.
+     */
     void RacingCar::accelerate()
     {
         auto rand = Random::getInstance();
@@ -18,6 +20,9 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Slows down the racing car.
+     */
     void RacingCar::slowDown()
     {
         auto rand = Random::getInstance();
@@ -26,6 +31,10 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Moves the player to the left if possible.
+     * @param world_boundary Left boundary of the world.
+     */
     void RacingCar::moveLeft(double world_boundary)
     {
         if (isMoving()) {
@@ -46,6 +55,10 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Moves the player to the right if possible.
+     * @param world_boundary Right boundary of the world.
+     */
     void RacingCar::moveRight(double world_boundary)
     {
         if (isMoving()) {
@@ -66,6 +79,9 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Moves the race car up on the screen.
+     */
     void RacingCar::moveUp()
     {
         auto trans = Transformation::getInstance();
@@ -73,6 +89,9 @@ namespace RoadFighter {
             updatePos(0, getMovespeed());
     }
 
+    /**
+     * Moves the race car down on the screen.
+     */
     void RacingCar::moveDown()
     {
         auto trans = Transformation::getInstance();
@@ -109,14 +128,14 @@ namespace RoadFighter {
             return;
 
         auto rand = Random::getInstance();
-        if(!m_gameStarted && hasCrashed())
+        if (!m_gameStarted && hasCrashed())
             repair(true);
         if (hasCrashed()) {
             setSpeed(0);
-            if(!m_player->isMoving())
+            if (!m_player->isMoving())
                 setMoveSpeed(0);
             rotateSprite(10);
-            if(repair()) {
+            if (repair()) {
                 setPos(rand->randDouble(m_world->getLeftBoundary(), m_world->getRightBoundary()),
                         getPos().y);
             }
@@ -158,13 +177,26 @@ namespace RoadFighter {
         doHorizontalMovement();
     }
 
+    /**
+     * Determine if the car can be destroyed.
+     * @return False, a race car cannot be destroyed.
+     */
     bool RacingCar::canBeDestroyed() const
     {
         return false;
     }
 
+    /**
+     * Constructor of Racing car.
+     * This constructor also initializes the corners and position, the cooldown timer, the move speed, the repair
+     * time, the last move the car made, the cooldown time and the ID. The static value of CAR_COUNT is
+     * increased by one.
+     * @param player Shared pointer to the player.
+     * @param world Shared pointer to the world.
+     */
     RacingCar::RacingCar(const shared_ptr<Player>& player, const shared_ptr<World>& world)
-            :m_player(player), m_world(world), m_lastMoveHorizontal(move::NONE), m_cooldownTime(500), m_id(CAR_COUNT), m_gameStarted(false)
+            :m_player(player), m_world(world), m_lastMoveHorizontal(move::NONE), m_cooldownTime(500), m_id(CAR_COUNT),
+             m_gameStarted(false)
     {
         setType(EntityType::RACE_CAR);
 
@@ -214,26 +246,39 @@ namespace RoadFighter {
                     +" but there are only 5 allowed)");
     }
 
+    /**
+     * Lets the race car finish.
+     */
     void RacingCar::finish()
     {
         m_finished = true;
     }
 
+    /**
+     * Determine if the race car has finished
+     * @return True if the race car has finished.
+     */
     bool RacingCar::hasFinished() const
     {
         return m_finished;
     }
 
+    /**
+     * Updates the movement speed of the Racing car.
+     */
     void RacingCar::updateMoveSpeed()
     {
 
     }
-
+    /**
+     * Does the horizontal movement.
+     * @see update()
+     */
     void RacingCar::doHorizontalMovement()
     {
         auto rand = Random::getInstance();
 
-        if(rand->randInt(0,100)<70) // 70% chance car does not turn
+        if (rand->randInt(0, 100)<70) // 70% chance car does not turn
             return;
 
         bool lastLeft = m_lastMoveHorizontal==move::LEFT;
@@ -256,6 +301,10 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Updates the speed of the race car.
+     * @see update()
+     */
     void RacingCar::updateSpeedRandom()
     {
         auto rand = Random::getInstance();

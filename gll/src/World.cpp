@@ -6,9 +6,9 @@
 namespace RoadFighter {
 
     /**
-     * Adds an Entity to the world
-     * Part of the Composite design pattern
-     * @param entity
+     * Adds an Entity to the world.
+     * Part of the Composite design pattern.
+     * @param entity Entity to add.
      */
     void World::add(shared_ptr<Entity> entity)
     {
@@ -16,9 +16,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Remove an Entity of the world
-     * Part of the Composite design pattern
-     * @param entity Entity which needs to be removed
+     * Remove an Entity of the world.
+     * Part of the Composite design pattern.
+     * @param entity Entity which needs to be removed.
      */
     void World::remove(shared_ptr<Entity> entity)
     {
@@ -31,8 +31,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Check whether the world is empty or not
-     * @return True if the world has no Entities in it
+     * Check whether the world is empty or not.
+     * @return True if the world has no Entities in it.
      */
     bool World::empty()
     {
@@ -40,10 +40,10 @@ namespace RoadFighter {
     }
 
     /**
-     * Check for collision between two entities
-     * @param entity1 First Entity to check
-     * @param entity2 Second Entity to check
-     * @return True if entity1 and entity2 collide
+     * Check for collision between two entities.
+     * @param entity1 First Entity to check.
+     * @param entity2 Second Entity to check.
+     * @return True if entity1 and entity2 collide.
      */
     bool World::checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2) const
     {
@@ -66,9 +66,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Assignment operator for World
-     * @param other World to assign this one to
-     * @return Reference to a World object
+     * Assignment operator for World.
+     * @param other World to assign this one to.
+     * @return Reference to a World object.
      */
     World& World::operator=(const World& other)
     {
@@ -80,12 +80,12 @@ namespace RoadFighter {
     }
 
     /**
-     * Default destructor of World
+     * Default destructor of World.
      */
     World::~World() = default;
 
     /**
-     * Default constructor of World
+     * Default constructor of World.
      */
     World::World()
             :m_factory(nullptr), m_boundary1(-0.56), m_boundary2(1.17)
@@ -98,8 +98,8 @@ namespace RoadFighter {
     }
 
     /**
-    * Getter for the EntityFactory of the world
-    * @return Reference to the EntityFactory
+    * Getter for the EntityFactory of the world.
+    * @return Reference to the EntityFactory.
     */
     const shared_ptr<EntityFactory>& World::getFactory() const
     {
@@ -107,8 +107,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Setter for the Entity factory of the world
-     * @param factory EntityFactory of the world
+     * Setter for the Entity factory of the world.
+     * @param factory EntityFactory of the world.
      */
     void World::setFactory(const shared_ptr<EntityFactory>& factory)
     {
@@ -116,8 +116,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Determine whether the Entity can be destroyed or not
-     * @return False, the world cannot be destroyed during the game
+     * Determine whether the Entity can be destroyed or not.
+     * @return False, the world cannot be destroyed during the game.
      */
     bool World::canBeDestroyed() const
     {
@@ -125,8 +125,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Searches for the player in the child entities and returns it if found
-     * @return Shared pointer of an entity (= the player), if nothing found, nullptr
+     * Searches for the player in the child entities and returns it if found.
+     * @return Shared pointer of an entity (= the player), if nothing found, nullptr.
      */
     shared_ptr<Entity> World::getPlayer() const
     {
@@ -138,8 +138,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for boundary1 of world
-     * @return Boundary1
+     * Getter for boundary1 of world.
+     * @return Boundary1.
      */
     double World::getLeftBoundary() const
     {
@@ -147,8 +147,8 @@ namespace RoadFighter {
     }
 
     /**
-     * Getter for boundary2 of world
-     * @return Boundary2;
+     * Getter for boundary2 of world.
+     * @return Boundary2.
      */
     double World::getRightBoundary() const
     {
@@ -211,9 +211,9 @@ namespace RoadFighter {
     }
 
     /**
-     * Updates the world and all its components
-     * This function first updates all the components
-     * After that it will read the input with @see readInput()
+     * Updates the world and all its components.
+     * This function first updates all the components.
+     * After that it will read the input with @see readInput().
      */
     void World::update()
     {
@@ -241,6 +241,9 @@ namespace RoadFighter {
         readInput();
     }
 
+    /**
+     * Sets the racing cars.
+     */
     void World::setupRaceCars()
     {
         for(int i = 0; i<5; i++)
