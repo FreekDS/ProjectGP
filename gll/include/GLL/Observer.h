@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "Position.h"
+#include "Clock.h"
 
 using namespace std;
 
@@ -69,6 +70,19 @@ namespace RoadFighter {
          * @return Speed in a 'realistic' form (multiplied by 10).
          */
         unsigned int getPlayerSpeed() const;
+    };
+
+    class DistanceObserver : public Observer {
+        shared_ptr<Player> m_subject;
+        double m_coveredDistance;
+        const int m_updateTick;
+        Clock m_clock;
+    public:
+        explicit DistanceObserver(const shared_ptr<Player>& subject);
+
+        void update() override;
+
+        void draw() const override {}
     };
 
 } // namespace RoadFighter

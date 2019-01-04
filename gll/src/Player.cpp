@@ -164,4 +164,14 @@ namespace RoadFighter {
         }
     }
 
+    void Player::setDistanceCovered(double distanceCovered)
+    {
+        m_coveredDistance = distanceCovered;
+    }
+
+    double Player::getCoveredDistance() const
+    {
+        return m_coveredDistance;
+    }
+
 } // namespace RoadFighter

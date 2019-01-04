@@ -36,4 +36,20 @@ namespace RoadFighter {
     }
 
 
+//Distance observer //////////////////////////////////////////////////////////////////////////////////
+
+    DistanceObserver::DistanceObserver(const shared_ptr<Player>& subject) : m_subject(subject), m_updateTick(500) {}
+
+    void DistanceObserver::update()
+    {
+        if(m_clock.getTimeAsMilliseconds() >= m_updateTick){
+            m_clock.reset();
+            if(m_subject->isMoving()) {
+               m_coveredDistance += (m_subject->getSpeed() * m_updateTick)/1000;
+               m_subject->setDistanceCovered(m_coveredDistance);
+           }
+        }
+    }
+
+
 } // namespace RoadFighter

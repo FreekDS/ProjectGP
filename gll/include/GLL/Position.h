@@ -52,6 +52,8 @@ namespace RoadFighter {
          * @return String representing the position.
          */
         const std::string toString() const;
+
+        bool operator==(const Position& rhs) const;
     };
 
 } // namespace RoadFighter

@@ -342,7 +342,7 @@ namespace RoadFighter {
             if (entity->getUpperLeftCorner().y<getBottomRightCorner().y)
                 continue;
 
-            if (entity->getBottomRightCorner().y-getUpperLeftCorner().y<3.5*getHeight()) {
+            if (entity->getBottomRightCorner().y-getUpperLeftCorner().y<5*getHeight()) {
                 const Position& left = getUpperLeftCorner();
                 const Position& right = getBottomRightCorner();
                 double min = entity->getUpperLeftCorner().x;

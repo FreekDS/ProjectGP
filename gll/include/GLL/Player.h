@@ -21,6 +21,7 @@ namespace RoadFighter {
     private:
         double m_maxSpeed;
         double m_maxSpeedWhenMovingUp;
+        double m_coveredDistance;
     protected:
         vector<observer_ptr> m_observers;
     public:
@@ -107,6 +108,10 @@ namespace RoadFighter {
          * - Handles the crash if one happened.
          */
         void update() override;
+
+        void setDistanceCovered(double distanceCovered);
+
+        double getCoveredDistance() const;
     };
 
 } // namespace RoadFighter

@@ -37,6 +37,8 @@ namespace RoadFighter {
          */
         World();
 
+        const vector<shared_ptr<Entity>>& getEntities();
+
         /**
          * Setter for the Entity factory of the world.
          * @param factory EntityFactory of the world.

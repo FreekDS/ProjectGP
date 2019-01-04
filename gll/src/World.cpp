@@ -250,4 +250,9 @@ namespace RoadFighter {
             add(m_factory->createRaceCar(getPtr(), dynamic_pointer_cast<Player>(getPlayer())));
     }
 
+    const vector<shared_ptr<Entity>>& World::getEntities()
+    {
+        return m_childEntities;
+    }
+
 } // namespace RoadFighter
