@@ -85,7 +85,7 @@ namespace RoadFighter {
     void RacingCar::moveUp()
     {
         auto trans = Transformation::getInstance();
-        if (getPos().y<2*trans->getYRange().second)
+        if (getPos().y<1.1*trans->getYRange().second)
             updatePos(0, getMovespeed());
     }
 
@@ -204,7 +204,7 @@ namespace RoadFighter {
         double height = 0.40;
         double maxPlayer = player->getMaxSpeed(true);
         m_range.first = maxPlayer*3/4;
-        m_range.second = maxPlayer*3;
+        m_range.second = maxPlayer*2.5;
         initializeCorners(width, height);
         initializePosition();
 
@@ -270,6 +270,7 @@ namespace RoadFighter {
     {
 
     }
+
     /**
      * Does the horizontal movement.
      * @see update()
@@ -277,6 +278,22 @@ namespace RoadFighter {
     void RacingCar::doHorizontalMovement()
     {
         auto rand = Random::getInstance();
+
+        double worldCenterX = (m_world->getLeftBoundary()+m_world->getRightBoundary())/2;
+
+        // If there is a car up front, do a smart move
+        if (carInPath() && getPos().x<worldCenterX) {
+            if (rand->randInt(0, 100)<101) {
+                moveRight(m_world->getRightBoundary());
+                return;
+            }
+        }
+        if (carInPath() && getPos().x>=worldCenterX) {
+            if (rand->randInt(0, 100)<101) {
+                moveLeft(m_world->getLeftBoundary());
+                return;
+            }
+        }
 
         if (rand->randInt(0, 100)<70) // 70% chance car does not turn
             return;
@@ -310,9 +327,35 @@ namespace RoadFighter {
         auto rand = Random::getInstance();
         if (rand->randInt(0, 100)<60)   // 60% chance
             accelerate();
-        if (rand->randInt(0, 100)<50) // 50% chance
+        if (rand->randInt(0, 100)<75) // 75% chance
             slowDown();
 
     }
+
+    bool RacingCar::carInPath() const
+    {
+        for (const auto& entity : m_world->getEntities()) {
+            if (entity.get()==this)
+                continue;
+
+            // entity is below this one
+            if (entity->getUpperLeftCorner().y<getBottomRightCorner().y)
+                continue;
+
+            if (entity->getBottomRightCorner().y-getUpperLeftCorner().y<3.5*getHeight()) {
+                const Position& left = getUpperLeftCorner();
+                const Position& right = getBottomRightCorner();
+                double min = entity->getUpperLeftCorner().x;
+                double max = entity->getBottomRightCorner().x;
+
+                if (left.x>=min && left.x<=max)
+                    return true;
+                if (right.x>=min && right.x<=max)
+                    return true;
+            }
+        }
+        return false;
+    }
+
 
 } // namespace RoadFighter

@@ -182,7 +182,10 @@ namespace RoadFighter {
          * @param angle Rotation angle to set.
          */
         virtual void setSpriteRotation(float angle) = 0;
+
+        bool carInPath() const;
     };
+
 
 } // namespace RoadFighter
 
