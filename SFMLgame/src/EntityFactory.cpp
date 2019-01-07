@@ -3,6 +3,7 @@
 #include <RacingCar.h>
 #include <PassingCar.h>
 #include <Observer.h>
+#include <FinishLine.h>
 
 namespace RoadFighterSFML {
 
@@ -56,5 +57,11 @@ namespace RoadFighterSFML {
      */
     EntityFactory::EntityFactory(const window_ptr& window)
             :m_window(window) { }
+
+    shared_ptr<RoadFighter::Entity> EntityFactory::createFinishLine(const shared_ptr<RoadFighter::World>& world) const
+    {
+        auto finish = make_shared<FinishLine>("finish_line.png", world, m_window);
+        return finish;
+    }
 
 } // namespace RoadFighterSFML

@@ -88,7 +88,7 @@ namespace RoadFighter {
      * Default constructor of World.
      */
     World::World()
-            :m_factory(nullptr), m_boundary1(-0.56), m_boundary2(1.17)
+            :m_factory(nullptr), m_boundary1(-0.56), m_boundary2(1.17), m_neededDistanceCovered(false)
     {
         setType(EntityType::WORLD);
         setUpperLeftCorner({-4, 3});
@@ -195,12 +195,20 @@ namespace RoadFighter {
                 if (checkCollision(entity1, entity2)) {
                     if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity1)) {
                         auto vehicle = dynamic_pointer_cast<RoadFighter::Vehicle>(entity1);
+                        if(entity2->getType() == FINISH){
+                            vehicle->finish();
+                            continue;
+                        }
                         if (vehicle->hasCrashed())
                             continue;
                         vehicle->crash();
                     }
                     if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity2)) {
                         auto vehicle = dynamic_pointer_cast<RoadFighter::Vehicle>(entity2);
+                        if(entity1->getType() == FINISH){
+                            vehicle->finish();
+                            continue;
+                        }
                         if (vehicle->hasCrashed())
                             continue;
                         vehicle->crash();
@@ -219,6 +227,10 @@ namespace RoadFighter {
     {
         // check for collision
         checkCollisionOfAll();
+
+        if(dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance() >= 2000){
+            m_neededDistanceCovered = true;
+        }
 
         // remove entities
         removeRemovableEntities();
@@ -253,6 +265,11 @@ namespace RoadFighter {
     const vector<shared_ptr<Entity>>& World::getEntities()
     {
         return m_childEntities;
+    }
+
+    bool World::neededDistanceCovered() const
+    {
+        return m_neededDistanceCovered;
     }
 
 } // namespace RoadFighter

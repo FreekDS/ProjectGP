@@ -31,6 +31,7 @@ namespace RoadFighter {
         double m_boundary1;
         double m_boundary2;
         Clock m_spawnCooldown;
+        bool m_neededDistanceCovered;
     public:
         /**
          * Default constructor of World.
@@ -152,6 +153,8 @@ namespace RoadFighter {
          * Sets the racing cars.
          */
         void setupRaceCars();
+
+        bool neededDistanceCovered() const;
     };
 
 } // namespace RoadFighter

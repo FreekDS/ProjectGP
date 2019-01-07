@@ -46,6 +46,8 @@ namespace RoadFighter {
          * @return shared pointer to an Entity
          */
         virtual shared_ptr<Entity> createRaceCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const = 0;
+
+        virtual shared_ptr<Entity> createFinishLine(const shared_ptr<World>& world) const = 0;
     };
 
 } // namespace RoadFighter

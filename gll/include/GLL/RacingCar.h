@@ -149,17 +149,6 @@ namespace RoadFighter {
         void moveDown() override;
 
         /**
-         * Lets the race car finish.
-         */
-        void finish();
-
-        /**
-         * Determine if the race car has finished
-         * @return True if the race car has finished.
-         */
-        bool hasFinished() const;
-
-        /**
          * Does the horizontal movement.
          * @see update()
          */

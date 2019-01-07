@@ -24,6 +24,7 @@ namespace RoadFighterSFML {
         sf::Sprite m_sprite;
         sf::Sprite m_sprite2;
         sf::Texture m_texture;
+        sf::Texture m_textureEnd;
         window_ptr m_window;
         keymap m_keymap;
         bool m_debug;
@@ -86,6 +87,7 @@ namespace RoadFighterSFML {
          * @return Shared pointer of this world.
          */
         shared_ptr<RoadFighter::World> getPtr() override;
+
     };
 
 }

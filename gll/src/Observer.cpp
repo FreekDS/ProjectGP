@@ -42,6 +42,7 @@ namespace RoadFighter {
 
     void DistanceObserver::update()
     {
+        cout << m_coveredDistance << endl;
         if(m_clock.getTimeAsMilliseconds() >= m_updateTick){
             m_clock.reset();
             if(m_subject->isMoving()) {

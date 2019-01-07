@@ -21,6 +21,7 @@ namespace RoadFighter {
         bool m_crashed;
         Clock m_repairTimer;
         int m_repairTime;
+        bool m_finished;
     public:
         /**
          * Default constructor for vehicle.
@@ -119,6 +120,10 @@ namespace RoadFighter {
          * @param repairTime Time it takes to repair in milliseconds.
          */
         void setRepairTime(int repairTime);
+
+        bool hasFinished() const;
+
+        void finish();
     };
 
 } // namespace RoadFighter

@@ -1,6 +1,7 @@
 #include <World.h>
 #include <Utilities.h>
 #include <GLL/Transformation.h>
+#include <iostream>
 
 namespace RoadFighterSFML {
 
@@ -36,6 +37,7 @@ namespace RoadFighterSFML {
         // Initialize sprite & texture
         string path = "./res/sprites/ui/";
         m_texture.loadFromFile(path+file_name);
+        m_textureEnd.loadFromFile(path+file_name.substr(0, file_name.size() - 4) + "_finish.png");
         sf::Sprite sprite(m_texture);
         m_sprite = move(sprite);
 
@@ -190,5 +192,6 @@ namespace RoadFighterSFML {
     {
         return shared_from_this();
     }
+
 
 } // namespace RoadFighter

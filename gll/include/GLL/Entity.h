@@ -15,6 +15,7 @@ namespace RoadFighter {
         BULLET,
         PASSING_CAR,
         RACE_CAR,
+        FINISH,
         UNKNOWN
     };
 

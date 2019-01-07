@@ -15,7 +15,7 @@ SET(SRC_GLL
         src/BoxCollider.cpp
         src/Clock.cpp
         src/Observer.cpp
-        )
+        src/FinishLine.cpp)
 
 # Temporary for testing purpose
 ADD_EXECUTABLE(GLL_DEBUG ${SRC_GLL} main.cpp)

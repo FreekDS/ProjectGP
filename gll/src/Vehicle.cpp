@@ -8,7 +8,7 @@ namespace RoadFighter {
      * @param speed Speed of the vehicle.
      */
     Vehicle::Vehicle(double speed)
-            :m_speed(speed), m_movementSpeed(3.0), m_crashed(false) { }
+            :m_speed(speed), m_movementSpeed(3.0), m_crashed(false), m_finished(false) { }
 
     /**
      * Getter for speed of vehicle.
@@ -51,7 +51,7 @@ namespace RoadFighter {
     /**
      * Default constructor for vehicle.
      */
-    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0), m_crashed(false), m_repairTime(1000)
+    Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0), m_crashed(false), m_repairTime(1000), m_finished(false)
     {
     }
 
@@ -112,6 +112,16 @@ namespace RoadFighter {
     {
         m_repairTime = repairTime;
         m_repairTimer.setTimer(repairTime);
+    }
+
+    bool Vehicle::hasFinished() const
+    {
+        return m_finished;
+    }
+
+    void Vehicle::finish()
+    {
+        m_finished = true;
     }
 
 } // namespace RoadFighter

@@ -246,22 +246,6 @@ namespace RoadFighter {
                     +" but there are only 5 allowed)");
     }
 
-    /**
-     * Lets the race car finish.
-     */
-    void RacingCar::finish()
-    {
-        m_finished = true;
-    }
-
-    /**
-     * Determine if the race car has finished
-     * @return True if the race car has finished.
-     */
-    bool RacingCar::hasFinished() const
-    {
-        return m_finished;
-    }
 
     /**
      * Updates the movement speed of the Racing car.
@@ -283,16 +267,12 @@ namespace RoadFighter {
 
         // If there is a car up front, do a smart move
         if (carInPath() && getPos().x<worldCenterX) {
-            if (rand->randInt(0, 100)<101) {
-                moveRight(m_world->getRightBoundary());
-                return;
-            }
+            moveRight(m_world->getRightBoundary());
+//            return;
         }
         if (carInPath() && getPos().x>=worldCenterX) {
-            if (rand->randInt(0, 100)<101) {
-                moveLeft(m_world->getLeftBoundary());
-                return;
-            }
+            moveLeft(m_world->getLeftBoundary());
+//            return;
         }
 
         if (rand->randInt(0, 100)<70) // 70% chance car does not turn
@@ -342,7 +322,7 @@ namespace RoadFighter {
             if (entity->getUpperLeftCorner().y<getBottomRightCorner().y)
                 continue;
 
-            if (entity->getBottomRightCorner().y-getUpperLeftCorner().y<5*getHeight()) {
+            if (entity->getBottomRightCorner().y-getUpperLeftCorner().y<getHeight()) {
                 const Position& left = getUpperLeftCorner();
                 const Position& right = getBottomRightCorner();
                 double min = entity->getUpperLeftCorner().x;
