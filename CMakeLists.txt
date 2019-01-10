@@ -14,3 +14,6 @@ ADD_SUBDIRECTORY(gll)
 
 # SFML graphical implementation
 ADD_SUBDIRECTORY(SFMLgame)
+
+ADD_SUBDIRECTORY(tests)
+
