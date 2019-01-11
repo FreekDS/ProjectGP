@@ -76,7 +76,7 @@ namespace RoadFighter {
         auto trans = Transformation::getInstance();
         range xRange = trans->getXRange();
         range yRange = trans->getYRange();
-        return m_pos.x<xRange.first || m_pos.x>xRange.second || m_pos.y<yRange.first || m_pos.y>yRange.second;
+        return !(m_pos.x<xRange.first || m_pos.x>xRange.second || m_pos.y<yRange.first || m_pos.y>yRange.second);
     }
 
     /**

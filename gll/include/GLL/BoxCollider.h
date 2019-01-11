@@ -58,6 +58,20 @@ namespace RoadFighter {
          * @return Position of center of the box collider.
          */
         Position getCenter() const;
+
+        /**
+         * Equality operator for BoxCollider.
+         * @param rhs Other collider.
+         * @return True if this equals the other the collider.
+         */
+        bool operator==(const BoxCollider& rhs) const;
+
+        /**
+         * Inequality operator for BoxCollider.
+         * @param rhs Other collider.
+         * @return True if this equals the other the collider.
+         */
+        bool operator!=(const BoxCollider& rhs) const;
     };
 
 } // namespace RoadFighter

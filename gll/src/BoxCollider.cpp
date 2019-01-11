@@ -51,7 +51,8 @@ namespace RoadFighter {
      * @param x X value to add to collider.
      * @param y Y value to add to collider.
      */
-    void BoxCollider::updateCollider(double x, double y) {
+    void BoxCollider::updateCollider(double x, double y)
+    {
         m_br.x += x;
         m_br.y += y;
         m_ul.x += x;
@@ -64,9 +65,30 @@ namespace RoadFighter {
      */
     Position BoxCollider::getCenter() const
     {
-        double x = (m_ul.x + m_br.x) / 2.0;
-        double y = (m_br.y + m_ul.y) / 2.0;
+        double x = (m_ul.x+m_br.x)/2.0;
+        double y = (m_br.y+m_ul.y)/2.0;
         return Position(x, y);
+    }
+
+    /**
+     * Equality operator for BoxCollider.
+     * @param rhs Other collider.
+     * @return True if this equals the other the collider.
+     */
+    bool BoxCollider::operator==(const BoxCollider& rhs) const
+    {
+        return m_ul==rhs.m_ul &&
+                m_br==rhs.m_br;
+    }
+
+    /**
+     * Inequality operator for BoxCollider.
+     * @param rhs Other collider.
+     * @return True if this equals the other the collider.
+     */
+    bool BoxCollider::operator!=(const BoxCollider& rhs) const
+    {
+        return !(rhs==*this);
     }
 
 } // namespace RoadFighter

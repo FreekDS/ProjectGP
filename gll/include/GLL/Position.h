@@ -53,7 +53,9 @@ namespace RoadFighter {
          */
         const std::string toString() const;
 
-        bool operator==(const Position& rhs) const;
+        friend bool operator==(const Position& lhs, const Position& rhs);
+
+        friend bool operator!=(const Position& lhs, const Position& rhs);
     };
 
 } // namespace RoadFighter

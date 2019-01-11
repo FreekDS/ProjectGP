@@ -56,15 +56,20 @@ namespace RoadFighter {
         return "(" + std::to_string(x) + "," + std::to_string(y) + ")";
     }
 
-    bool Position::operator==(const Position& rhs) const
+    bool operator==(const Position& lhs, const Position& rhs)
     {
-        return x==rhs.x &&
-                y==rhs.y;
+        return lhs.x==rhs.x &&
+                lhs.y==rhs.y;
+    }
+
+    bool operator!=(const Position& lhs, const Position& rhs)
+    {
+        return !(rhs==lhs);
     }
 
     /**
-     * Default destructor of Position.
-     */
+ * Default destructor of Position.
+ */
     Position::~Position() = default;
 
 } // namespace RoadFighter
