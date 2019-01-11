@@ -46,7 +46,9 @@ set(SRC_PATH ${PROJECT_SOURCE_DIR}/SFMLgame/src)
 
 set(SRC_TEST
         main.cpp
-        src/EntityTests.cpp)
+        src/EntityTests.cpp
+        src/RandomTests.cpp
+        )
 
 set(SRC_GAME
         ${SRC_PATH}/Player.cpp
