@@ -49,6 +49,15 @@ set(SRC_TEST
         src/EntityTests.cpp
         src/RandomTests.cpp
         src/WorldTests.cpp
+        src/BoxColliderTests.cpp
+        src/ClockTests.cpp
+        src/ObserverTests.cpp
+        src/PassingCarTests.cpp
+        src/PlayerTests.cpp
+        src/PositionTests.cpp
+        src/RacingCarTests.cpp
+        src/TransformationTests.cpp
+        src/VehicleTests.cpp
         )
 
 set(SRC_GAME
