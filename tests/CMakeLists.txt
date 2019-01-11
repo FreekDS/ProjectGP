@@ -48,6 +48,7 @@ set(SRC_TEST
         main.cpp
         src/EntityTests.cpp
         src/RandomTests.cpp
+        src/WorldTests.cpp
         )
 
 set(SRC_GAME

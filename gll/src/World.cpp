@@ -48,11 +48,11 @@ namespace RoadFighter {
     bool World::checkCollision(shared_ptr<Entity> entity1, shared_ptr<Entity> entity2) const
     {
         auto doOverlap = [](const BoxCollider& c1, const BoxCollider& c2) -> bool {
-            if (c1.getUpperLeftCorner().x>c2.getBottomRightCorner().x
-                    || c2.getUpperLeftCorner().x>c1.getBottomRightCorner().x)
+            if (c1.getUpperLeftCorner().x>=c2.getBottomRightCorner().x
+                    || c2.getUpperLeftCorner().x>=c1.getBottomRightCorner().x)
                 return false;
-            return !(c1.getUpperLeftCorner().y<c2.getBottomRightCorner().y
-                    || c2.getUpperLeftCorner().y<c1.getBottomRightCorner().y);
+            return !(c1.getUpperLeftCorner().y<=c2.getBottomRightCorner().y
+                    || c2.getUpperLeftCorner().y<=c1.getBottomRightCorner().y);
         };
 
         for (const BoxCollider& collider1 : entity1->getColliders()) {
@@ -88,11 +88,11 @@ namespace RoadFighter {
      * Default constructor of World.
      */
     World::World()
-            :m_factory(nullptr), m_boundary1(-0.56), m_boundary2(1.17), m_neededDistanceCovered(false)
+            :m_factory(nullptr), m_boundary1(-0.7), m_boundary2(1.3), m_neededDistanceCovered(false)
     {
         setType(EntityType::WORLD);
         setUpperLeftCorner({-4, 3});
-        setBottomRightCorner({3, -4});
+        setBottomRightCorner({4, -3});
         resetSpawnTimer();
         m_spawnCooldown.startTimer();
     }

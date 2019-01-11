@@ -154,6 +154,7 @@ namespace RoadFighter {
          */
         void setupRaceCars();
 
+        //TODO
         bool neededDistanceCovered() const;
     };
 
