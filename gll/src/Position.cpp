@@ -43,7 +43,7 @@ namespace RoadFighter {
      */
     std::ostream& operator<<(std::ostream& os, const Position& position)
     {
-        os << "x: " << position.x << " y: " << position.y;
+        os << "(" << position.x << "," << position.y << ")";
         return os;
     }
 
@@ -56,20 +56,32 @@ namespace RoadFighter {
         return "(" + std::to_string(x) + "," + std::to_string(y) + ")";
     }
 
+    /**
+     * Equality operator for Position.
+     * @param lhs Left side of equality.
+     * @param rhs Right side of equality.
+     * @return True if lhs == rhs.
+     */
     bool operator==(const Position& lhs, const Position& rhs)
     {
         return lhs.x==rhs.x &&
                 lhs.y==rhs.y;
     }
 
+    /**
+     * Inequality operator for Position.
+     * @param lhs Left side of inequality.
+     * @param rhs Right side of inequality.
+     * @return True if lhs != rhs.
+     */
     bool operator!=(const Position& lhs, const Position& rhs)
     {
         return !(rhs==lhs);
     }
 
     /**
- * Default destructor of Position.
- */
+     * Default destructor of Position.
+     */
     Position::~Position() = default;
 
 } // namespace RoadFighter

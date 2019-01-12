@@ -53,8 +53,20 @@ namespace RoadFighter {
          */
         const std::string toString() const;
 
+        /**
+         * Equality operator for Position.
+         * @param lhs Left side of equality.
+         * @param rhs Right side of equality.
+         * @return True if lhs == rhs.
+         */
         friend bool operator==(const Position& lhs, const Position& rhs);
 
+        /**
+         * Inequality operator for Position.
+         * @param lhs Left side of inequality.
+         * @param rhs Right side of inequality.
+         * @return True if lhs != rhs.
+         */
         friend bool operator!=(const Position& lhs, const Position& rhs);
     };
 
