@@ -5,11 +5,11 @@ using namespace RoadFighter;
 TEST_F(BoxColliderTests, Constructor)
 {
     BoxCollider col{Position(1, 1), Position()};
-    EXPECT_EQ(col.getBottomRightCorner(), Position(0, 0));
-    EXPECT_EQ(col.getUpperLeftCorner(), Position(1, 1));
+    EXPECT_EQ(col.getBottomRightCorner(), Position(1, 0));
+    EXPECT_EQ(col.getUpperLeftCorner(), Position(0, 1));
     BoxCollider col2(Position(1, 5), Position(3, 6));
-    EXPECT_EQ(col2.getBottomRightCorner(), Position(3, 6));
-    EXPECT_EQ(col2.getUpperLeftCorner(), Position(1, 5));
+    EXPECT_EQ(col2.getBottomRightCorner(), Position(3, 5));
+    EXPECT_EQ(col2.getUpperLeftCorner(), Position(1, 6));
 
     EXPECT_THROW({
         try {
@@ -27,19 +27,19 @@ TEST_F(BoxColliderTests, Constructor)
 TEST_F(BoxColliderTests, Getters)
 {
     BoxCollider col{Position(1, 1), Position()};
-    EXPECT_EQ(col.getUpperLeftCorner(), Position(1,1));
-    EXPECT_EQ(col.getBottomRightCorner(), Position());
+    EXPECT_EQ(col.getUpperLeftCorner(), Position(0,1));
+    EXPECT_EQ(col.getBottomRightCorner(), Position(1,0));
 }
 
 TEST_F(BoxColliderTests, updateCollider)
 {
     BoxCollider col(Position(1,1), Position());
     col.updateCollider(1,1);
-    EXPECT_EQ(col.getUpperLeftCorner(), Position(2,2));
-    EXPECT_EQ(col.getBottomRightCorner(), Position(1,1));
+    EXPECT_EQ(col.getUpperLeftCorner(), Position(1,2));
+    EXPECT_EQ(col.getBottomRightCorner(), Position(2,1));
     col.updateCollider(-2,0);
-    EXPECT_EQ(col.getUpperLeftCorner(), Position(0,2));
-    EXPECT_EQ(col.getBottomRightCorner(), Position(-1,1));
+    EXPECT_EQ(col.getUpperLeftCorner(), Position(-1,2));
+    EXPECT_EQ(col.getBottomRightCorner(), Position(0,1));
 
 }
 

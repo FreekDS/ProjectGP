@@ -11,6 +11,10 @@ namespace RoadFighter {
      */
     BoxCollider::BoxCollider(Position cornerUL, Position cornerBR)
     {
+        if (cornerUL.x>cornerBR.x)
+            std::swap(cornerUL.x, cornerBR.x);
+        if (cornerUL.y<cornerBR.y)
+            std::swap(cornerBR.y, cornerUL.y);
         if (cornerUL.x==cornerBR.x || cornerUL.y==cornerBR.y)
             throw invalid_argument(
                     "Cannot create box collider with corners "+cornerUL.toString()+" and "+cornerBR.toString());

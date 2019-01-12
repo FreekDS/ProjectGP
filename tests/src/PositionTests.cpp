@@ -29,10 +29,10 @@ TEST_F(PositionTests, Assignment)
 TEST_F(PositionTests, toString)
 {
     Position pos;
-    EXPECT_EQ(pos.toString(), "(0,0)");
+    EXPECT_EQ(pos.toString(), "(0.000000,0.000000)");
     pos.x = 12;
     pos.y = 21;
-    EXPECT_EQ(pos.toString(), "(12,21)");
+    EXPECT_EQ(pos.toString(), "(12.000000,21.000000)");
 }
 
 TEST_F(PositionTests, equality)
