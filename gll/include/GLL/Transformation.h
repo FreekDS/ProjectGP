@@ -88,13 +88,13 @@ namespace RoadFighter {
          * Getter for the range of x-axis.
          * @return A pair of doubles representing the range on the x-axis.
          */
-        range getXRange() const;
+        const range& getXRange() const;
 
         /**
          * Getter for the range of y-axis.
          * @return A pair of doubles representing the range on the y-axis.
          */
-        range getYRange() const;
+        const range& getYRange() const;
 
         /**
          * Determine whether a position is in the grid or not.

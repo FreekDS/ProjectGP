@@ -50,7 +50,6 @@ set(SRC_TEST
         src/RandomTests.cpp
         src/WorldTests.cpp
         src/BoxColliderTests.cpp
-        src/ClockTests.cpp
         src/ObserverTests.cpp
         src/PassingCarTests.cpp
         src/PlayerTests.cpp

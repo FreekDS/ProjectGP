@@ -86,7 +86,7 @@ namespace RoadFighter {
      * Getter for the range of x-axis.
      * @return A pair of doubles representing the range on the x-axis.
      */
-    range Transformation::getXRange() const
+    const range& Transformation::getXRange() const
     {
         return m_rangeX;
     }
@@ -95,7 +95,7 @@ namespace RoadFighter {
      * Getter for the range of y-axis.
      * @return A pair of doubles representing the range on the y-axis.
      */
-    range Transformation::getYRange() const
+    const range& Transformation::getYRange() const
     {
         return m_rangeY;
     }
