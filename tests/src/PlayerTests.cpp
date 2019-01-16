@@ -5,9 +5,10 @@ using namespace RoadFighter;
 TEST_F(PlayerTests, Constructor)
 {
     PlayerTest player;
+    double height = 0.40;
     EXPECT_EQ(player.getType(), EntityType::PLAYER);
     EXPECT_EQ(player.getWidth(), 0.24);
-    EXPECT_EQ(player.getHeight(), 0.40);
+    EXPECT_EQ(player.getHeight(), height);
     EXPECT_EQ(player.getPos(), Position(-0.25, -2));
     EXPECT_EQ(player.getMaxSpeed(false), 20);
     EXPECT_EQ(player.getMaxSpeed(true), 22);
@@ -19,8 +20,9 @@ TEST_F(PlayerTests, Constructor)
 TEST_F(PlayerTests, Getters)
 {
     PlayerTest player;
+    double height = 0.40;
     EXPECT_EQ(player.getWidth(), 0.24);
-    EXPECT_EQ(player.getHeight(), 0.40);
+    EXPECT_EQ(player.getHeight(), height);
     EXPECT_EQ(player.getPos(), Position(-0.25, -2));
     EXPECT_EQ(player.getMaxSpeed(false), 20);
     EXPECT_EQ(player.getMaxSpeed(true), 22);

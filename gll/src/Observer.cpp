@@ -23,7 +23,7 @@ namespace RoadFighter {
      */
     void SpeedObserver::update()
     {
-        cout << "Speed: " << getPlayerSpeed() << endl;
+        cout << m_string << ": " << getPlayerSpeed() << endl;
     }
 
     /**

@@ -90,6 +90,8 @@ public:
 
 class SpeedObserverTest : public RoadFighter::SpeedObserver {
 public:
+    SpeedObserverTest(const shared_ptr<RoadFighter::Player>& subject, const string& str)
+            :SpeedObserver(subject, str) { }
     void draw() const override{}
 };
 
