@@ -1,6 +1,13 @@
 #ifndef ROADFIGHTER_TESTCLASSES_H
 #define ROADFIGHTER_TESTCLASSES_H
 
+/**
+ * @file This file contains derived classes of all abstract classes of GLL.
+ * All pure virtual methods are implemented as methods which do nothing.
+ * The classes created in this file are intended to test the non abstract functionality of the base classes
+ * of the Game Logic Library. Some classes also have a reset function which is used in the test fixtures.
+ */
+
 #include <GLL/World.h>
 #include <GLL/Entity.h>
 #include <GLL/PassingCar.h>
@@ -64,6 +71,8 @@ public:
 
 class PassingCarTest : public RoadFighter::PassingCar {
 public:
+    PassingCarTest(const shared_ptr<RoadFighter::Player>& player, const shared_ptr<RoadFighter::World>& world)
+            :PassingCar(player, world) { }
     void draw() const override {}
     void updateSpriteLocation() override {}
     void rotateSprite(float angle) override {}
