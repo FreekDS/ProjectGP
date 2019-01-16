@@ -16,6 +16,7 @@ namespace RoadFighter {
         PASSING_CAR,
         RACE_CAR,
         FINISH,
+        VEHICLE,
         UNKNOWN
     };
 

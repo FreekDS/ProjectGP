@@ -53,6 +53,7 @@ namespace RoadFighter {
      */
     Vehicle::Vehicle() : m_speed(0), m_movementSpeed(3.0), m_crashed(false), m_repairTime(1000), m_finished(false)
     {
+        setType(EntityType::VEHICLE);
     }
 
     /**
