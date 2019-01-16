@@ -21,13 +21,6 @@ namespace RoadFighter {
         shared_ptr<World> m_world;
         bool m_destroyAble;
     public:
-        /**
-         * Constructor of PassingCar taking the speed of the vehicle.
-         * @param speed Speed of the vehicle.
-         * @param player Shared pointer to the Player.
-         * @param world Shared pointer to the world.
-         */
-        PassingCar(double speed, const shared_ptr<Player>& player, const shared_ptr<World>& world);
 
         /**
          * Constructor of PassingCar taking the Player and World as parameter.

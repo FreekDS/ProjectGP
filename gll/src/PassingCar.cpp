@@ -8,24 +8,6 @@
 namespace RoadFighter {
 
     /**
-     * Constructor of PassingCar taking the speed of the vehicle.
-     * @param speed Speed of the vehicle.
-     * @param player Shared pointer to the Player.
-     * @param world Shared pointer to the world.
-     */
-    PassingCar::PassingCar(double speed, const shared_ptr<Player>& player, const shared_ptr<World>& world)
-            :Vehicle(speed), m_player(player), m_world(world)
-    {
-        double width = 0.24;
-        double height = 0.40;
-        initializeCorners(width, height);
-        initializePosition();
-        auto rand = Random::getInstance();
-        setMoveSpeed(rand->randDouble(3,8));
-        setType(EntityType::PASSING_CAR);
-    }
-
-    /**
      * Constructor of PassingCar taking the Player and World as parameter.
      * @param player Shared pointer to the Player.
      * @param world Shared pointer to the World.
