@@ -20,6 +20,9 @@ namespace RoadFighter {
      * - An abstract factory.
      * - Two boundaries (left and right).
      * - A clock used as cooldown for the spawning of entities.
+     * - A bool to check if the needed distance is covered.
+     * - A bool to check if the finish line sprite is loaded.
+     * - A bool to stop the background loop of the sprites
      *
      * The world is derived from Entity and std::enable_shared_from_this to create
      * a shared pointer of this class.
@@ -40,6 +43,10 @@ namespace RoadFighter {
          */
         World();
 
+        /**
+         * Getter for the entities of the world.
+         * @return Vector of shared pointers to the entities.
+         */
         const vector<shared_ptr<Entity>>& getEntities();
 
         /**
@@ -156,11 +163,21 @@ namespace RoadFighter {
          */
         void setupRaceCars();
 
-        //TODO
+        /**
+         * This function checks if the needed distance is covered.
+         * @return True if the needed distance is covered.
+         */
         bool neededDistanceCovered() const;
 
+        /**
+         * This function checks if the finishline sprite is covered.
+         * @return True if the finish line sprite is loaded.
+         */
         bool finishSpriteLoaded() const;
 
+        /**
+         * Creates a finish line.
+         */
         void spawnFinishline();
     };
 

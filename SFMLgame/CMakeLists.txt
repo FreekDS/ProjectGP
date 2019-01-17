@@ -10,7 +10,6 @@ SET(SRC_GAME
         src/Utilities.cpp
         src/Observer.cpp
         src/EntityFactory.cpp
-        src/FinishLine.cpp
         )
 
 # Set the SFML ROOT (used on my Windows environment)

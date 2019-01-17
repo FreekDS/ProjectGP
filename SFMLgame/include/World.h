@@ -43,7 +43,6 @@ namespace RoadFighterSFML {
          */
         void draw() const override;
 
-
         /**
          * Reads the user input and interprets them.
          */

@@ -46,10 +46,20 @@ namespace RoadFighterSFML {
          */
         shared_ptr<RoadFighter::Entity> createPassingCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const override;
 
+        /**
+         * This function creates a Race car.
+         * @param world Shared pointer to the world.
+         * @param player Shared pointer to the player.
+         * @return Shared pointer to an entity (= race car)
+         */
         shared_ptr<RoadFighter::Entity> createRaceCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const override;
 
-        shared_ptr<RoadFighter::Entity> createFinishLine(const shared_ptr<RoadFighter::World>& world) const override;
-
+        /**
+         * This function creates a bullet.
+         * @param world
+         * @param player
+         * @return
+         */
         shared_ptr<RoadFighter::Entity> createBullet(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const override;
     };
 

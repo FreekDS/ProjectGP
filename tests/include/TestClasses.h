@@ -103,8 +103,6 @@ public:
 
 class FinishLineTest : public RoadFighter::FinishLine {
 public:
-    void draw() const override{}
-    void updateSpriteLocation() override{}
 };
 
 class RacingCarTest : public RoadFighter::RacingCar {

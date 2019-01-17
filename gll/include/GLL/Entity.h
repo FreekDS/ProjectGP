@@ -206,6 +206,9 @@ namespace RoadFighter {
          */
         EntityType getType() const;
 
+        /**
+         * Disable all the colliders of the entity.
+         */
         void disableColliders();
     };
 

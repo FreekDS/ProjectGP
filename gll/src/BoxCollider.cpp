@@ -90,16 +90,26 @@ namespace RoadFighter {
         return !(rhs==*this);
     }
 
+    /**
+     * Enables the box collider.
+     */
     void BoxCollider::enable()
     {
         m_enabled = true;
     }
 
+    /**
+     * Disable the box collider.
+     */
     void BoxCollider::disable()
     {
         m_enabled = false;
     }
 
+    /**
+     * Check whether the box collider is enabled or not.
+     * @return True if the collider is enabled.
+     */
     bool BoxCollider::isEnabled() const
     {
         return m_enabled;

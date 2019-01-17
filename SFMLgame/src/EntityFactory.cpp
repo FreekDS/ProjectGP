@@ -35,6 +35,12 @@ namespace RoadFighterSFML {
         return passingCar;
     }
 
+    /**
+     * This function creates a Race car.
+     * @param world Shared pointer to the world.
+     * @param player Shared pointer to the player.
+     * @return Shared pointer to an entity (= race car)
+     */
     shared_ptr<RoadFighter::Entity> EntityFactory::createRaceCar(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const
     {
         auto racingCar = make_shared<RacingCar>("racing_car.png", m_window, world, player);
@@ -58,10 +64,5 @@ namespace RoadFighterSFML {
     EntityFactory::EntityFactory(const window_ptr& window)
             :m_window(window) { }
 
-    shared_ptr<RoadFighter::Entity> EntityFactory::createFinishLine(const shared_ptr<RoadFighter::World>& world) const
-    {
-        auto finish = make_shared<RoadFighter::FinishLine>(world);
-        return finish;
-    }
 
 } // namespace RoadFighterSFML

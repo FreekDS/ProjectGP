@@ -74,10 +74,20 @@ namespace RoadFighter {
          */
         bool operator!=(const BoxCollider& rhs) const;
 
+        /**
+         * Enables the box collider.
+         */
         void enable();
 
+        /**
+         * Disable the box collider.
+         */
         void disable();
 
+        /**
+         * Check whether the box collider is enabled or not.
+         * @return True if the collider is enabled.
+         */
         bool isEnabled() const;
     };
 

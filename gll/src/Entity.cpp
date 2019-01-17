@@ -251,6 +251,9 @@ namespace RoadFighter {
         m_type = type;
     }
 
+    /**
+     * Disable all the colliders of the entity.
+     */
     void Entity::disableColliders()
     {
         for(auto& collider : m_colliders)

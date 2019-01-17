@@ -275,21 +275,36 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Getter for the entities of the world.
+     * @return Vector of shared pointers to the entities.
+     */
     const vector<shared_ptr<Entity>>& World::getEntities()
     {
         return m_childEntities;
     }
 
+    /**
+     * This function checks if the needed distance is covered.
+     * @return True if the needed distance is covered.
+     */
     bool World::neededDistanceCovered() const
     {
         return m_neededDistanceCovered;
     }
 
+    /**
+     * This function checks if the finishline sprite is covered.
+     * @return True if the finish line sprite is loaded.
+     */
     bool World::finishSpriteLoaded() const
     {
         return m_finishSpriteLoaded;
     }
 
+    /**
+     * Creates a finish line.
+     */
     void World::spawnFinishline()
     {
         add(m_factory->createFinishLine(getPtr()));
