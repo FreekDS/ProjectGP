@@ -18,6 +18,7 @@ namespace RoadFighter {
     private:
         Position m_ul;
         Position m_br;
+        bool m_enabled;
     public:
         /**
          * Constructor for a box collider.
@@ -72,6 +73,12 @@ namespace RoadFighter {
          * @return True if this equals the other the collider.
          */
         bool operator!=(const BoxCollider& rhs) const;
+
+        void enable();
+
+        void disable();
+
+        bool isEnabled() const;
     };
 
 } // namespace RoadFighter

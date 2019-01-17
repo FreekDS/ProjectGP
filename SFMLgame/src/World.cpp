@@ -102,9 +102,17 @@ namespace RoadFighterSFML {
             player->slowDown();
         }
 
-        m_sprite.move(0, static_cast<float>(player->getSpeed()));
-        m_sprite2.move(0, static_cast<float>(player->getSpeed()));
-        backgroundLoopUpdate(m_sprite2, m_sprite);
+        if(!m_stopLoop) {
+            m_sprite.move(0, static_cast<float>(player->getSpeed()));
+            m_sprite2.move(0, static_cast<float>(player->getSpeed()));
+            backgroundLoopUpdate(m_sprite2, m_sprite);
+        }
+        else{
+            if(player->getSpeed() > 0 && !player->hasFinished())
+                for(int i = 0; i<player->getSpeed()/4; i++)
+                    player->moveUp();
+            player->updateSpriteLocation();
+        }
     }
 
     /**
@@ -134,8 +142,22 @@ namespace RoadFighterSFML {
     {
         if (toMove.getPosition().y<other.getPosition().y)
             swap(toMove, other);
-        if (toMove.getPosition().y-toMove.getGlobalBounds().height/2>m_window->getSize().y)
-            toMove.setPosition(toMove.getPosition().x, other.getPosition().y-other.getGlobalBounds().height);
+        if (toMove.getPosition().y-toMove.getGlobalBounds().height/2>m_window->getSize().y) {
+            if(finishSpriteLoaded()){
+                spawnFinishline();
+                auto trans = RoadFighter::Transformation::getInstance();
+                RoadFighter::Position screenPos = trans->getScreenCoordinate(getPos());
+                other.setPosition(static_cast<float>(screenPos.x), static_cast<float>(screenPos.y));
+                m_stopLoop = true;
+            }
+            else
+                toMove.setPosition(toMove.getPosition().x, other.getPosition().y-other.getGlobalBounds().height);
+            if(neededDistanceCovered()){
+                // load toMove finish
+                toMove.setTexture(m_textureEnd);
+                m_finishSpriteLoaded = true;
+            }
+        }
     }
 
     /**

@@ -7,7 +7,7 @@ namespace RoadFighter {
         double width = world->getRightBoundary() - world->getLeftBoundary();
         double height = 1.0/3.0 * width;
         initializeCorners(width, height);
-        setPos(0.3, 2);
+        setPos(0.3, 2.8);
         setType(FINISH);
     }
 
@@ -19,6 +19,16 @@ namespace RoadFighter {
     bool FinishLine::canBeDestroyed() const
     {
         return false;
+    }
+
+    void FinishLine::draw() const
+    {
+
+    }
+
+    void FinishLine::updateSpriteLocation()
+    {
+
     }
 
 }

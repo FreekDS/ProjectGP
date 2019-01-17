@@ -60,7 +60,7 @@ namespace RoadFighterSFML {
 
     shared_ptr<RoadFighter::Entity> EntityFactory::createFinishLine(const shared_ptr<RoadFighter::World>& world) const
     {
-        auto finish = make_shared<FinishLine>("finish_line.png", world, m_window);
+        auto finish = make_shared<RoadFighter::FinishLine>(world);
         return finish;
     }
 

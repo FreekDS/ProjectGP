@@ -57,6 +57,8 @@ namespace RoadFighter {
 
         for (const BoxCollider& collider1 : entity1->getColliders()) {
             for (const BoxCollider& collider2 : entity2->getColliders()) {
+                if(!collider1.isEnabled() || !collider2.isEnabled())
+                    continue;
                 if (doOverlap(collider1, collider2)) {
                     return true;
                 }
@@ -88,7 +90,7 @@ namespace RoadFighter {
      * Default constructor of World.
      */
     World::World()
-            :m_factory(nullptr), m_boundary1(-0.7), m_boundary2(1.3), m_neededDistanceCovered(false)
+            :m_factory(nullptr), m_boundary1(-0.7), m_boundary2(1.3), m_neededDistanceCovered(false), m_finishSpriteLoaded(false), m_stopLoop(false)
     {
         setType(EntityType::WORLD);
         setUpperLeftCorner({-4, 3});
@@ -225,10 +227,16 @@ namespace RoadFighter {
      */
     void World::update()
     {
+        shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+        if(player->hasFinished()) {
+            //TODO finish handler
+            return;
+        }
+
         // check for collision
         checkCollisionOfAll();
 
-        if (dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance()>=2000) {
+        if (dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance()>=20) {
             m_neededDistanceCovered = true;
         }
 
@@ -275,6 +283,16 @@ namespace RoadFighter {
     bool World::neededDistanceCovered() const
     {
         return m_neededDistanceCovered;
+    }
+
+    bool World::finishSpriteLoaded() const
+    {
+        return m_finishSpriteLoaded;
+    }
+
+    void World::spawnFinishline()
+    {
+        add(m_factory->createFinishLine(getPtr()));
     }
 
 } // namespace RoadFighter

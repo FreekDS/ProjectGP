@@ -9,7 +9,7 @@ namespace RoadFighter {
      * @param corner1 First corner of the collision rectangle
      * @param corner2 Second corner of the collision rectangle
      */
-    BoxCollider::BoxCollider(Position cornerUL, Position cornerBR)
+    BoxCollider::BoxCollider(Position cornerUL, Position cornerBR) : m_enabled(true)
     {
         if (cornerUL.x>cornerBR.x)
             std::swap(cornerUL.x, cornerBR.x);
@@ -88,6 +88,21 @@ namespace RoadFighter {
     bool BoxCollider::operator!=(const BoxCollider& rhs) const
     {
         return !(rhs==*this);
+    }
+
+    void BoxCollider::enable()
+    {
+        m_enabled = true;
+    }
+
+    void BoxCollider::disable()
+    {
+        m_enabled = false;
+    }
+
+    bool BoxCollider::isEnabled() const
+    {
+        return m_enabled;
     }
 
 } // namespace RoadFighter

@@ -251,4 +251,10 @@ namespace RoadFighter {
         m_type = type;
     }
 
+    void Entity::disableColliders()
+    {
+        for(auto& collider : m_colliders)
+            collider.disable();
+    }
+
 } // namespace RoadFighter

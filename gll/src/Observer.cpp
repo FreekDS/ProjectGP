@@ -13,7 +13,7 @@ namespace RoadFighter {
      * @param str String containing additional information ex. 'speed: '.
      */
     SpeedObserver::SpeedObserver(const shared_ptr<Player>& subject, const string& str)
-            :m_subject(subject), m_string(str), m_pos(1.5,2.5)
+            :m_subject(subject), m_string(str), m_pos(1.7,2.5)
     {
 
     }
@@ -42,7 +42,6 @@ namespace RoadFighter {
 
     void DistanceObserver::update()
     {
-        cout << m_coveredDistance << endl;
         if(m_clock.getTimeAsMilliseconds() >= m_updateTick){
             m_clock.reset();
             if(m_subject->isMoving()) {

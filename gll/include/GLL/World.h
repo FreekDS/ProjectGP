@@ -32,6 +32,8 @@ namespace RoadFighter {
         double m_boundary2;
         Clock m_spawnCooldown;
         bool m_neededDistanceCovered;
+        bool m_finishSpriteLoaded;
+        bool m_stopLoop;
     public:
         /**
          * Default constructor of World.
@@ -156,6 +158,10 @@ namespace RoadFighter {
 
         //TODO
         bool neededDistanceCovered() const;
+
+        bool finishSpriteLoaded() const;
+
+        void spawnFinishline();
     };
 
 } // namespace RoadFighter

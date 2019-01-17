@@ -13,6 +13,10 @@ namespace RoadFighter {
         void update() override;
 
         bool canBeDestroyed() const override;
+
+        void draw() const override;
+
+        void updateSpriteLocation() override;
     };
 
 }

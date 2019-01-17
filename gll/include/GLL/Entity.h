@@ -205,6 +205,8 @@ namespace RoadFighter {
          * @return Type of the entity.
          */
         EntityType getType() const;
+
+        void disableColliders();
     };
 
 } // namespace RoadFighter

@@ -124,8 +124,10 @@ namespace RoadFighter {
     void RacingCar::update()
     {
         updateSpriteLocation();
-        if (hasFinished())
+        if (hasFinished()) {
+            disableColliders();
             return;
+        }
 
         auto rand = Random::getInstance();
         if (!m_gameStarted && hasCrashed())
