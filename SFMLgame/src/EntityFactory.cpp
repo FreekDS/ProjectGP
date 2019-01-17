@@ -3,7 +3,7 @@
 #include <RacingCar.h>
 #include <PassingCar.h>
 #include <Observer.h>
-#include <FinishLine.h>
+
 
 namespace RoadFighterSFML {
 
