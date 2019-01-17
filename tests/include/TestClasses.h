@@ -40,11 +40,8 @@ public:
 class EntityTest : public RoadFighter::Entity {
 public:
     void draw() const override { }
-
     void update() override { }
-
     void updateSpriteLocation() override { }
-
     bool canBeDestroyed() const override
     {
         return false;
@@ -112,6 +109,8 @@ public:
 
 class RacingCarTest : public RoadFighter::RacingCar {
 public:
+    RacingCarTest(const shared_ptr<RoadFighter::Player>& player, const shared_ptr<RoadFighter::World>& world)
+            :RacingCar(player, world) { }
     void draw() const override{}
     void updateSpriteLocation() override{}
     void rotateSprite(float angle) override{}
