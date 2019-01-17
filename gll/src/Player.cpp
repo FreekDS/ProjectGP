@@ -158,7 +158,14 @@ namespace RoadFighter {
         if(hasCrashed()){
             setSpeed(0);
             rotateSprite(10);
-            repair();
+            if(repair()){
+                for(auto& observer : m_observers){
+                    if(observer->getType() == ObserverType::SCORE){
+                        auto obs = dynamic_pointer_cast<ScoreObserver>(observer);
+                        obs->updateScore(-100);
+                    }
+                }
+            }
         }else {
             setSpriteRotation(0);
         }

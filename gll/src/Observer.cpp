@@ -107,7 +107,10 @@ namespace RoadFighter {
 
     void ScoreObserver::updateScore(int score)
     {
-        m_score += score;
+        if(-score > m_score)
+            m_score = 0;
+        else
+            m_score += score;
         updateDrawable();
     }
 } // namespace RoadFighter
