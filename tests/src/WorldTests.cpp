@@ -96,37 +96,50 @@ TEST_F(WorldTests, canBeDestroyed)
 
 TEST_F(WorldTests, removeRemovableEntities)
 {
-    //TODO implement entites first
-}
-
-
-TEST_F(WorldTests, checkCollisionOffAll)
-{
-    //TODO implement entities first
+    shared_ptr<World> world = make_shared<WorldTest>();
+    shared_ptr<Player> player = make_shared<PlayerTest>();
+    shared_ptr<Entity> e1 = make_shared<PassingCarTest>(player, world);
+    shared_ptr<Entity> e2 = make_shared<PassingCarTest>(player, world);
+    shared_ptr<Entity> e3 = make_shared<PassingCarTest>(player, world);
+    shared_ptr<Entity> e4 = make_shared<PassingCarTest>(player, world);
+    shared_ptr<Entity> e5 = make_shared<PassingCarTest>(player, world);
+    world->add(player);
+    world->add(e1);
+    world->add(e2);
+    world->add(e3);
+    world->add(e4);
+    world->add(e5);
+    ASSERT_EQ(world->getEntities().size(), 6);
+    world->removeRemovableEntities();
+    EXPECT_EQ(world->getEntities().size(), 6);
+    e1->setPos(0, -20000);
+    ASSERT_TRUE(e1->canBeDestroyed());
+    world->removeRemovableEntities();
+    EXPECT_EQ(world->getEntities().size(), 5);
+    e3->setPos(0, -20000);
+    e5->setPos(0, -20000);
+    ASSERT_TRUE(e3->canBeDestroyed());
+    ASSERT_TRUE(e5->canBeDestroyed());
+    world->removeRemovableEntities();
+    EXPECT_EQ(world->getEntities().size(), 3);
 }
 
 TEST_F(WorldTests, getPlayer)
 {
-    //TODO implement player first
-}
-
-TEST_F(WorldTests, update)
-{
-    //TODO implement entities first
-}
-
-TEST_F(WorldTests, setupRaceCars)
-{
-    //TODO implement player first
-//    WorldTest world;
-//    EXPECT_TRUE(world.getEntities().empty());
-//    world.setupRaceCars();
-//    EXPECT_EQ(world.getEntities().size(), 5);
-}
-
-TEST_F(WorldTests, neededDistanceCovered)
-{
-    //TODO
+    shared_ptr<World> world = make_shared<WorldTest>();
+    shared_ptr<Player> player = make_shared<PlayerTest>();
+    shared_ptr<PassingCar> e1 = make_shared<PassingCarTest>(player, world);
+    shared_ptr<PassingCar> e2 = make_shared<PassingCarTest>(player, world);
+    shared_ptr<PassingCar> e3 = make_shared<PassingCarTest>(player, world);
+    shared_ptr<PassingCar> e4 = make_shared<PassingCarTest>(player, world);
+    shared_ptr<PassingCar> e5 = make_shared<PassingCarTest>(player, world);
+    world->add(player);
+    world->add(e1);
+    world->add(e2);
+    world->add(e3);
+    world->add(e4);
+    world->add(e5);
+    EXPECT_EQ(player.get(), world->getPlayer().get());
 }
 
 

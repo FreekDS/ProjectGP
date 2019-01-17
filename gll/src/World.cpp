@@ -131,7 +131,7 @@ namespace RoadFighter {
     shared_ptr<Entity> World::getPlayer() const
     {
         for (const auto& entity : m_childEntities) {
-            if (entity->getType() == EntityType::PLAYER)
+            if (entity->getType()==EntityType::PLAYER)
                 return entity;
         }
         return nullptr;
@@ -195,7 +195,7 @@ namespace RoadFighter {
                 if (checkCollision(entity1, entity2)) {
                     if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity1)) {
                         auto vehicle = dynamic_pointer_cast<RoadFighter::Vehicle>(entity1);
-                        if(entity2->getType() == FINISH){
+                        if (entity2->getType()==FINISH) {
                             vehicle->finish();
                             continue;
                         }
@@ -205,7 +205,7 @@ namespace RoadFighter {
                     }
                     if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity2)) {
                         auto vehicle = dynamic_pointer_cast<RoadFighter::Vehicle>(entity2);
-                        if(entity1->getType() == FINISH){
+                        if (entity1->getType()==FINISH) {
                             vehicle->finish();
                             continue;
                         }
@@ -228,7 +228,7 @@ namespace RoadFighter {
         // check for collision
         checkCollisionOfAll();
 
-        if(dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance() >= 2000){
+        if (dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance()>=2000) {
             m_neededDistanceCovered = true;
         }
 
@@ -258,8 +258,13 @@ namespace RoadFighter {
      */
     void World::setupRaceCars()
     {
-        for(int i = 0; i<5; i++)
-            add(m_factory->createRaceCar(getPtr(), dynamic_pointer_cast<Player>(getPlayer())));
+        if (getPlayer()==nullptr)
+            throw std::invalid_argument("Add a player to the world before adding race cars");
+        for (int i = 0; i<5; i++){
+            shared_ptr<World> world = getPtr();
+            shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+            add(m_factory->createRaceCar(world, player));
+        }
     }
 
     const vector<shared_ptr<Entity>>& World::getEntities()
