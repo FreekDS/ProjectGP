@@ -179,6 +179,12 @@ namespace RoadFighter {
          * Creates a finish line.
          */
         void spawnFinishline();
+
+        /**
+         * Returns true if the player finished the game.
+         * @return True if the player has finished the game.
+         */
+        bool gameFinished() const;
     };
 
 } // namespace RoadFighter

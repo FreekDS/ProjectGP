@@ -67,5 +67,46 @@ namespace RoadFighterSFML {
             m_value.setColor(sf::Color::Red);
     }
 
+//Distance observer //////////////////////////////////////////////////////////////////////////////////
+
+    ScoreObserver::ScoreObserver(const shared_ptr<RoadFighter::Player>& subject, const string& str,
+            const window_ptr& window) : RoadFighter::ScoreObserver(subject, str), m_window(window)
+    {
+        m_font.loadFromFile("./res/font/font.ttf");
+        m_text.setFont(m_font);
+        m_text.setString(str + "0000000");
+        m_text.setColor(sf::Color::White);
+        m_text.scale(0.7, 0.7);
+
+        auto trans = RoadFighter::Transformation::getInstance();
+        RoadFighter::Position screenPos = trans->getScreenCoordinate(m_pos);
+        m_text.setPosition(static_cast<float>(screenPos.x), static_cast<float>(screenPos.y));
+    }
+
+    void ScoreObserver::draw() const
+    {
+        m_window->draw(m_text);
+    }
+
+    void ScoreObserver::updateDrawable()
+    {
+        auto countDigit = [](int num) -> int{
+            int count = 0;
+            while(num != 0){
+                num/=10;
+                count++;
+            }
+            return count;
+        };
+        int digitNum = countDigit(m_score);
+        std::string str;
+        while(digitNum < 7){
+            str += '0';
+            digitNum++;
+        }
+        str += std::to_string(m_score);
+        m_text.setString(m_string + str);
+    }
+
 } // namespace RoadFighterSFML
 

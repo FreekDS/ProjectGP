@@ -17,8 +17,10 @@ namespace RoadFighterSFML {
         auto player = make_shared<Player>("player_car.png", m_window);
         auto speedObserver = make_shared<SpeedObserver>(player, "Speed: ", m_window);
         auto distanceObserver = make_shared<RoadFighter::DistanceObserver>(player);
+        auto scoreObserver = make_shared<ScoreObserver>(player, "Score: ", m_window);
         player->attach(speedObserver);
         player->attach(distanceObserver);
+        player->attach(scoreObserver);
         return player;
     }
 

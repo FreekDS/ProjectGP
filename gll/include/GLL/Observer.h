@@ -12,12 +12,20 @@ namespace RoadFighter {
     class Player; // forward declaration to avoid circular linking: Player includes observer and vice versa.
 
     /**
+     * Enum to determine the different types of observer.
+     */
+    enum ObserverType {
+        UNDECLARED,
+        SPEED,
+        DISTANCE,
+        SCORE
+    };
+
+    /**
      * Observer interface class.
      * See Observer design pattern for details.
      */
     class Observer {
-    protected:
-        double m_textLength = 0;
     public:
         /**
          * Default constructor of Observer.
@@ -38,6 +46,15 @@ namespace RoadFighter {
          * Pure virtual draw function which needs to be implemented in derived classes.
          */
         virtual void draw() const = 0;
+
+        /**
+         * Gets the type of the observer.
+         * @return UNKNOWN observer.
+         */
+        virtual ObserverType getType() const
+        {
+            return ObserverType::UNDECLARED;
+        }
     };
 
     /**
@@ -70,19 +87,64 @@ namespace RoadFighter {
          * @return Speed in a 'realistic' form (multiplied by 10).
          */
         unsigned int getPlayerSpeed() const;
+
+        /**
+         * Gets the type of the observer.
+         * @return SPEED observer.
+         */
+        ObserverType getType() const override;
     };
 
     class DistanceObserver : public Observer {
+    private:
         shared_ptr<Player> m_subject;
         double m_coveredDistance;
         const int m_updateTick;
         Clock m_clock;
     public:
+        /**
+         * Constructor for Distance observer.
+         * @param subject Subject to observe.
+         */
         explicit DistanceObserver(const shared_ptr<Player>& subject);
+
+        /**
+         * Update the covered distance.
+         */
+        void update() override;
+
+        /**
+         * Draws the observer. Does nothing as this observer does not need to be drawn.
+         */
+        void draw() const override { }
+
+        /**
+         * Gets the type of the observer.
+         * @return DISTANCE observer.
+         */
+        ObserverType getType() const override;
+    };
+
+    class ScoreObserver : public Observer {
+    protected:
+        shared_ptr<Player> m_subject;
+        double m_lastDistance;
+        unsigned int m_score;
+        std::string m_string;
+        Position m_pos;
+    public:
+        ScoreObserver(const shared_ptr<Player>& subject, const std::string& msg);
 
         void update() override;
 
-        void draw() const override {}
+        ObserverType getType() const override;
+
+        unsigned int getScore() const;
+
+        void updateScore(int score);
+
+        virtual void updateDrawable() = 0;
+
     };
 
 } // namespace RoadFighter

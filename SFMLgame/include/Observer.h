@@ -52,6 +52,19 @@ namespace RoadFighterSFML {
         void updateTextColor();
     };
 
+    class ScoreObserver : public RoadFighter::ScoreObserver{
+    private:
+        window_ptr m_window;
+        sf::Font m_font;
+        sf::Text m_text;
+    public:
+        void draw() const override;
+
+        void updateDrawable() override;
+
+        ScoreObserver(const shared_ptr<RoadFighter::Player>& subject, const string& str, const window_ptr& window);
+    };
+
 } // namespace RoadFighterSFML
 
 #endif //ROADFIGHTER_SFML_OBSERVER_H

@@ -227,16 +227,13 @@ namespace RoadFighter {
      */
     void World::update()
     {
-        shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
-        if(player->hasFinished()) {
-            //TODO finish handler
+        if(gameFinished())
             return;
-        }
 
         // check for collision
         checkCollisionOfAll();
 
-        if (dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance()>=20) {
+        if (dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance()>=1200) {
             m_neededDistanceCovered = true;
         }
 
@@ -308,6 +305,12 @@ namespace RoadFighter {
     void World::spawnFinishline()
     {
         add(m_factory->createFinishLine(getPtr()));
+    }
+
+    bool World::gameFinished() const
+    {
+        shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+        return player->hasFinished();
     }
 
 } // namespace RoadFighter

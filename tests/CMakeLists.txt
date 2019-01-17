@@ -69,7 +69,6 @@ set(SRC_GAME
         ${SRC_PATH}/Utilities.cpp
         ${SRC_PATH}/Observer.cpp
         ${SRC_PATH}/EntityFactory.cpp
-        ${SRC_PATH}/FinishLine.cpp
         )
 
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/SFMLgame/include)
