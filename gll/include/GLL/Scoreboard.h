@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <array>
+#include "Clock.h"
 
 namespace RoadFighter {
 
@@ -24,6 +25,7 @@ namespace RoadFighter {
      * - An unsigned integer to hold the current score
      * - An integer which determines the current position in the scoreboard (-1 if it is not on the board)
      * - A bool to check if setScore function is called or not
+     * - An accept delay clock to prevent from instantly confirming your high score
      */
     class Scoreboard {
     protected:
@@ -33,6 +35,7 @@ namespace RoadFighter {
         unsigned int m_currentScore;
         int m_currentPos;
         bool m_scoreSet;
+        Clock m_acceptDelay;
     public:
 
         /**

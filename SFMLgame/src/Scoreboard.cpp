@@ -131,6 +131,8 @@ namespace RoadFighterSFML {
      */
     void Scoreboard::confirmInput()
     {
+        if(!m_acceptDelay.timerFinished())
+            return;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return)) {
             std::string name = m_name.getString().toAnsiString();
             updateScoreboard(name);

@@ -11,7 +11,7 @@ namespace RoadFighter {
      * @param score_file File name of the scores file.
      */
     Scoreboard::Scoreboard(const std::string& score_file)
-            :m_score_file(score_file), m_askInput(false), m_scoreSet(false)
+            :m_score_file(score_file), m_askInput(false), m_scoreSet(false), m_acceptDelay(500)
     {
         std::string path = "./res/score/";
         mINI::INIFile file(path+score_file);
@@ -173,6 +173,8 @@ namespace RoadFighter {
         m_askInput = m_currentPos>=0;
         setDrawableText(score, finish_pos);
         m_scoreSet = true;
+        m_acceptDelay.setTimer(100);
+        m_acceptDelay.startTimer();
     }
 
     /**

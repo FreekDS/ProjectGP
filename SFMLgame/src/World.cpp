@@ -55,6 +55,9 @@ namespace RoadFighterSFML {
 
         // Initialize controls
         initializeKeymap();
+
+        if(m_debug)
+            m_distanceToCover = 100;
     }
 
     /**
