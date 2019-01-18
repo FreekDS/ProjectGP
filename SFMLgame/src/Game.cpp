@@ -75,7 +75,7 @@ namespace RoadFighterSFML {
 
                     // check if the game has finished and change game state if so
                     if (m_world->gameFinished()){
-                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
                             m_state = GameState::SCOREBOARD;
                     }
 
