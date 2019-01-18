@@ -137,6 +137,12 @@ namespace RoadFighter {
          * @return True if the player can shoot. Else false.
          */
         bool shoot();
+
+        /**
+         * Updates the score of the player.
+         * @param score Amount to increase score
+         */
+        void updateScore(int score);
     };
 
 } // namespace RoadFighter

@@ -220,4 +220,18 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Updates the score of the player.
+     * @param score Amount to increase score
+     */
+    void Player::updateScore(int score)
+    {
+        for(auto& obs : m_observers){
+            if(obs->getType() == ObserverType::SCORE){
+                dynamic_pointer_cast<ScoreObserver>(obs)->updateScore(score);
+                break;
+            }
+        }
+    }
+
 } // namespace RoadFighter

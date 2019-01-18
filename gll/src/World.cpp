@@ -204,11 +204,10 @@ namespace RoadFighter {
                             vehicle->finish();
                             continue;
                         }
-                        if (vehicle->hasCrashed())
-                            continue;
                         if(entity2->getType()==BULLET){
                             auto bullet = dynamic_pointer_cast<RoadFighter::Bullet>(entity2);
                             bullet->hit();
+                            dynamic_pointer_cast<Player>(getPlayer())->updateScore(100);
                             if(vehicle->getType()==PASSING_CAR){
                                 vehicle->crash();
                                 continue;
@@ -219,6 +218,8 @@ namespace RoadFighter {
                                 continue;
                             }
                         }
+                        if (vehicle->hasCrashed())
+                            continue;
                         vehicle->crash();
                     }
                     if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity2)) {
@@ -227,11 +228,10 @@ namespace RoadFighter {
                             vehicle->finish();
                             continue;
                         }
-                        if (vehicle->hasCrashed())
-                            continue;
                         if(entity1->getType()==BULLET){
                             auto bullet = dynamic_pointer_cast<RoadFighter::Bullet>(entity1);
                             bullet->hit();
+                            dynamic_pointer_cast<Player>(getPlayer())->updateScore(100);
                             if(vehicle->getType()==PASSING_CAR){
                                 vehicle->crash();
                                 continue;
@@ -241,7 +241,10 @@ namespace RoadFighter {
                                 r_car->lowerSpeed();
                                 continue;
                             }
+
                         }
+                        if (vehicle->hasCrashed())
+                            continue;
                         vehicle->crash();
                     }
 
