@@ -138,8 +138,7 @@ namespace RoadFighter {
                 setMoveSpeed(0);
             rotateSprite(10);
             if (repair()) {
-                setPos(rand->randDouble(m_world->getLeftBoundary(), m_world->getRightBoundary()),
-                        getPos().y);
+                setNewPos();
             }
         }
         else {
@@ -341,6 +340,45 @@ namespace RoadFighter {
             }
         }
         return false;
+    }
+
+    /**
+     * Calculate a new position after being crashed.
+     * A position is valid if the car does not spawn on top of another car.
+     */
+    void RacingCar::setNewPos()
+    {
+        auto doOverlap = [](const BoxCollider& c1, const BoxCollider& c2) -> bool {
+            if (c1.getUpperLeftCorner().x>=c2.getBottomRightCorner().x
+                    || c2.getUpperLeftCorner().x>=c1.getBottomRightCorner().x)
+                return false;
+            return !(c1.getUpperLeftCorner().y<=c2.getBottomRightCorner().y
+                    || c2.getUpperLeftCorner().y<=c1.getBottomRightCorner().y);
+        };
+        auto rand = Random::getInstance();
+        double yPos = getPos().y;
+        double xPos = 0;
+        bool found = false;
+        while(!found) {
+            xPos = rand->randDouble(m_world->getLeftBoundary(), m_world->getRightBoundary());
+            Position currentpos = Position(xPos, yPos);
+            Position currentUpperLeft = Position(currentpos.x - getWidth()/2, currentpos.y + getWidth()/2);
+            Position currentBottomRight = Position(currentpos.x + getWidth()/2, currentpos.y - getWidth()/2);
+            BoxCollider currentCollider(currentUpperLeft, currentBottomRight);
+
+            for(auto& entity : m_world->getEntities()){
+                if(entity.get() == this)
+                    continue;
+                BoxCollider firstCollider = entity->getColliders().front();
+                if(doOverlap(currentCollider, firstCollider)){
+                    found = false;
+                    continue;
+                }else{
+                    found = true;
+                }
+            }
+        }
+        setPos(xPos, yPos);
     }
 
 

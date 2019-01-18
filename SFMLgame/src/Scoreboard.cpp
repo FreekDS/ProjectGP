@@ -133,6 +133,8 @@ namespace RoadFighterSFML {
     {
         if(!m_acceptDelay.timerFinished())
             return;
+        if(m_name.getString().toAnsiString().empty())
+            return;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return)) {
             std::string name = m_name.getString().toAnsiString();
             updateScoreboard(name);
@@ -176,4 +178,4 @@ namespace RoadFighterSFML {
     }
 
 
-}
+} // namespace RoadFighterSFML

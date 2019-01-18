@@ -119,7 +119,7 @@ namespace RoadFighter {
      */
     unsigned int ScoreObserver::getScore() const
     {
-        return m_score;
+        return static_cast<unsigned int>(m_score);
     }
 
     /**
@@ -128,10 +128,9 @@ namespace RoadFighter {
      */
     void ScoreObserver::updateScore(int score)
     {
-        if(-score > m_score)
+        m_score += score;
+        if(m_score<0)
             m_score = 0;
-        else
-            m_score += score;
         updateDrawable();
     }
 } // namespace RoadFighter

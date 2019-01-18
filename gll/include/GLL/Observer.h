@@ -144,7 +144,7 @@ namespace RoadFighter {
     protected:
         shared_ptr<Player> m_subject;
         double m_lastDistance;
-        unsigned int m_score;
+        int m_score;
         std::string m_string;
         Position m_pos;
     public:

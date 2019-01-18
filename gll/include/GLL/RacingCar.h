@@ -177,6 +177,12 @@ namespace RoadFighter {
          * @return True if a car is in the path
          */
         bool carInPath() const;
+
+        /**
+         * Calculate a new position after being crashed.
+         * A position is valid if the car does not spawn on top of another car.
+         */
+        void setNewPos();
     };
 
 
