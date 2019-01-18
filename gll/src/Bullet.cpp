@@ -1,3 +1,7 @@
+
+#include <GLL/Bullet.h>
+#include <GLL/Transformation.h>
+
 #include "GLL/Bullet.h"
 
 namespace RoadFighter {
@@ -6,16 +10,14 @@ namespace RoadFighter {
      * Constructor for Bullet.
      * @param shootSpeed shooting speed of the bullet.
      */
-    Bullet::Bullet(double shootSpeed)
-            :m_shootSpeed(shootSpeed) {
+    Bullet::Bullet(double shootSpeed, const Position& playerPos, double playerHeight)
+            :m_shootSpeed(shootSpeed), m_hit(false) {
         setType(EntityType::BULLET);
+        double width = 0.06;
+        double height = 0.10;
+        initializeCorners(width, height);
+        setPos(playerPos.x, playerPos.y + playerHeight + getHeight());
     }
-
-    /**
-     * Default constructor for Bullet.
-     */
-    Bullet::Bullet()
-            :m_shootSpeed(0) { }
 
     /**
      * Assignment operator for Bullet.
@@ -46,6 +48,23 @@ namespace RoadFighter {
     void Bullet::setShootSpeed(double speed)
     {
         Bullet::m_shootSpeed = speed;
+    }
+
+    void Bullet::update()
+    {
+        updatePos(0,m_shootSpeed);
+        updateSpriteLocation();
+    }
+
+    void Bullet::hit()
+    {
+        m_hit = true;
+    }
+
+    bool Bullet::canBeDestroyed() const
+    {
+        auto trans = Transformation::getInstance();
+        return m_hit || getPos().y > trans->getYRange().second * 2;
     }
 
     /**

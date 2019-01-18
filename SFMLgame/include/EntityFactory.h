@@ -60,7 +60,7 @@ namespace RoadFighterSFML {
          * @param player
          * @return
          */
-        shared_ptr<RoadFighter::Entity> createBullet(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const override;
+        shared_ptr<RoadFighter::Entity> createBullet(const RoadFighter::Position& playerPos, double playerHeight) const override;
     };
 
 } // namespace RoadFighterSFML

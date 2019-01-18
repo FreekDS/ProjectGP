@@ -11,17 +11,16 @@ namespace RoadFighter {
     class Bullet : public Entity {
     private:
         double m_shootSpeed;
+        Position m_pos;
+        bool m_hit;
     public:
         /**
          * Constructor for Bullet.
          * @param shootSpeed shooting speed of the bullet.
          */
-        explicit Bullet(double shootSpeed);
+        Bullet(double shootSpeed, const Position& playerPos, double playerHeight);
 
-        /**
-         * Default constructor for Bullet.
-         */
-        Bullet();
+        void update() override;
 
         /**
          * Assignment operator for Bullet.
@@ -46,6 +45,10 @@ namespace RoadFighter {
          * @param speed New shooting speed for the Bullet.
          */
         void setShootSpeed(double speed);
+
+        void hit();
+
+        bool canBeDestroyed() const override;
     };
 
 } // namespace RoadFighter

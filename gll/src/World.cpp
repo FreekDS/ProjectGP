@@ -246,18 +246,10 @@ namespace RoadFighter {
         // remove entities
         removeRemovableEntities();
 
-        unsigned int maxEntities = 10;
-
         // add new entities
         if (m_spawnCooldown.timerFinished()) {
-            if(getRaceCarsBehindPlayer() >= 4)
-                maxEntities = 15;
-            else
-                maxEntities = 10;
-            if (m_childEntities.size()<maxEntities) {
-                add(m_factory->createPassingCar(getPtr(), dynamic_pointer_cast<Player>(getPlayer())));
-                resetSpawnTimer();
-            }
+            add(m_factory->createPassingCar(getPtr(), dynamic_pointer_cast<Player>(getPlayer())));
+            resetSpawnTimer();
         }
 
         // update entities

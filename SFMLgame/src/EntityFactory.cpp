@@ -3,6 +3,7 @@
 #include <RacingCar.h>
 #include <PassingCar.h>
 #include <Observer.h>
+#include <Bullet.h>
 
 
 namespace RoadFighterSFML {
@@ -49,9 +50,10 @@ namespace RoadFighterSFML {
         return racingCar;
     }
 
-    shared_ptr<RoadFighter::Entity> EntityFactory::createBullet(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const
+    shared_ptr<RoadFighter::Entity> EntityFactory::createBullet(const RoadFighter::Position& playerPos, double playerHeight) const
     {
-        return shared_ptr<RoadFighter::Entity>();
+        auto bullet = make_shared<Bullet>("bullet.png", 0.1, playerPos, playerHeight, m_window);
+        return bullet;
     }
 
     /**

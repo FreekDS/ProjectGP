@@ -29,7 +29,7 @@ namespace RoadFighter {
          * @param player shared pointer to player.
          * @return shared pointer to an Entity.
          */
-        virtual shared_ptr<Entity> createBullet(shared_ptr<RoadFighter::World> world, shared_ptr<RoadFighter::Player> player) const = 0;
+        virtual shared_ptr<Entity> createBullet(const RoadFighter::Position& playerPos, double playerHeight) const = 0;
 
         /**
          * Pure virtual function which will create a Passing Car
