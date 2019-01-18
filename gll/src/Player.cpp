@@ -32,7 +32,7 @@ namespace RoadFighter {
      * Sets the type of the entity to Player
      * Initializes the repair time.
      */
-    Player::Player() : m_maxSpeed(20), m_maxSpeedWhenMovingUp(22)
+    Player::Player() : m_maxSpeed(20), m_maxSpeedWhenMovingUp(22), m_shootDelayTime(1750), m_shootDelay(m_shootDelayTime)
     {
         double width = 0.24;
         double height = 0.40;
@@ -196,6 +196,28 @@ namespace RoadFighter {
     const vector<observer_ptr>& Player::getObservers() const
     {
         return m_observers;
+    }
+
+    /**
+     * Handles the shoot delay timer.
+     * @return True if the player can shoot. Else false.
+     */
+    bool Player::shoot()
+    {
+        if(!m_shootDelay.timerRunning()){
+            m_shootDelay.setTimer(m_shootDelayTime);
+            m_shootDelay.startTimer();
+            return false;
+        }
+        else{
+            if(m_shootDelay.timerFinished()){
+                m_shootDelay.reset();
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }
 
 } // namespace RoadFighter

@@ -52,7 +52,7 @@ namespace RoadFighterSFML {
 
     shared_ptr<RoadFighter::Entity> EntityFactory::createBullet(const RoadFighter::Position& playerPos, double playerHeight) const
     {
-        auto bullet = make_shared<Bullet>("bullet.png", 0.1, playerPos, playerHeight, m_window);
+        auto bullet = make_shared<Bullet>("bullet.png", 0.06, playerPos, playerHeight, m_window);
         return bullet;
     }
 

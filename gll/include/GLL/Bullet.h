@@ -7,6 +7,9 @@ namespace RoadFighter {
 
     /**
      * Class which represents a bullet shot by the @see Player.
+     * - a shooting speed
+     * - a position
+     * - a bool to check if the bullet has hit
      */
     class Bullet : public Entity {
     private:

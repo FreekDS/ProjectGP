@@ -183,6 +183,11 @@ namespace RoadFighter {
          * A position is valid if the car does not spawn on top of another car.
          */
         void setNewPos();
+
+        /**
+         * Lowers the maximum speed of the race car.
+         */
+        void lowerSpeed();
     };
 
 

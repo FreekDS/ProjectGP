@@ -95,7 +95,8 @@ namespace RoadFighterSFML {
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["shoot"])) {
             // let player shoot a bullet
-            add(m_factory->createBullet(getPlayer()->getPos(), getPlayer()->getHeight()));
+            if(player->shoot())
+                add(m_factory->createBullet(getPlayer()->getPos(), getPlayer()->getHeight()));
 
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["speedup"])) {
@@ -128,8 +129,8 @@ namespace RoadFighterSFML {
         m_keymap["down"] = sf::Keyboard::Down;
         m_keymap["left"] = sf::Keyboard::Left;
         m_keymap["right"] = sf::Keyboard::Right;
-        m_keymap["shoot"] = sf::Keyboard::Space;
-        m_keymap["speedup"] = sf::Keyboard::X;
+        m_keymap["shoot"] = sf::Keyboard::X;
+        m_keymap["speedup"] = sf::Keyboard::Space;
     }
 
     /**

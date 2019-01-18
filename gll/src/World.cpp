@@ -2,6 +2,8 @@
 #include <GLL/Random.h>
 #include <algorithm>
 #include <iostream>
+#include <GLL/RacingCar.h>
+#include <GLL/Bullet.h>
 
 namespace RoadFighter {
 
@@ -204,6 +206,19 @@ namespace RoadFighter {
                         }
                         if (vehicle->hasCrashed())
                             continue;
+                        if(entity2->getType()==BULLET){
+                            auto bullet = dynamic_pointer_cast<RoadFighter::Bullet>(entity2);
+                            bullet->hit();
+                            if(vehicle->getType()==PASSING_CAR){
+                                vehicle->crash();
+                                continue;
+                            }
+                            if(vehicle->getType()==RACE_CAR){
+                                auto r_car = dynamic_pointer_cast<RoadFighter::RacingCar>(vehicle);
+                                r_car->lowerSpeed();
+                                continue;
+                            }
+                        }
                         vehicle->crash();
                     }
                     if (dynamic_pointer_cast<RoadFighter::Vehicle>(entity2)) {
@@ -214,6 +229,19 @@ namespace RoadFighter {
                         }
                         if (vehicle->hasCrashed())
                             continue;
+                        if(entity1->getType()==BULLET){
+                            auto bullet = dynamic_pointer_cast<RoadFighter::Bullet>(entity1);
+                            bullet->hit();
+                            if(vehicle->getType()==PASSING_CAR){
+                                vehicle->crash();
+                                continue;
+                            }
+                            if(vehicle->getType()==RACE_CAR){
+                                auto r_car = dynamic_pointer_cast<RoadFighter::RacingCar>(vehicle);
+                                r_car->lowerSpeed();
+                                continue;
+                            }
+                        }
                         vehicle->crash();
                     }
 

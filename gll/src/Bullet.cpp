@@ -13,8 +13,8 @@ namespace RoadFighter {
     Bullet::Bullet(double shootSpeed, const Position& playerPos, double playerHeight)
             :m_shootSpeed(shootSpeed), m_hit(false) {
         setType(EntityType::BULLET);
-        double width = 0.06;
-        double height = 0.10;
+        double width = 0.1;
+        double height = 0.25;
         initializeCorners(width, height);
         setPos(playerPos.x, playerPos.y + playerHeight + getHeight());
     }

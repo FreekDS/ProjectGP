@@ -16,12 +16,17 @@ namespace RoadFighter {
      * - a max speed.
      * - a max speed when the up key is pressed.
      * - a vector of observers (observer design pattern).
+     * - a double containing the covered distance
+     * - an unsigned integer which represents the shoot delay
+     * - a clock for the shoot delay
      */
     class Player : public Vehicle {
     private:
         double m_maxSpeed;
         double m_maxSpeedWhenMovingUp;
         double m_coveredDistance;
+        unsigned int m_shootDelayTime;
+        Clock m_shootDelay;
     protected:
         vector<observer_ptr> m_observers;
     public:
@@ -126,6 +131,12 @@ namespace RoadFighter {
          * @return Vector of shared pointers to the observers
          */
         const vector<observer_ptr>& getObservers() const;
+
+        /**
+         * Handles the shoot delay timer.
+         * @return True if the player can shoot. Else false.
+         */
+        bool shoot();
     };
 
 } // namespace RoadFighter

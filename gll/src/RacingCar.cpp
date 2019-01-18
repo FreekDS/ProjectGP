@@ -1,6 +1,7 @@
 #include <GLL/RacingCar.h>
 #include <GLL/Random.h>
 #include <GLL/Transformation.h>
+#include <iostream>
 
 namespace RoadFighter {
 
@@ -379,6 +380,14 @@ namespace RoadFighter {
             }
         }
         setPos(xPos, yPos);
+    }
+
+    /**
+     * Lowers the maximum speed of the race car.
+     */
+    void RacingCar::lowerSpeed()
+    {
+        m_range.second -= m_range.second * 1/8;
     }
 
 

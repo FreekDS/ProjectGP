@@ -9,6 +9,10 @@ namespace RoadFighterSFML {
 
     /**
      * This class is the SFML implementation of the Bullet class
+     * An SFML bullet has:
+     * - a shared pointer to the window
+     * - a texture
+     * - a sprite
      */
     class Bullet : public RoadFighter::Bullet {
     private:
