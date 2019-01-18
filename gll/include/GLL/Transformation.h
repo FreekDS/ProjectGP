@@ -102,6 +102,10 @@ namespace RoadFighter {
          * @return True if the position is in the grid.
          */
         bool isInGrid(const Position& pos);
+
+        unsigned int getWindowWidth() const;
+
+        unsigned int getWindowHeight() const;
     };
 
 } // namespace RoadFighter

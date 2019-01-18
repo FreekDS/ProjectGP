@@ -37,6 +37,7 @@ namespace RoadFighter {
         bool m_neededDistanceCovered;
         bool m_finishSpriteLoaded;
         bool m_stopLoop;
+        double m_distanceToCover;
     public:
         /**
          * Default constructor of World.
@@ -185,6 +186,10 @@ namespace RoadFighter {
          * @return True if the player has finished the game.
          */
         bool gameFinished() const;
+
+        unsigned int getScore() const;
+
+        unsigned int getRaceCarsBehindPlayer() const;
     };
 
 } // namespace RoadFighter

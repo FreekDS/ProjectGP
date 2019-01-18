@@ -181,4 +181,9 @@ namespace RoadFighter {
         return m_coveredDistance;
     }
 
+    const vector<observer_ptr>& Player::getObservers() const
+    {
+        return m_observers;
+    }
+
 } // namespace RoadFighter

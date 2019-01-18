@@ -10,7 +10,7 @@ SET(SRC_GAME
         src/Utilities.cpp
         src/Observer.cpp
         src/EntityFactory.cpp
-        )
+        src/Scoreboard.cpp include/Scoreboard.h)
 
 # Set the SFML ROOT (used on my Windows environment)
 SET(SFML_ROOT C:/Libs/SFML-BUILD)

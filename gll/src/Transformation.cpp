@@ -127,6 +127,16 @@ namespace RoadFighter {
         return checkX && checkY;
     }
 
+    unsigned int Transformation::getWindowWidth() const
+    {
+        return m_windowWidth;
+    }
+
+    unsigned int Transformation::getWindowHeight() const
+    {
+        return m_windowHeight;
+    }
+
     /**
      * Default destructor
      */

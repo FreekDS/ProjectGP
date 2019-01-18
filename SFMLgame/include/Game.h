@@ -3,8 +3,15 @@
 
 #include <GLL/Game.h>
 #include <SFML/Graphics.hpp>
+#include "Scoreboard.h"
 
 namespace RoadFighterSFML {
+
+    enum GameState {
+        PLAYING,
+        SCOREBOARD,
+        NONE
+    };
 
     /**
      * This class represents the game.
@@ -13,6 +20,8 @@ namespace RoadFighterSFML {
     private:
         shared_ptr<sf::RenderWindow> m_window;
         bool m_debug;
+        GameState m_state;
+        Scoreboard m_scoreboard;
     public:
         /**
          * Constructor for Game.
@@ -41,7 +50,7 @@ namespace RoadFighterSFML {
          * Closes window when pressed on close button.
          * Allows alt + tab (gained focus and lost focus).
          */
-        void handleSFMLEvents() const;
+        void handleSFMLEvents();
     };
 
 }

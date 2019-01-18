@@ -1,10 +1,7 @@
 #include <Game.h>
 #include <EntityFactory.h>
-#include <Player.h>
 #include <World.h>
 #include <GLL/Transformation.h>
-#include <Observer.h>
-#include <GLL/Clock.h>
 
 namespace RoadFighterSFML {
 
@@ -16,7 +13,8 @@ namespace RoadFighterSFML {
      * @param fullscreen Enable or disable fullscreen, by default this is true.
      * @param debug Enable or disable debug information, by default this is false.
      */
-    Game::Game(const string& title, bool fullscreen, bool debug) : m_debug(debug)
+    Game::Game(const string& title, bool fullscreen, bool debug)
+            :m_debug(debug), m_state(GameState::NONE), m_scoreboard()
     {
         // Initialize the window
         sf::VideoMode videoMode = sf::VideoMode::getDesktopMode();
@@ -36,6 +34,8 @@ namespace RoadFighterSFML {
 
         // Initialize the world of the Game
         m_world = make_shared<World>("background.png", m_window, m_debug);
+
+        m_scoreboard.setWindow(m_window);
     }
 
     /**
@@ -56,26 +56,52 @@ namespace RoadFighterSFML {
         m_world->setFactory(entityFac);
         m_world->setupRaceCars();
 
+        m_state = GameState::PLAYING;
+
         RoadFighter::Clock clock;
-        double gameTick = 1.0 / 120.0;
+        double gameTick = 1.0/120.0;
 
         while (m_window->isOpen()) {
-            if (clock.getTimeAsSeconds()>=gameTick) {
-                clock.reset();
-                // Handle events
-                handleSFMLEvents();
-                // Update the world
-                m_world->update();
+            // handle events
+            handleSFMLEvents();
 
+            if (m_state==GameState::PLAYING) {
+                if (clock.getTimeAsSeconds()>=gameTick) {
+                    clock.reset();
+
+                    // Update the world
+                    m_world->update();
+
+                    // check if the game has finished and change game state if so
+                    if (m_world->gameFinished()){
+                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+                            m_state = GameState::SCOREBOARD;
+                    }
+
+                }
             }
-                // Clear the window
-                m_window->clear(sf::Color::Black);
-                // Draw to window
+            else if (m_state==GameState::SCOREBOARD) {
+                if (!m_scoreboard.scoreIsSet()) {
+                    m_scoreboard.setPlayerScore(m_world->getScore(), 6 - m_world->getRaceCarsBehindPlayer());
+                }
+                m_scoreboard.update();
+            }
+
+            // Always clear the window
+            m_window->clear(sf::Color::Black);
+
+            // Draw to window according to the game state
+            if (m_state==GameState::PLAYING)
                 m_world->draw();
-                // Display the window
-                m_window->display();
+            else if (m_state==GameState::SCOREBOARD)
+                m_scoreboard.draw();
+
+            // Always display the window
+            m_window->display();
 
         }
+
+
     }
 
     /**
@@ -84,9 +110,10 @@ namespace RoadFighterSFML {
      * Allows alt + tab (gained focus and lost focus).
      * Allows escape to close game using escape.
      */
-    void Game::handleSFMLEvents() const
+    void Game::handleSFMLEvents()
     {
         sf::Event event{};
+        string input;
         while (m_window->pollEvent(event))
             switch (event.type) {
                 // Close window with close button
@@ -105,7 +132,22 @@ namespace RoadFighterSFML {
             case sf::Event::KeyPressed:
                 if (event.key.code==sf::Keyboard::Escape)
                     m_window->close();
+                if (m_state==GameState::SCOREBOARD)
+                    if (event.key.code==sf::Keyboard::BackSpace)
+                        if (m_scoreboard.needsInput())
+                            m_scoreboard.removeCharOfInput();
                 break;
+            case sf::Event::TextEntered:
+                if (m_state==GameState::SCOREBOARD) {
+                    if (m_scoreboard.needsInput()) {
+                        if (event.text.unicode<0x80 && event.text.unicode>0x30)
+                            input += static_cast<char>(event.text.unicode);
+                        if (event.text.unicode==0x20)
+                            input += ' ';
+                        m_scoreboard.addInput(input);
+                    }
+                }
+
             default:
                 break;
             }

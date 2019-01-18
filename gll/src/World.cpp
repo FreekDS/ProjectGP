@@ -57,7 +57,7 @@ namespace RoadFighter {
 
         for (const BoxCollider& collider1 : entity1->getColliders()) {
             for (const BoxCollider& collider2 : entity2->getColliders()) {
-                if(!collider1.isEnabled() || !collider2.isEnabled())
+                if (!collider1.isEnabled() || !collider2.isEnabled())
                     continue;
                 if (doOverlap(collider1, collider2)) {
                     return true;
@@ -90,7 +90,8 @@ namespace RoadFighter {
      * Default constructor of World.
      */
     World::World()
-            :m_factory(nullptr), m_boundary1(-0.7), m_boundary2(1.3), m_neededDistanceCovered(false), m_finishSpriteLoaded(false), m_stopLoop(false)
+            :m_factory(nullptr), m_boundary1(-0.7), m_boundary2(1.3), m_neededDistanceCovered(false),
+             m_finishSpriteLoaded(false), m_stopLoop(false), m_distanceToCover(1200)
     {
         setType(EntityType::WORLD);
         setUpperLeftCorner({-4, 3});
@@ -227,25 +228,28 @@ namespace RoadFighter {
      */
     void World::update()
     {
-        if(gameFinished())
+        if (gameFinished())
             return;
 
         // check for collision
         checkCollisionOfAll();
 
-        if (dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance()>=1200) {
+        if (dynamic_pointer_cast<Player>(getPlayer())->getCoveredDistance()>=m_distanceToCover) {
             m_neededDistanceCovered = true;
         }
 
         // remove entities
         removeRemovableEntities();
 
+        unsigned int maxEntities = 10;
+
         // add new entities
         if (m_spawnCooldown.timerFinished()) {
-            if (m_childEntities.size()>10) {
-//                cout << "Exceeded max entities! " << m_childEntities.size() <<endl;
-            }
-            else {
+            if(getRaceCarsBehindPlayer() >= 4)
+                maxEntities = 15;
+            else
+                maxEntities = 10;
+            if (m_childEntities.size()<maxEntities) {
                 add(m_factory->createPassingCar(getPtr(), dynamic_pointer_cast<Player>(getPlayer())));
                 resetSpawnTimer();
             }
@@ -265,7 +269,7 @@ namespace RoadFighter {
     {
         if (getPlayer()==nullptr)
             throw std::invalid_argument("Add a player to the world before adding race cars");
-        for (int i = 0; i<5; i++){
+        for (int i = 0; i<5; i++) {
             shared_ptr<World> world = getPtr();
             shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
             add(m_factory->createRaceCar(world, player));
@@ -311,6 +315,32 @@ namespace RoadFighter {
     {
         shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
         return player->hasFinished();
+    }
+
+    unsigned int World::getScore() const
+    {
+        shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+        shared_ptr<ScoreObserver> scoreObserver;
+        for (auto& obs : player->getObservers()) {
+            if (obs->getType()==ObserverType::SCORE) {
+                scoreObserver = dynamic_pointer_cast<ScoreObserver>(obs);
+                break;
+            }
+        }
+        return scoreObserver->getScore();
+    }
+
+    unsigned int World::getRaceCarsBehindPlayer() const
+    {
+        shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+        unsigned int counter = 0;
+        for (auto& entity : m_childEntities) {
+            if (entity->getType()!=EntityType::RACE_CAR)
+                continue;
+            if (entity->getPos().y<player->getPos().y-0.01)
+                counter++;
+        }
+        return counter;
     }
 
 } // namespace RoadFighter

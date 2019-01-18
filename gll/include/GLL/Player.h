@@ -112,6 +112,8 @@ namespace RoadFighter {
         void setDistanceCovered(double distanceCovered);
 
         double getCoveredDistance() const;
+
+        const vector<observer_ptr>& getObservers() const;
     };
 
 } // namespace RoadFighter

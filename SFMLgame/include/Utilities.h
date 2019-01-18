@@ -26,6 +26,7 @@ void scaleSprite(sf::Sprite& sprite, Position point1, Position point2);
 
 /**
  * Parses the program arguments and puts them in the given parameters
+ * If the reset-scores tag is present, the high scores are reset.
  * @param argc Argument count
  * @param argv Array of arguments
  * @param fullscreen Storage for fullscreen bool
