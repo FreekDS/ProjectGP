@@ -109,10 +109,22 @@ namespace RoadFighter {
          */
         void update() override;
 
+        /**
+         * Sets the covered distance of the player.
+         * @param distanceCovered Covered distance of the player.
+         */
         void setDistanceCovered(double distanceCovered);
 
+        /**
+         * Gets the covered distance of the player
+         * @return Covered distance of the player
+         */
         double getCoveredDistance() const;
 
+        /**
+         * Getter for the observers of the player
+         * @return Vector of shared pointers to the observers
+         */
         const vector<observer_ptr>& getObservers() const;
     };
 

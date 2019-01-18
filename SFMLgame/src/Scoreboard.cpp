@@ -3,12 +3,16 @@
 
 namespace RoadFighterSFML {
 
-    Scoreboard::Scoreboard(std::shared_ptr<sf::RenderWindow>& window, const std::string& score_file)
-            :RoadFighter::Scoreboard(score_file), m_window(window)
-    {
-        init();
-    }
-
+    /**
+     * This function draws the scoreboard and all its elements to the SFML window.
+     * Things that will be drawn at all times:
+     * - score of the player
+     * - the scoreboard
+     * Things that will be draw if the player reached a high score:
+     * - the query for a name
+     * - the name the user is typing
+     * - the new high score will be drawn in red after the player confirmed his name
+     */
     void Scoreboard::draw() const
     {
         if (m_askInput) {
@@ -22,6 +26,11 @@ namespace RoadFighterSFML {
         m_window->draw(m_score);
     }
 
+    /**
+     * Updates the drawable of the scoreboard.
+     * All scores are shifted to the correct position. The last score will be erased.
+     * @param pos Position of the updated element.
+     */
     void Scoreboard::updateDrawable(unsigned int pos)
     {
         m_sfmlScores[pos].score.scale(1.1, 1.1);
@@ -41,12 +50,20 @@ namespace RoadFighterSFML {
         init();
     }
 
+    /**
+     * Sets the SFML window
+     * @param window Shared pointer to the window
+     */
     void Scoreboard::setWindow(const std::shared_ptr<sf::RenderWindow>& window)
     {
         m_window = window;
         init();
     }
 
+    /**
+     * Adds input received from the keyboard to the name.
+     * @param input Input received from the keyboard.
+     */
     void Scoreboard::addInput(const std::string& input)
     {
         auto trans = RoadFighter::Transformation::getInstance();
@@ -55,6 +72,10 @@ namespace RoadFighterSFML {
         m_name.setPosition(xpos, m_name.getPosition().y);
     }
 
+    /**
+     * Initializes the texts of the scoreboard.
+     * Things like position, scale, font and color will be initialized for all texts.
+     */
     void Scoreboard::init()
     {
         auto trans = RoadFighter::Transformation::getInstance();
@@ -90,6 +111,9 @@ namespace RoadFighterSFML {
 
     }
 
+    /**
+     * This function removes a character of the input when backspace is pressed.
+     */
     void Scoreboard::removeCharOfInput()
     {
         auto trans = RoadFighter::Transformation::getInstance();
@@ -101,6 +125,10 @@ namespace RoadFighterSFML {
         }
     }
 
+    /**
+     * This function confirms the input given by the keyboard only if enter is pressed.
+     * If enter is pressed, the scoreboard will stop asking for keyboard input. @see needsInput()
+     */
     void Scoreboard::confirmInput()
     {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
@@ -110,6 +138,11 @@ namespace RoadFighterSFML {
         }
     }
 
+    /**
+     * This function will update the drawable text with the score and finish position of the player.
+     * @param score Score to set.
+     * @param finish_pos Finish position of the player.
+     */
     void Scoreboard::setDrawableText(unsigned int score, unsigned int finish_pos)
     {
         auto countDigit = [](int num) -> int {

@@ -69,6 +69,12 @@ namespace RoadFighterSFML {
 
 //Distance observer //////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Constructor for the ScoreObserver
+     * @param subject Subject to observe
+     * @param str String to display ex. "Score: "
+     * @param window Shared pointer to the window
+     */
     ScoreObserver::ScoreObserver(const shared_ptr<RoadFighter::Player>& subject, const string& str,
             const window_ptr& window) : RoadFighter::ScoreObserver(subject, str), m_window(window)
     {
@@ -83,11 +89,17 @@ namespace RoadFighterSFML {
         m_text.setPosition(static_cast<float>(screenPos.x), static_cast<float>(screenPos.y));
     }
 
+    /**
+     * Draws the score to the screen.
+     */
     void ScoreObserver::draw() const
     {
         m_window->draw(m_text);
     }
 
+    /**
+     * Updates the text to draw to the screen.
+     */
     void ScoreObserver::updateDrawable()
     {
         auto countDigit = [](int num) -> int{

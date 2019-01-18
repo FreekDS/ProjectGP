@@ -79,12 +79,21 @@ namespace RoadFighter {
 
 //Score observer //////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Constructor for the score observer.
+     * @param subject Subject to observe.
+     * @param msg Message to display ex. "Score: "
+     */
     ScoreObserver::ScoreObserver(const shared_ptr<Player>& subject, const std::string& msg)
             :m_subject(subject), m_lastDistance(subject->getCoveredDistance()), m_score(0), m_string(msg), m_pos(1.7, 2)
     {
 
     }
 
+    /**
+     * Updates the score observer.
+     * Also calls @see updateDrawable()
+     */
     void ScoreObserver::update()
     {
         int distance = static_cast<int>(round(m_subject->getCoveredDistance()));
@@ -95,16 +104,28 @@ namespace RoadFighter {
         updateDrawable();
     }
 
+    /**
+     * Returns the type of the observer
+     * @return ObserverType::SCORE
+     */
     ObserverType ScoreObserver::getType() const
     {
         return ObserverType::SCORE;
     }
 
+    /**
+     * Returns the score of the observer.
+     * @return Score of the observer
+     */
     unsigned int ScoreObserver::getScore() const
     {
         return m_score;
     }
 
+    /**
+     * Updates the score of the observer with a certain amount. (may be positive or negative)
+     * @param score Score to update score with.
+     */
     void ScoreObserver::updateScore(int score)
     {
         if(-score > m_score)

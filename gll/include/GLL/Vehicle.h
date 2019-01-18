@@ -121,8 +121,15 @@ namespace RoadFighter {
          */
         void setRepairTime(int repairTime);
 
+        /**
+         * Check whether the vehicle has finished.
+         * @return True if the vehicle has finished
+         */
         bool hasFinished() const;
 
+        /**
+         * Lets a vehicle finish.
+         */
         void finish();
     };
 

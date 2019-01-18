@@ -95,6 +95,13 @@ namespace RoadFighter {
         ObserverType getType() const override;
     };
 
+    /**
+     * This class is derived of Observer and has:
+     * - a shared pointer to the subject
+     * - a double containing the covered distance
+     * - a constant integer containing the update rate
+     * - a clock
+     */
     class DistanceObserver : public Observer {
     private:
         shared_ptr<Player> m_subject;
@@ -125,6 +132,14 @@ namespace RoadFighter {
         ObserverType getType() const override;
     };
 
+    /**
+     * This class is derived of Observer and has
+     * - a shared pointer to the subject
+     * - a double containing the last known distance
+     * - an unsigned integer containing the score of the observer
+     * - a string containing the message to display ex. "Score: "
+     * - the position of the drawable text
+     */
     class ScoreObserver : public Observer {
     protected:
         shared_ptr<Player> m_subject;
@@ -133,16 +148,40 @@ namespace RoadFighter {
         std::string m_string;
         Position m_pos;
     public:
+        /**
+         * Constructor for the score observer.
+         * @param subject Subject to observe.
+         * @param msg Message to display ex. "Score: "
+         */
         ScoreObserver(const shared_ptr<Player>& subject, const std::string& msg);
 
+        /**
+         * Updates the score observer.
+         * Also calls @see updateDrawable()
+         */
         void update() override;
 
+        /**
+         * Returns the type of the observer
+         * @return ObserverType::SCORE
+         */
         ObserverType getType() const override;
 
+        /**
+         * Returns the score of the observer.
+         * @return Score of the observer
+         */
         unsigned int getScore() const;
 
+        /**
+         * Updates the score of the observer with a certain amount. (may be positive or negative)
+         * @param score Score to update score with.
+         */
         void updateScore(int score);
 
+        /**
+         * Updates the drawable text of the observer.
+         */
         virtual void updateDrawable() = 0;
 
     };

@@ -171,16 +171,28 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Sets the covered distance of the player.
+     * @param distanceCovered Covered distance of the player.
+     */
     void Player::setDistanceCovered(double distanceCovered)
     {
         m_coveredDistance = distanceCovered;
     }
 
+    /**
+     * Gets the covered distance of the player
+     * @return Covered distance of the player
+     */
     double Player::getCoveredDistance() const
     {
         return m_coveredDistance;
     }
 
+    /**
+     * Getter for the observers of the player
+     * @return Vector of shared pointers to the observers
+     */
     const vector<observer_ptr>& Player::getObservers() const
     {
         return m_observers;

@@ -23,6 +23,7 @@ namespace RoadFighter {
      * - A bool to check if the needed distance is covered.
      * - A bool to check if the finish line sprite is loaded.
      * - A bool to stop the background loop of the sprites
+     * - A double containg the distance that needs to be covered.
      *
      * The world is derived from Entity and std::enable_shared_from_this to create
      * a shared pointer of this class.
@@ -154,8 +155,13 @@ namespace RoadFighter {
 
         /**
          * Updates the world and all its components.
-         * This function first updates all the components.
-         * After that it will read the input with @see readInput().
+         * - if the game has finished, this function does nothing
+         * - collision will be checked @see checkCollisionOfAll()
+         * - will check if the distance that needs to be covered has been covered
+         * - removes entities that are allowed to be removed @see removeRemovableEntities()
+         * - spawns new entities if the spawn timer has finished
+         * - calls all update function of the child entities
+         * - reads the input of the user using @see readInput()
          */
         void update() override;
 
@@ -187,8 +193,16 @@ namespace RoadFighter {
          */
         bool gameFinished() const;
 
+        /**
+         * Returns the score of the player.
+         * @return Score of the player
+         */
         unsigned int getScore() const;
 
+        /**
+         * Calculates the amount of race cars behind the player.
+         * @return The number of race cars behind the player.
+         */
         unsigned int getRaceCarsBehindPlayer() const;
     };
 

@@ -172,6 +172,10 @@ namespace RoadFighter {
          */
         virtual void setSpriteRotation(float angle) = 0;
 
+        /**
+         * Checks if a car is in the path the car is following.
+         * @return True if a car is in the path
+         */
         bool carInPath() const;
     };
 

@@ -103,8 +103,16 @@ namespace RoadFighter {
          */
         bool isInGrid(const Position& pos);
 
+        /**
+         * Gets the width of the window.
+         * @return Width of the window
+         */
         unsigned int getWindowWidth() const;
 
+        /**
+         * Gets the height of the window.
+         * @return Height of the window
+         */
         unsigned int getWindowHeight() const;
     };
 

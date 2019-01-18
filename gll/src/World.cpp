@@ -223,8 +223,13 @@ namespace RoadFighter {
 
     /**
      * Updates the world and all its components.
-     * This function first updates all the components.
-     * After that it will read the input with @see readInput().
+     * - if the game has finished, this function does nothing
+     * - collision will be checked @see checkCollisionOfAll()
+     * - will check if the distance that needs to be covered has been covered
+     * - removes entities that are allowed to be removed @see removeRemovableEntities()
+     * - spawns new entities if the spawn timer has finished
+     * - calls all update function of the child entities
+     * - reads the input of the user using @see readInput()
      */
     void World::update()
     {
@@ -311,12 +316,20 @@ namespace RoadFighter {
         add(m_factory->createFinishLine(getPtr()));
     }
 
+    /**
+     * Returns true if the player finished the game.
+     * @return True if the player has finished the game.
+     */
     bool World::gameFinished() const
     {
         shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
         return player->hasFinished();
     }
 
+    /**
+     * Returns the score of the player.
+     * @return Score of the player
+     */
     unsigned int World::getScore() const
     {
         shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
@@ -330,6 +343,10 @@ namespace RoadFighter {
         return scoreObserver->getScore();
     }
 
+    /**
+     * Calculates the amount of race cars behind the player.
+     * @return The number of race cars behind the player.
+     */
     unsigned int World::getRaceCarsBehindPlayer() const
     {
         shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());

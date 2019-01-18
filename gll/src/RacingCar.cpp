@@ -314,6 +314,10 @@ namespace RoadFighter {
 
     }
 
+    /**
+     * Checks if a car is in the path the car is following.
+     * @return True if a car is in the path
+     */
     bool RacingCar::carInPath() const
     {
         for (const auto& entity : m_world->getEntities()) {

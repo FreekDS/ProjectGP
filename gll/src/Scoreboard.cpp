@@ -3,6 +3,13 @@
 
 namespace RoadFighter {
 
+    /**
+     * Explicit constructor which constructs a basic scoreboard.
+     * This constructor reads the ini file containing the scores and parses it to
+     * its data structure.
+     * The constructor will look in the folder ./res/scores/ for the score file.
+     * @param score_file File name of the scores file.
+     */
     Scoreboard::Scoreboard(const std::string& score_file)
             :m_score_file(score_file), m_askInput(false), m_scoreSet(false)
     {
@@ -19,6 +26,11 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Virtual draw function.
+     * If the function is called from this Base class, it will print the scores
+     * the the std::cout stream.
+     */
     void Scoreboard::draw() const
     {
         for (unsigned int i = 1; i<=m_scoreBoard.size(); i++) {
@@ -27,9 +39,13 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * Resets the score file to some base values.
+     * This function will write the score file in the folder ./res/scores/
+     * @param score_file File name of the scores, default "score.ini".
+     */
     void Scoreboard::resetScores(const std::string& score_file)
     {
-        std::cerr << "reset" << std::endl;
         std::string path = "./res/score/";
         mINI::INIFile file(path+score_file);
         mINI::INIStructure ini;
@@ -47,6 +63,11 @@ namespace RoadFighter {
         file.write(ini);
     }
 
+    /**
+     * Checks the score and determine the position in the scoreboard.
+     * @param score Score to check.
+     * @return Position in the scoreboard, -1 if the score is not eligible on the scoreboard.
+     */
     int Scoreboard::checkScore(const unsigned int score)
     {
         for (unsigned int i = 0; i<m_scoreBoard.size(); i++) {
@@ -57,6 +78,10 @@ namespace RoadFighter {
         return -1;
     }
 
+    /**
+     * Updates the scoreboard and adds a name to the scoreboard entry.
+     * @param name Name to add to the scoreboard entry.
+     */
     void Scoreboard::updateScoreboard(std::string& name)
     {
         if(m_currentPos<0)
@@ -93,6 +118,11 @@ namespace RoadFighter {
         updateDrawable(static_cast<unsigned int>(m_currentPos));
     }
 
+    /**
+     * Destructor of the scoreboard.
+     * When the scoreboard is destructed, the scores are written back to the .ini file.
+     * The name of this file is stored as member of the scoreboard.
+     */
     Scoreboard::~Scoreboard()
     {
         // write back the possible changed results
@@ -108,6 +138,10 @@ namespace RoadFighter {
         file.write(ini);
     }
 
+    /**
+     * Updates the scoreboard.
+     * If input is asked, it checks if the input needs to be confirmed.
+     */
     void Scoreboard::update()
     {
         if(m_askInput){
@@ -115,11 +149,22 @@ namespace RoadFighter {
         }
     }
 
+    /**
+     * This function checks if keyboard input is asked by the scoreboard.
+     * The value returned by this function is stored as member of the scoreboard.
+     * @return True if keyboard input is asked by the scoreboard.
+     */
     bool Scoreboard::needsInput() const
     {
         return m_askInput;
     }
 
+    /**
+     * Sets the score and finish position of the player.
+     * If this function is called @see scoreIsSet() will return true, else it will return false.
+     * @param score Score of the player
+     * @param finish_pos Finish position of the player
+     */
     void Scoreboard::setPlayerScore(unsigned int score, unsigned int finish_pos)
     {
         score += (6-finish_pos) * 1000;
@@ -130,6 +175,10 @@ namespace RoadFighter {
         m_scoreSet = true;
     }
 
+    /**
+     * This function will return true if the scores of the player are set.
+     * @return True if the scores of the player are set.
+     */
     bool Scoreboard::scoreIsSet() const
     {
         return m_scoreSet;

@@ -115,11 +115,18 @@ namespace RoadFighter {
         m_repairTimer.setTimer(repairTime);
     }
 
+    /**
+     * Check whether the vehicle has finished.
+     * @return True if the vehicle has finished
+     */
     bool Vehicle::hasFinished() const
     {
         return m_finished;
     }
 
+    /**
+     * Lets a vehicle finish.
+     */
     void Vehicle::finish()
     {
         m_finished = true;

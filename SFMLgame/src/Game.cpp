@@ -39,7 +39,8 @@ namespace RoadFighterSFML {
     }
 
     /**
-     * Runs the game
+     * Runs the game.
+     * Changes the game state if needed
      *
      * 1. Handle events using @see handleSFMLEvents().
      * 2. Clears the window.

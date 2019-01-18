@@ -52,16 +52,35 @@ namespace RoadFighterSFML {
         void updateTextColor();
     };
 
+    /**
+     * SFML implementation of the ScoreObserver this class has:
+     * - a shared pointer to the window
+     * - a font
+     * - a text
+     */
     class ScoreObserver : public RoadFighter::ScoreObserver{
     private:
         window_ptr m_window;
         sf::Font m_font;
         sf::Text m_text;
     public:
+
+        /**
+         * Draws the score to the screen.
+         */
         void draw() const override;
 
+        /**
+         * Updates the text to draw to the screen.
+         */
         void updateDrawable() override;
 
+        /**
+         * Constructor for the ScoreObserver
+         * @param subject Subject to observe
+         * @param str String to display ex. "Score: "
+         * @param window Shared pointer to the window
+         */
         ScoreObserver(const shared_ptr<RoadFighter::Player>& subject, const string& str, const window_ptr& window);
     };
 
