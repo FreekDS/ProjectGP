@@ -2,7 +2,9 @@
 
 using namespace RoadFighter;
 
-
+/**
+ * Tests the getInstance function of Random.
+ */
 TEST_F(RandomTests, GetInstance)
 {
     auto rand1 = Random::getInstance();
@@ -12,6 +14,9 @@ TEST_F(RandomTests, GetInstance)
     EXPECT_EQ(rand1.use_count(), rand2.use_count());
 }
 
+/**
+ * Test the randInt function of Random.
+ */
 TEST_F(RandomTests, RandIntTest)
 {
     auto rand = Random::getInstance();
@@ -25,6 +30,9 @@ TEST_F(RandomTests, RandIntTest)
     }
 }
 
+/**
+ * Tests the randDouble function of Random.
+ */
 TEST_F(RandomTests, RandDoubleTest)
 {
     auto rand = Random::getInstance();

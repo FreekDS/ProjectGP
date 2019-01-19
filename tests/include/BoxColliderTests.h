@@ -4,6 +4,9 @@
 #include <gtest/gtest.h>
 #include "TestClasses.h"
 
+/**
+ * Test class for the Box Colliders.
+ */
 class BoxColliderTests : public ::testing::Test{
 protected:
     friend class RoadFighter::BoxCollider;

@@ -4,6 +4,9 @@
 
 using namespace RoadFighter;
 
+/**
+ * Tests the constructor of the World.
+ */
 TEST_F(WorldTests, Constructor)
 {
     WorldTest world;
@@ -22,6 +25,9 @@ TEST_F(WorldTests, Constructor)
     EXPECT_EQ(world.getWidth(), 8);
 }
 
+/**
+ * Tests the assignment constructor of the World.
+ */
 TEST_F(WorldTests, AssignmentConstructor)
 {
     WorldTest world;
@@ -31,6 +37,9 @@ TEST_F(WorldTests, AssignmentConstructor)
     EXPECT_EQ(world2.getPos(), world.getPos());
 }
 
+/**
+ * Tests the addEntity function of the World.
+ */
 TEST_F(WorldTests, addEntity)
 {
     WorldTest world;
@@ -43,6 +52,9 @@ TEST_F(WorldTests, addEntity)
     EXPECT_EQ(world.getEntities().size(), 2);
 }
 
+/**
+ * Tests the removeEntity function of the World.
+ */
 TEST_F(WorldTests, removeEntity)
 {
     WorldTest world;
@@ -60,6 +72,9 @@ TEST_F(WorldTests, removeEntity)
     EXPECT_TRUE(world.getEntities().empty());
 }
 
+/**
+ * Tests the empty function of the World.
+ */
 TEST_F(WorldTests, empty)
 {
     WorldTest world;
@@ -69,6 +84,9 @@ TEST_F(WorldTests, empty)
     EXPECT_FALSE(world.empty());
 }
 
+/**
+ * Tests the checkCollision function of the World.
+ */
 TEST_F(WorldTests, checkCollision)
 {
     WorldTest world;
@@ -88,12 +106,18 @@ TEST_F(WorldTests, checkCollision)
     EXPECT_FALSE(world.checkCollision(entity2, entity));
 }
 
+/**
+ * Tests the canBeDestroyed function of the World.
+ */
 TEST_F(WorldTests, canBeDestroyed)
 {
     WorldTest world;
     EXPECT_FALSE(world.canBeDestroyed());
 }
 
+/**
+ * Tests the removeRemovableEntities function of the World.
+ */
 TEST_F(WorldTests, removeRemovableEntities)
 {
     shared_ptr<World> world = make_shared<WorldTest>();
@@ -124,6 +148,9 @@ TEST_F(WorldTests, removeRemovableEntities)
     EXPECT_EQ(world->getEntities().size(), 3);
 }
 
+/**
+ * Tests the getPlayer function of the World.
+ */
 TEST_F(WorldTests, getPlayer)
 {
     shared_ptr<World> world = make_shared<WorldTest>();

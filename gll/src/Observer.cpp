@@ -85,7 +85,7 @@ namespace RoadFighter {
      * @param msg Message to display ex. "Score: "
      */
     ScoreObserver::ScoreObserver(const shared_ptr<Player>& subject, const std::string& msg)
-            :m_subject(subject), m_lastDistance(subject->getCoveredDistance()), m_score(0), m_string(msg), m_pos(1.7, 2)
+            :m_subject(subject), m_lastDistance(static_cast<int>(subject->getCoveredDistance())), m_score(0), m_string(msg), m_pos(1.7, 2)
     {
 
     }
@@ -100,8 +100,8 @@ namespace RoadFighter {
         if(m_score<0)
             m_score = 0;
         if(distance > m_lastDistance){
+            m_score += distance - m_lastDistance;
             m_lastDistance = distance;
-            m_score += distance;
         }
         updateDrawable();
     }

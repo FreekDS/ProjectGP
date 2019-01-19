@@ -2,6 +2,9 @@
 
 using namespace RoadFighter;
 
+/**
+ * Tests the constructor of the RacingCar
+ */
 TEST_F(RacingCarTests, Constructor)
 {
     shared_ptr<Player> player = make_shared<PlayerTest>();
@@ -19,6 +22,9 @@ TEST_F(RacingCarTests, Constructor)
     EXPECT_EQ(r_car5.getPos(), Position(0.55, -1.0));
 }
 
+/**
+ * Tests the accelerate function of the Racing Car.
+ */
 TEST_F(RacingCarTests, accelerate)
 {
     shared_ptr<Player> player = make_shared<PlayerTest>();
@@ -33,6 +39,9 @@ TEST_F(RacingCarTests, accelerate)
     }
 }
 
+/**
+ * Tests the canBeDestroyed function of the racing car.
+ */
 TEST_F(RacingCarTests, canBeDestroyed)
 {
     shared_ptr<Player> player = make_shared<PlayerTest>();
@@ -41,6 +50,9 @@ TEST_F(RacingCarTests, canBeDestroyed)
     EXPECT_FALSE(r_car.canBeDestroyed());
 }
 
+/**
+ * Tests the slowdown function of the Racing car.
+ */
 TEST_F(RacingCarTests, slowDown)
 {
     shared_ptr<Player> player = make_shared<PlayerTest>();

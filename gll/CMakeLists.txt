@@ -18,12 +18,6 @@ SET(SRC_GLL
         src/FinishLine.cpp
         src/Scoreboard.cpp)
 
-# Temporary for testing purpose
-ADD_EXECUTABLE(GLL_DEBUG ${SRC_GLL} main.cpp)
-
-# Add include directory to debug executable
-TARGET_INCLUDE_DIRECTORIES(GLL_DEBUG PUBLIC include)
-
 # Create static GLL library
 ADD_LIBRARY(GLL ${SRC_GLL})
 # Link header files with GLL library

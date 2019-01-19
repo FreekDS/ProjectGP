@@ -2,6 +2,9 @@
 
 using namespace RoadFighter;
 
+/**
+ * Tests the constructor of the BoxCollider.
+ */
 TEST_F(BoxColliderTests, Constructor)
 {
     BoxCollider col{Position(1, 1), Position()};
@@ -24,6 +27,9 @@ TEST_F(BoxColliderTests, Constructor)
 
 }
 
+/**
+ * Tests the getters of the BoxCollider.
+ */
 TEST_F(BoxColliderTests, Getters)
 {
     BoxCollider col{Position(1, 1), Position()};
@@ -31,6 +37,9 @@ TEST_F(BoxColliderTests, Getters)
     EXPECT_EQ(col.getBottomRightCorner(), Position(1,0));
 }
 
+/**
+ * Tests the updateCollider function of the BoxCollider.
+ */
 TEST_F(BoxColliderTests, updateCollider)
 {
     BoxCollider col(Position(1,1), Position());
@@ -43,6 +52,9 @@ TEST_F(BoxColliderTests, updateCollider)
 
 }
 
+/**
+ * Tests the getCenter function of the BoxCollider.
+ */
 TEST_F(BoxColliderTests, getCenter)
 {
     BoxCollider col(Position(1,1), Position());
@@ -51,6 +63,9 @@ TEST_F(BoxColliderTests, getCenter)
     EXPECT_EQ(col2.getCenter(), Position(1,8));
 }
 
+/**
+ * Tests the operator== function of the BoxCollider.
+ */
 TEST_F(BoxColliderTests, equality)
 {
     BoxCollider col1(Position(1,1), Position());
@@ -61,6 +76,9 @@ TEST_F(BoxColliderTests, equality)
     EXPECT_FALSE(col2 == col3);
 }
 
+/**
+ * Tests the operator!= function of the BoxCollider.
+ */
 TEST_F(BoxColliderTests, inEquality)
 {
     BoxCollider col1(Position(1,1), Position());

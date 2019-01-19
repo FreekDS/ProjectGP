@@ -135,7 +135,7 @@ namespace RoadFighter {
     /**
      * This class is derived of Observer and has
      * - a shared pointer to the subject
-     * - a double containing the last known distance
+     * - an int containing the last known distance
      * - an unsigned integer containing the score of the observer
      * - a string containing the message to display ex. "Score: "
      * - the position of the drawable text
@@ -143,7 +143,7 @@ namespace RoadFighter {
     class ScoreObserver : public Observer {
     protected:
         shared_ptr<Player> m_subject;
-        double m_lastDistance;
+        int m_lastDistance;
         int m_score;
         std::string m_string;
         Position m_pos;

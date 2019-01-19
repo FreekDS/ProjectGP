@@ -4,6 +4,9 @@
 #include <gtest/gtest.h>
 #include <GLL/Transformation.h>
 
+/**
+ * This function is used in the tests to reset the Transformation class.
+ */
 void resetTrans()
 {
     auto trans = RoadFighter::Transformation::getInstance();
@@ -12,6 +15,9 @@ void resetTrans()
     trans->setRangeY(-3, 3);
 }
 
+/**
+ * Tests for the Transformation class.
+ */
 class TransformationTests : public ::testing::Test {
     void SetUp() override { }
 

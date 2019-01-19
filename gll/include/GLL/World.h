@@ -39,6 +39,7 @@ namespace RoadFighter {
         bool m_finishSpriteLoaded;
         bool m_stopLoop;
         double m_distanceToCover;
+        bool m_gameStarted;
     public:
         /**
          * Default constructor of World.
@@ -189,9 +190,10 @@ namespace RoadFighter {
 
         /**
          * Returns true if the player finished the game.
+         * Sets gameStarted to false if so.
          * @return True if the player has finished the game.
          */
-        bool gameFinished() const;
+        bool gameFinished();
 
         /**
          * Returns the score of the player.

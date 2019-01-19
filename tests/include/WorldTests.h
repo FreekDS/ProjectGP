@@ -5,6 +5,9 @@
 #include <GLL/World.h>
 #include "TestClasses.h"
 
+/**
+ * Test for the World class.
+ */
 class WorldTests : public ::testing::Test {
 protected:
     friend class RoadFighter::World;

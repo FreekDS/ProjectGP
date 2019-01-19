@@ -4,6 +4,9 @@
 #include <gtest/gtest.h>
 #include <GLL/Position.h>
 
+/**
+ * Tests for the Position class.
+ */
 class PositionTests : public ::testing::Test{
 protected:
     void SetUp() override{}

@@ -2,6 +2,9 @@
 
 using namespace RoadFighter;
 
+/**
+ * Tests the constructors of the Position.
+ */
 TEST_F(PositionTests, Constructors)
 {
     Position pos;
@@ -19,6 +22,9 @@ TEST_F(PositionTests, Constructors)
 
 }
 
+/**
+ * Tests the assignment operator of the Position.
+ */
 TEST_F(PositionTests, Assignment)
 {
     Position pos1(12, 21);
@@ -26,6 +32,9 @@ TEST_F(PositionTests, Assignment)
     EXPECT_EQ(pos, pos1);
 }
 
+/**
+ * Tests the toString function of the Position.
+ */
 TEST_F(PositionTests, toString)
 {
     Position pos;
@@ -35,6 +44,9 @@ TEST_F(PositionTests, toString)
     EXPECT_EQ(pos.toString(), "(12.000000,21.000000)");
 }
 
+/**
+ * Tests the equality operator of the Position.
+ */
 TEST_F(PositionTests, equality)
 {
     Position pos1;
@@ -47,6 +59,9 @@ TEST_F(PositionTests, equality)
     EXPECT_TRUE(pos2 == pos3);
 }
 
+/**
+ * Tests the inequality operator of the Position.
+ */
 TEST_F(PositionTests, inEquality)
 {
     Position pos1;

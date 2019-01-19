@@ -3,6 +3,9 @@
 
 using namespace RoadFighter;
 
+/**
+ * Tests the constructor of the Entity.
+ */
 TEST_F(EntityTests, Constructor)
 {
     // Default constructor
@@ -19,6 +22,9 @@ TEST_F(EntityTests, Constructor)
     EXPECT_EQ(entity.getWidth(), 0);
 }
 
+/**
+ * Tests the copy constructor of the Entity
+ */
 TEST_F(EntityTests, CopyConstructor)
 {
     EntityTest entity;
@@ -36,6 +42,9 @@ TEST_F(EntityTests, CopyConstructor)
 
 }
 
+/**
+ * Tests the move constructor of the Entity.
+ */
 TEST_F(EntityTests, MoveConstructor)
 {
     EntityTest entity;
@@ -61,6 +70,9 @@ TEST_F(EntityTests, MoveConstructor)
         EXPECT_EQ(colliders[i], entity2.getColliders()[i]);
 }
 
+/**
+ * Tests the assignment operator for the Entity.
+ */
 TEST_F(EntityTests, AssignmentOperator)
 {
     EntityTest entity;
@@ -77,6 +89,9 @@ TEST_F(EntityTests, AssignmentOperator)
         EXPECT_EQ(entity.getColliders()[i], entity2.getColliders()[i]);
 }
 
+/**
+ * Tests the move assignment of the Entity.
+ */
 TEST_F(EntityTests, MoveAssignment)
 {
     EntityTest entity;
@@ -102,6 +117,9 @@ TEST_F(EntityTests, MoveAssignment)
         EXPECT_EQ(colliders[i], entity2.getColliders()[i]);
 }
 
+/**
+ * Tests the getters and setters of the Entity.
+ */
 TEST_F(EntityTests, GettersSetters)
 {
     EntityTest entity;
@@ -154,6 +172,9 @@ TEST_F(EntityTests, GettersSetters)
 
 }
 
+/**
+ * Tests the addCollider function of the Entity.
+ */
 TEST_F(EntityTests, addCollider)
 {
     EntityTest entity;
@@ -163,6 +184,9 @@ TEST_F(EntityTests, addCollider)
     EXPECT_EQ(entity.getColliders().size(), 1);
 }
 
+/**
+ * Tests the removeCollider function of the Entity.
+ */
 TEST_F(EntityTests, removeCollider)
 {
     EntityTest entity;
@@ -173,6 +197,9 @@ TEST_F(EntityTests, removeCollider)
     EXPECT_DEATH_IF_SUPPORTED(entity.removeCollider(21), "");
 }
 
+/**
+ * Tests the updatePos function of the Entity.
+ */
 TEST_F(EntityTests, updatePos)
 {
     EntityTest entity;
@@ -189,6 +216,9 @@ TEST_F(EntityTests, updatePos)
     EXPECT_EQ(entity.getBottomRightCorner(), pos);
 }
 
+/**
+ * Tests the isVisible function of the Entity.
+ */
 TEST_F(EntityTests, isVisible)
 {
     auto trans = Transformation::getInstance();
@@ -204,6 +234,9 @@ TEST_F(EntityTests, isVisible)
     EXPECT_TRUE(entity.isVisible());
 }
 
+/**
+ * Tests the initializeCorners function of the Entity.
+ */
 TEST_F(EntityTests, initializeCorners)
 {
     EntityTest entity;

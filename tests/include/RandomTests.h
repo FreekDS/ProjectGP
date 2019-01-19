@@ -4,19 +4,13 @@
 #include <gtest/gtest.h>
 #include <GLL/Random.h>
 
-class RandomTests : public ::testing::Test{
+/**
+ * Tests for the Random class.
+ */
+class RandomTests : public ::testing::Test {
 protected:
-    friend class RoadFighter::Random;
-
-    void SetUp() override
-    {
-
-    }
-
-    void TearDown() override
-    {
-
-    }
+    void SetUp() override { }
+    void TearDown() override { }
 };
 
 #endif //ROADFIGHTER_RANDOMTESTS_H

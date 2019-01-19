@@ -2,6 +2,9 @@
 
 using namespace RoadFighter;
 
+/**
+ * Tests the constructor of the Player.
+ */
 TEST_F(PlayerTests, Constructor)
 {
     PlayerTest player;
@@ -17,6 +20,9 @@ TEST_F(PlayerTests, Constructor)
 
 }
 
+/**
+ * Tests the getters of the Player.
+ */
 TEST_F(PlayerTests, Getters)
 {
     PlayerTest player;
@@ -29,6 +35,9 @@ TEST_F(PlayerTests, Getters)
     EXPECT_EQ(player.getMaxSpeed(), 22);
 }
 
+/**
+ * Tests the accelerate function of the Player.
+ */
 TEST_F(PlayerTests, accelerate)
 {
     PlayerTest player;
@@ -53,6 +62,9 @@ TEST_F(PlayerTests, accelerate)
     EXPECT_EQ(player.getSpeed(), 21.99);
 }
 
+/**
+ * Tests the slowdown function of the player.
+ */
 TEST_F(PlayerTests, slowDown)
 {
     PlayerTest player;
@@ -68,12 +80,18 @@ TEST_F(PlayerTests, slowDown)
 
 }
 
+/**
+ * Tests the canBeDestroyed function of the Player.
+ */
 TEST_F(PlayerTests, canBeDestroyed)
 {
     PlayerTest player;
     EXPECT_FALSE(player.canBeDestroyed());
 }
 
+/**
+ * Tests the move functions (up down left right) of the Player.
+ */
 TEST_F(PlayerTests, moveFunctions)
 {
     PlayerTest player;
@@ -107,6 +125,9 @@ TEST_F(PlayerTests, moveFunctions)
     EXPECT_EQ(player3.getPos(), Position(initPos.x-player3.getMovespeed(), initPos.y));
 }
 
+/**
+ * Tests the update function of the Player
+ */
 TEST_F(PlayerTests, update)
 {
     PlayerTest player;

@@ -2,6 +2,9 @@
 
 using namespace RoadFighter;
 
+/**
+ * Tests the constructor of the Vehicle.
+ */
 TEST_F(VehicleTests, Constructor)
 {
     VehicleTest vehicle;
@@ -10,6 +13,9 @@ TEST_F(VehicleTests, Constructor)
     EXPECT_FALSE(vehicle.hasCrashed());
 }
 
+/**
+ * Tests the getters and setters of the Vehicle
+ */
 TEST_F(VehicleTests, GettersSetters)
 {
     VehicleTest vehicle;
@@ -25,6 +31,9 @@ TEST_F(VehicleTests, GettersSetters)
 
 }
 
+/**
+ * Tests the isMoving function of the Vehicle.
+ */
 TEST_F(VehicleTests, isMoving)
 {
     VehicleTest vehicle;
@@ -38,6 +47,9 @@ TEST_F(VehicleTests, isMoving)
 
 }
 
+/**
+ * Tests the crash function of the Vehicle.
+ */
 TEST_F(VehicleTests, crash)
 {
     VehicleTest vehicle;
@@ -46,6 +58,9 @@ TEST_F(VehicleTests, crash)
     EXPECT_TRUE(vehicle.hasCrashed());
 }
 
+/**
+ * Tests the repair function of the Vehicle.
+ */
 TEST_F(VehicleTests, repair)
 {
     VehicleTest vehicle;
@@ -56,6 +71,9 @@ TEST_F(VehicleTests, repair)
     EXPECT_FALSE(vehicle.hasCrashed());
 }
 
+/**
+ * Tests the finish function of the Vehicle.
+ */
 TEST_F(VehicleTests, finish)
 {
     VehicleTest vehicle;

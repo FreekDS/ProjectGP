@@ -5,18 +5,13 @@
 #include "TestClasses.h"
 #include <GLL/Entity.h>
 
+/**
+ * Test class for the Entity class.
+ */
 class EntityTests : public ::testing::Test {
 protected:
-
-    void SetUp() override
-    {
-
-    }
-
-    void TearDown() override
-    {
-
-    }
+    void SetUp() override { }
+    void TearDown() override{ }
 };
 
 #endif //ROADFIGHTER_ENTITYTESTS_H

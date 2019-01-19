@@ -4,6 +4,9 @@
 #include <gtest/gtest.h>
 #include "TestClasses.h"
 
+/**
+ * Tests for the Vehicle class.
+ */
 class VehicleTests : public ::testing::Test{
 protected:
     void SetUp() override{}

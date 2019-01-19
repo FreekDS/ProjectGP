@@ -93,7 +93,7 @@ namespace RoadFighter {
      */
     World::World()
             :m_factory(nullptr), m_boundary1(-0.7), m_boundary2(1.3), m_neededDistanceCovered(false),
-             m_finishSpriteLoaded(false), m_stopLoop(false), m_distanceToCover(1200)
+             m_finishSpriteLoaded(false), m_stopLoop(false), m_distanceToCover(1200), m_gameStarted(false)
     {
         setType(EntityType::WORLD);
         setUpperLeftCorner({-4, 3});
@@ -278,7 +278,7 @@ namespace RoadFighter {
         removeRemovableEntities();
 
         // add new entities
-        if (m_spawnCooldown.timerFinished()) {
+        if (m_spawnCooldown.timerFinished() && m_gameStarted) {
             add(m_factory->createPassingCar(getPtr(), dynamic_pointer_cast<Player>(getPlayer())));
             resetSpawnTimer();
         }
@@ -341,11 +341,14 @@ namespace RoadFighter {
 
     /**
      * Returns true if the player finished the game.
+     * Sets gameStarted to false if so.
      * @return True if the player has finished the game.
      */
-    bool World::gameFinished() const
+    bool World::gameFinished()
     {
         shared_ptr<Player> player = dynamic_pointer_cast<Player>(getPlayer());
+        if(player->hasFinished())
+            m_gameStarted = false;
         return player->hasFinished();
     }
 

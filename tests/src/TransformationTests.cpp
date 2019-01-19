@@ -2,6 +2,9 @@
 
 using namespace RoadFighter;
 
+/**
+ * Tests the getInstance function of Transformation.
+ */
 TEST_F(TransformationTests, getInstance)
 {
     resetTrans();
@@ -10,6 +13,9 @@ TEST_F(TransformationTests, getInstance)
     EXPECT_EQ(trans.get(), trans2.get());
 }
 
+/**
+ * Tests the getters and setters of Transformation.
+ */
 TEST_F(TransformationTests, GetterSetter)
 {
     resetTrans();
@@ -26,6 +32,9 @@ TEST_F(TransformationTests, GetterSetter)
     EXPECT_EQ(trans->getYRange(), yRange2);
 }
 
+/**
+ * Tests the getScreenCoordinate of Transformation.
+ */
 TEST_F(TransformationTests, getScreenCoordinate)
 {
     resetTrans();
@@ -43,6 +52,9 @@ TEST_F(TransformationTests, getScreenCoordinate)
     EXPECT_EQ(trans->getScreenCoordinate(2,1), Position(1350, 200));
 }
 
+/**
+ * Tests the isInGrid function of Transformation.
+ */
 TEST_F(TransformationTests, isInGrid)
 {
     resetTrans();

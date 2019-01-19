@@ -101,6 +101,8 @@ namespace RoadFighterSFML {
         }
         if (sf::Keyboard::isKeyPressed(m_keymap["speedup"])) {
             // player accelerates
+            if(!m_gameStarted)
+                m_gameStarted = true;
             player->accelerate();
         }
         if (!sf::Keyboard::isKeyPressed(m_keymap["speedup"])) {
