@@ -17,6 +17,7 @@ Player movement:
 | move left     | ARROW LEFT    |
 | move right    | ARROW RIGHT   |
 | shoot         | X             |
+
 Player controls zijn gemakkelijk aanpasbaar in [deze](https://github.com/FreekDS/ProjectGP/blob/master/SFMLgame/src/World.cpp) source file met behulp van de functie 
 ```cpp
 void readInput() override;
