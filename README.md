@@ -3,6 +3,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 Travis CI: [![Build Status](https://travis-ci.com/FreekDS/ProjectGP.svg?token=oRQDqQmpkBiWswbK3qg5&branch=master)](https://travis-ci.com/FreekDS/ProjectGP)
 ___________________________________
+## Regels
+Het doel van het spel is om zo snel mogelijk de finish te bereiken. Op de weg daarheen racen er 5 andere racewagens met je mee.
+Omdat er geracet wordt op de gewone weg, zijn er ook wagens die vanuit de andere richting komen. Deze racen niet mee, maar worden best ontweken om te vermijden dat het uw voertuig crasht.
 
 ## Controls
 
