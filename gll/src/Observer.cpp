@@ -96,7 +96,7 @@ namespace RoadFighter {
      */
     void ScoreObserver::update()
     {
-        int distance = static_cast<int>(round(m_subject->getCoveredDistance()));
+        auto distance = static_cast<int>(round(m_subject->getCoveredDistance()));
         if(m_score<0)
             m_score = 0;
         if(distance > m_lastDistance){
