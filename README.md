@@ -4,7 +4,7 @@
 Travis CI: [![Build Status](https://travis-ci.com/FreekDS/ProjectGP.svg?token=oRQDqQmpkBiWswbK3qg5&branch=master)](https://travis-ci.com/FreekDS/ProjectGP)
 ___________________________________
 
-#### Controls
+## Controls
 
 
 Player movement:
@@ -31,7 +31,7 @@ General controls:
 | proceed when game<br> finished |ENTER|
 
 
-#### Project Structure
+## Project Structure
 Dit project is verdeeld in meerdere subfolders:<br>
 1. De map *cmake*:
     + *Modules*
@@ -61,7 +61,7 @@ Dit project is verdeeld in meerdere subfolders:<br>
     + *CMakeLists.txt* de root CMakeLists van dit project.
     + *Readme.md*: deze readme file.
 
-#### Documentatie
+## Documentatie
 De volledige documentatie bevindt zich [hier](https://freekds.github.io/ProjectGP/) en is gegenereerd aan de hand van Doxygen. 
 
 De bestanden van deze documentatie zijn terug te vinden in de aparte branch *gh-pages*
