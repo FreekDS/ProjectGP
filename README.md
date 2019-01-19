@@ -66,3 +66,9 @@ De volledige documentatie bevindt zich [hier](https://freekds.github.io/ProjectG
 
 De bestanden van deze documentatie zijn terug te vinden in de aparte branch *gh-pages*
 
+## Extensies
+Het programma kan gerund worden met enkele programma argumenten:
+- *-windowed*: het spel start niet fullscreen, maar in een venster
+- *-reset-scores*: deze optie reset de high scores naar de oorspronkelijke waarden.
+- *-debug*: run het spel in debug modus. In debug modus zullen de colliders zichtbaar worden en zal het minder lang duren om de finish te bereiken.
+
