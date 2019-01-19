@@ -5,7 +5,10 @@ Travis CI: [![Build Status](https://travis-ci.com/FreekDS/ProjectGP.svg?token=oR
 ___________________________________
 ## Regels
 Het doel van het spel is om zo snel mogelijk de finish te bereiken. Op de weg daarheen racen er 5 andere racewagens met je mee.
-Omdat er geracet wordt op de gewone weg, zijn er ook wagens die vanuit de andere richting komen. Deze racen niet mee, maar worden best ontweken om te vermijden dat het uw voertuig crasht.
+Omdat er geracet wordt op de gewone weg, zijn er ook wagens die vanuit de andere richting komen. Deze racen niet mee, maar worden best ontweken om te vermijden dat het uw voertuig crasht.<br>
+In Road Fighter is het ook mogelijk om te schieten. Indien een voorbijrijdende auto geraakt wordt, dan zal deze crashen, is een race auto het slachtoffer, dan zal deze trager rijden.
+
+Punten worden verdient door gewoon te rijden of door kogels raak te schieten. Op het einde worden bij de score van op de baan nog de punten van het 'klassement' geteld. Iemand die op de eerste plaats finisht zal meer punten extra krijgen dan iemand die laatst finisht. De scores van de vijf beste spelers worden bijgehouden op een scorebord.
 
 ## Controls
 
