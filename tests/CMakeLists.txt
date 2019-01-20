@@ -58,7 +58,9 @@ set(SRC_TEST
         src/RacingCarTests.cpp
         src/TransformationTests.cpp
         src/VehicleTests.cpp
-        src/BulletTests.cpp include/BulletTests.h)
+        src/BulletTests.cpp
+        src/FinishLineTests.cpp
+        )
 
 set(SRC_GAME
         ${SRC_PATH}/Player.cpp
