@@ -49,8 +49,15 @@ namespace RoadFighter {
          */
         void setShootSpeed(double speed);
 
+        /**
+         * Makes the bullet hit something.
+         */
         void hit();
 
+        /**
+         * Check whether the bullet can be destroyed or not.
+         * @return True if the bullet can be destroyed.
+         */
         bool canBeDestroyed() const override;
     };
 

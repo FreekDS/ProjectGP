@@ -55,12 +55,19 @@ namespace RoadFighter {
         updatePos(0,m_shootSpeed);
         updateSpriteLocation();
     }
-
+    
+    /**
+     * Makes the bullet hit something.
+     */
     void Bullet::hit()
     {
         m_hit = true;
     }
 
+    /**
+     * Check whether the bullet can be destroyed or not.
+     * @return True if the bullet can be destroyed.
+     */
     bool Bullet::canBeDestroyed() const
     {
         auto trans = Transformation::getInstance();

@@ -43,6 +43,7 @@ SET(SFML_STATIC_LIBRARIES FALSE)
 FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 
 set(SRC_PATH ${PROJECT_SOURCE_DIR}/SFMLgame/src)
+set(GLL_PATH ${PROJECT_SOURCE_DIR}/gll/src)
 
 set(SRC_TEST
         main.cpp
@@ -57,7 +58,7 @@ set(SRC_TEST
         src/RacingCarTests.cpp
         src/TransformationTests.cpp
         src/VehicleTests.cpp
-        )
+        src/BulletTests.cpp include/BulletTests.h)
 
 set(SRC_GAME
         ${SRC_PATH}/Player.cpp
@@ -70,6 +71,8 @@ set(SRC_GAME
         ${SRC_PATH}/Observer.cpp
         ${SRC_PATH}/EntityFactory.cpp
         ${SRC_PATH}/Scoreboard.cpp
+        ${SRC_PATH}/Bullet.cpp
+        ${GLL_PATH}/FinishLine.cpp
         )
 
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/SFMLgame/include)

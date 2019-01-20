@@ -94,14 +94,10 @@ public:
 
 class BulletTest : public RoadFighter::Bullet {
 public:
+    BulletTest(double shootSpeed, const RoadFighter::Position& playerPos, double playerHeight)
+            :Bullet(shootSpeed, playerPos, playerHeight) { }
+
     void draw() const override { }
-
-    void update() override { }
-
-    bool canBeDestroyed() const override
-    {
-        return false;
-    }
 
     void updateSpriteLocation() override { }
 };
@@ -128,11 +124,6 @@ public:
     void draw() const override {}
 
     void updateDrawable() override {}
-};
-
-class FinishLineTest : public RoadFighter::FinishLine {
-public:
-    //todo
 };
 
 class RacingCarTest : public RoadFighter::RacingCar {
