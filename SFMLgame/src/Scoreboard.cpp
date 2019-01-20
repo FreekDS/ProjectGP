@@ -67,7 +67,7 @@ namespace RoadFighterSFML {
     void Scoreboard::addInput(const std::string& input)
     {
         auto trans = RoadFighter::Transformation::getInstance();
-        std::string name = m_name.getString();
+        std::string name = m_name.getString().toAnsiString();
         name += input;
         m_name.setString(name);
         float xpos = trans->getWindowWidth()/2.0f-m_name.getGlobalBounds().width/2;
@@ -119,7 +119,7 @@ namespace RoadFighterSFML {
     void Scoreboard::removeCharOfInput()
     {
         auto trans = RoadFighter::Transformation::getInstance();
-        std::string name = m_name.getString();
+        std::string name = m_name.getString().toAnsiString();
         if (!name.empty()) {
             m_name.setString(name.substr(0, name.size()-1));
             float xpos = trans->getWindowWidth()/2.0f-m_name.getGlobalBounds().width/2;
