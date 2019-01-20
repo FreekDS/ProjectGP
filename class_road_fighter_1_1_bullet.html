@@ -101,8 +101,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0c6f82bf25c80763d0f4cb46b3665c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3aa14df2b79828e1e3d5926e58b2b7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_road_fighter_1_1_bullet.html#ad3aa14df2b79828e1e3d5926e58b2b7c">setShootSpeed</a> (double speed)</td></tr>
 <tr class="separator:ad3aa14df2b79828e1e3d5926e58b2b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82bc1e8443de5ea5e7e357a937cac937"><td class="memItemLeft" align="right" valign="top"><a id="a82bc1e8443de5ea5e7e357a937cac937"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>hit</b> ()</td></tr>
+<tr class="memitem:a82bc1e8443de5ea5e7e357a937cac937"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_road_fighter_1_1_bullet.html#a82bc1e8443de5ea5e7e357a937cac937">hit</a> ()</td></tr>
 <tr class="separator:a82bc1e8443de5ea5e7e357a937cac937"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac54ac59bfdcdbf35352cf394327b7636"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_road_fighter_1_1_bullet.html#ac54ac59bfdcdbf35352cf394327b7636">canBeDestroyed</a> () const override</td></tr>
 <tr class="separator:ac54ac59bfdcdbf35352cf394327b7636"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,7 +167,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>Class which represents a bullet shot by the </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_road_fighter_1_1_player.html">Player</a>.<ul>
 <li>a shooting speed</li>
 <li>a position</li>
-<li>a bool to check if the bullet has hit </li>
+<li>a bool to check if the bullet has <a class="el" href="class_road_fighter_1_1_bullet.html#a82bc1e8443de5ea5e7e357a937cac937">hit</a> </li>
 </ul>
 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -261,11 +260,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Virtual function to determine whether an <a class="el" href="class_road_fighter_1_1_entity.html">Entity</a> can be destroyed or not. </p><dl class="section return"><dt>Returns</dt><dd>True if the entity can be destroyed. </dd></dl>
+<p>Check whether the bullet can be destroyed or not. </p><dl class="section return"><dt>Returns</dt><dd>True if the bullet can be destroyed. </dd></dl>
 
 <p>Implements <a class="el" href="class_road_fighter_1_1_entity.html#a4b96c0d93bda0d9eb9353008ae87d8d1">RoadFighter::Entity</a>.</p>
-
-<p>Reimplemented in <a class="el" href="class_bullet_test.html#a841179c286ce5eae74bad2b7034c1fe6">BulletTest</a>.</p>
 
 </div>
 </div>
@@ -284,6 +281,24 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Getter for the shooting speed of the <a class="el" href="class_road_fighter_1_1_bullet.html">Bullet</a>. </p><dl class="section return"><dt>Returns</dt><dd>Shooting speed of the <a class="el" href="class_road_fighter_1_1_bullet.html">Bullet</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a82bc1e8443de5ea5e7e357a937cac937"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82bc1e8443de5ea5e7e357a937cac937">&#9670;&nbsp;</a></span>hit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RoadFighter::Bullet::hit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Makes the bullet hit something. </p>
 
 </div>
 </div>
@@ -361,8 +376,6 @@ Additional Inherited Members</h2></td></tr>
 <p>Virtual function to update the entity. </p>
 
 <p>Implements <a class="el" href="class_road_fighter_1_1_entity.html#ab3d6780f31f210a4bb63c69cbaf98a45">RoadFighter::Entity</a>.</p>
-
-<p>Reimplemented in <a class="el" href="class_bullet_test.html#aea53d78aa7b43576210ecf325d370576">BulletTest</a>.</p>
 
 </div>
 </div>
