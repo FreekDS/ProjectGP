@@ -50,15 +50,15 @@ namespace RoadFighter {
         mINI::INIFile file(path+score_file);
         mINI::INIStructure ini;
         file.read(ini);
-        ini["Score0"]["name"] = "Donald Trump";
+        ini["Score0"]["name"] = "donald trump";
         ini["Score0"]["score"] = "0010000";
-        ini["Score1"]["name"] = "Mickey Mouse";
+        ini["Score1"]["name"] = "elon musk";
         ini["Score1"]["score"] = "0009000";
-        ini["Score2"]["name"] = "Alan Walker";
+        ini["Score2"]["name"] = "bernard theofiel waterslaeghers";
         ini["Score2"]["score"] = "0008888";
-        ini["Score3"]["name"] = "De Kotmadam";
+        ini["Score3"]["name"] = "de kotmadam";
         ini["Score3"]["score"] = "0008500";
-        ini["Score4"]["name"] = "Jacques Vermeire";
+        ini["Score4"]["name"] = "jacques vermeire";
         ini["Score4"]["score"] = "0001000";
         file.write(ini);
     }

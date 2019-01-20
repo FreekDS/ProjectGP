@@ -103,5 +103,5 @@ TEST_F(ObserverTests, ScoreObserverUpdate)
     EXPECT_EQ(obs.getScore(), 800);
     player->setDistanceCovered(801);
     obs.update();
-    EXPECT_EQ(obs.getScore(), 1601);
+    EXPECT_EQ(obs.getScore(), 801);
 }
